@@ -6,6 +6,7 @@ namespace RestaurantFrontend.Controllers
     public class CustomerSupportController : Controller
     {
         // GET: CustomerSupportController
+        [Route("CustomerSupport")]
         public ActionResult Index()
         {
             return View();
