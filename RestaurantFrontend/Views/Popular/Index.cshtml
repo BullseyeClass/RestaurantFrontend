@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MostPopularItem>
+
+@{
+    ViewData["Title"] = "Most Popular";
+}
+
+<div class="row ">
+    @*container justify-content-center*@
+    @foreach (var item in Model)
+    {
+        if (item.mostPopular)
+        {
+
+
+
+            <div class="col-md-2 col-xs-6 border-primary ">
+                <div class="card mb-5" style="max-width: 150px;">
+                <div class="row g-0">
+                    
+                    <div class="col-md-12">
+                        <img src="@item.image" width="100%" alt="" />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <p class="card-text">@item.category</p>
+                            <p class="card-text">@item.price</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-end"><i class="bi bi-eye-fill"></i> Show Details</a>
+                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Cart ($ @item.price)</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
+
