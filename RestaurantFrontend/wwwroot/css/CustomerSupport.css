@@ -1,5 +1,4 @@
-﻿@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
-
+﻿
 body {
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
 }
@@ -67,17 +66,21 @@ h1 {
     padding-left: 1rem;
     padding-right: 1rem;
 }
-.input-group1{
-    display:flex;
-    border:1px solid #aaa7a7;
-    width:100%;
-    position:relative;
-    margin-top:3.5rem;
-    height:contain;
-    
-    
+
+
+.form-validation{
+    font-size:13px;
+    position:absolute;
 }
-input {
+.input-group1 {
+    display: flex;
+    border: 1px solid #aaa7a7;
+    width: 100%;
+    position: relative;
+    margin-top: 3.5rem;
+    height: contain;
+}
+.input-box {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
     margin-right: 5rem;
@@ -122,6 +125,7 @@ input {
     text-decoration: none;
     color: white;
     transition: ease-in;
+    cursor:pointer;
 }
 
     .submit-button:hover {
@@ -155,15 +159,16 @@ input {
         margin-bottom:0.8rem
        
     }
-    .message-button {
+.message-button {
     padding: 0.5rem 1.4rem;
     background-color: black;
     border-radius: 22px;
     margin-top: 0.5rem;
     text-decoration: none;
     color: white;
-    margin-left:1rem;
+    margin-left: 1rem;
     transition: ease-in;
+    cursor: pointer;
 }
 
     .message-button:hover {
@@ -280,6 +285,9 @@ h2 {
     margin-right: 2rem;
     cursor: pointer;
 }
+.general-switch {
+    cursor: pointer;
+}
 
 .questions p {
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
@@ -291,6 +299,7 @@ h2 {
 .questions h5 {
     font-weight:700;
     padding: 1.2rem 0;
+    cursor:pointer;
 }
 
 .questions hr {
@@ -309,9 +318,4 @@ h2 {
 
 .hidden {
     display: none;
-}
-
-
-
-.question-contents {
 }
