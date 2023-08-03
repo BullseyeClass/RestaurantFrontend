@@ -29,7 +29,7 @@
 <div class=" form-contents">
     <h2>We're Here to Help!</h2>
         <p>Fill out the form with any quarry on  <br />your mind and we'll get back to you as  <br />soon as possible</p>
-    <div class="">
+    <div class="form-env">
         <form asp-action="Index">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="input-group1">
@@ -68,27 +68,29 @@
           
            </div>
                 <div class="form-group">
-                    <a type="submit" value="Create" class="submit-button"> Submit </a>
+                    <a href="" type="submit" value="Create" class="submit-button"> Submit </a>
                 </div>
 
         </form>
     </div>
+
+            <div class="Chat-with-us">
+
+                <h4>Chat with Our Support Team</h4>
+
+                <p>I'm a paragrah. Click here to add your <br />own text and edit me  </p>
+
+                <div class="form-group">
+                    <a class="message-button"> Message Us </a>
+                </div>
+            </div>
 
 
 
 </div>
 
 
-        <div class="Chat-with-us">
-
-            <h4>Chat with Our Support Team</h4>
-
-            <p>I'm a paragrah. Click here to add your <br />own text and edit me  </p>
-
-            <div class="form-group">
-                <a type="submit" value="Create" class="message-button"> Message Us </a>
-            </div>
-        </div>
+      
 
 </div>
 
@@ -266,16 +268,16 @@
     <hr class="faq-hr" />
 
     <div class="frequently-asked">
-         <h4 >Frequently Asked Questions</h4>
+        <h4 class="toggleFaq" >Frequently Asked Questions</h4>
          <div class="faq-tab">
-             <p id="setting-up-faq">Setting up FAQs</p>
-            <p>General</p>
+             <p onclick="showFaq()" id="setting-up-faq">Setting up FAQs</p>
+            <p onclick="showGeneral()">General</p>
          </div>
-         <div class="faq-body">
+         <div id="faq" class="faq-body">
 
            <div class="questions question-one">
-                <h5>How do I add a new question & answer?</h5>
-                <div class="question-contents">
+                <h5 class="toggleDiv" onclick="toggleDiv(1)">How do I add a new question & answer?</h5>
+                <div  id="div1" class="question-contents hidden">
                   <p>To add a new FAQ follow these steps:</p>
                   <p>
                     1. Click “Manage FAQs” button <br />
@@ -298,8 +300,8 @@
            </div>
 
             <div class="questions question-two">
-                <h5>Can I insert an image, video, or gif in my FAQ?</h5>
-                <div class="question-contents">
+                <h5 class="toggleDiv" onclick="toggleDiv(2)">Can I insert an image, video, or gif in my FAQ?</h5>
+                <div id="div2" class="question-contents hidden">
                     <p>Yes. To add media follow these steps:</p>
                     <p>
                         1. Enter the app’s Settings <br />
@@ -324,8 +326,8 @@
             </div>
 
             <div class="questions question-three">
-                <h5>How do I edit or remove the “FAQ” title?</h5>
-                <div class="question-contents">
+                <h5 class="toggleDiv" onclick="toggleDiv(3)">How do I edit or remove the “FAQ” title?</h5>
+                <div id="div3" class="question-contents hidden">
                  <p>
                         You can edit the title from the Settings tab in the app. <br />
 
@@ -346,7 +348,7 @@
 
 
 
-        <div class="questions question-General">
+        <div id="general" class="questions question-General hidden">
             <h5>What is an FAQ section?</h5>
             <div class="question-contents">
                 <p>
@@ -370,6 +372,51 @@
    
 
 </div>
+
+<script>
+    function toggleDiv(divNumber) {
+        const divs = document.querySelectorAll('.toggleDiv');
+        const activeDiv = document.getElementById('div' + divNumber);
+
+        divs.forEach((div) => {
+            const divId = div.getAttribute('onclick').match(/\d+/)[0];
+            const targetDiv = document.getElementById('div' + divId);
+
+            if (divId === divNumber.toString()) {
+
+                if (targetDiv.classList.contains('hidden')) {
+                    targetDiv.classList.remove('hidden');
+                }
+            } else {
+
+                if (!targetDiv.classList.contains('hidden')) {
+                    targetDiv.classList.add('hidden');
+                }
+            }
+        });
+    }
+
+
+
+
+    function showFaq() {
+        var faq = document.getElementById("faq");
+        var general = document.getElementById("general");
+
+        faq.classList.remove("hidden");
+        general.classList.add("hidden");
+    }
+
+    function showGeneral() {
+        var faq = document.getElementById("faq");
+        var general = document.getElementById("general");
+
+        faq.classList.add("hidden");
+        general.classList.remove("hidden");
+    }
+
+
+</script>
 
 
 

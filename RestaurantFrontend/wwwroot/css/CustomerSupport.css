@@ -25,11 +25,9 @@ h1 {
 
 .form-container {
     display: flex;
-    margin-top: 4rem;
     margin:4.3rem;
-    border:solid 1px ;
-    position:relative:
-
+    border:solid 1px;
+    height:fit-content;
 }
 
 .form-container img {
@@ -41,27 +39,34 @@ h1 {
 
 .form-contents {
     width: 489px;
-    height: 983px;
+    height: fit-content;
     object-fit: cover;
     object-position: 50% 50%;
-    padding: 1rem;
-    padding-top: 4.3rem;
+   
 }
 
-    .form-contents h2 {
-       
-        font-weight: 700;
-        font-size:34px;
-        margin-bottom:1.9rem;
-    }
+.form-env {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
-    .form-contents p {
-        line-height: 1.4em;
-        font-size: 19px;
-        font-weight: 600;
-        letter-spacing: 0.03rem;
-        margin-bottom: 5rem;
-    }
+.form-contents h2 {
+    font-weight: 700;
+    font-size: 34px;
+    margin-bottom: 1.9rem;
+    margin-top: 4.4rem;
+
+}
+
+.form-contents p {
+    line-height: 1.4em;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    margin-bottom: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 .input-group1{
     display:flex;
     border:1px solid #aaa7a7;
@@ -128,31 +133,36 @@ input {
 
 .Chat-with-us {
     background-color: #f6f6f6;
-    position: absolute;
-    bottom: 24.79rem;
+    margin-top:3.6rem;
     height: 15rem;
     width: 30.5rem;
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
+    
 }
 
     .Chat-with-us h4 {
-        font-weight:600;
-        font-size:18px;
-        font-stretch:extra-expanded;
+        font-weight: 600;
+        font-size: 18px;
+        font-stretch: extra-expanded;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .Chat-with-us p {
         font-weight: 100;
         font-size: 14px;
         font-stretch: extra-expanded;
-        color: #6f6f6f
+        color: #6f6f6f;
+        margin-bottom:0.8rem
+       
     }
     .message-button {
     padding: 0.5rem 1.4rem;
     background-color: black;
     border-radius: 22px;
-   /* margin-top: 0.5rem;*/
+    margin-top: 0.5rem;
     text-decoration: none;
     color: white;
+    margin-left:1rem;
     transition: ease-in;
 }
 
@@ -296,6 +306,11 @@ h2 {
 .question-General img{
     width:22rem;
 }
+
+.hidden {
+    display: none;
+}
+
 
 
 .question-contents {
