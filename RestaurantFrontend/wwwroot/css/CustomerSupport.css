@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+body {
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
 }
 
@@ -24,9 +26,9 @@ h1 {
 .form-container {
     display: flex;
     margin-top: 4rem;
-  /*  background-color:red;*/
     margin:4.3rem;
     border:solid 1px ;
+    position:relative:
 
 }
 
@@ -127,9 +129,9 @@ input {
 .Chat-with-us {
     background-color: #f6f6f6;
     position: absolute;
-    bottom: 10.59rem;
+    bottom: 24.79rem;
     height: 15rem;
-    width: 38.6%;
+    width: 30.5rem;
     padding: 3rem 1rem;
 }
 
@@ -142,6 +144,7 @@ input {
         font-weight: 100;
         font-size: 14px;
         font-stretch: extra-expanded;
+        color: #6f6f6f
     }
     .message-button {
     padding: 0.5rem 1.4rem;
@@ -159,3 +162,141 @@ input {
         border: 1px solid black;
         transition: ease-out linear 1s;
     }
+
+
+.find-us h2 {
+    font-weight: 700;
+    font-size: 34px;
+
+  
+}
+
+.section-2 {
+    margin: 4.3rem;
+    margin-top: 6rem;
+}
+
+    .section-2 p {
+        font-weight: 100;
+        font-size: 14px;
+        font-stretch:ultra-expanded;
+        color:#6f6f6f;
+        line-height:1.9rem;
+
+    }
+
+
+.location-tabs-container {
+    border: solid 0.5px #aaa7a7;
+    margin-top: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.location-tab {
+    padding: 3rem 2.63rem;
+    text-align: center;
+    border: solid 0.5px #aaa7a7;
+    flex: 1 0 calc(25% - 20px);
+    min-width: fit-content;
+}
+
+
+
+.location-tab h4 {
+   
+    line-height: 1.4em;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+}
+
+.location-tab svg {
+   color:red;
+   margin-top:0.5rem;
+   margin-bottom:1.3rem;
+    
+}
+
+    .location-tab p {
+        margin-bottom:0.1px;
+        white-space:nowrap;
+    }
+
+
+h2 {
+    font-weight: 600;
+    font-size: 33px;
+    text-align: center;
+    margin-top: 7.7rem;
+    margin-bottom: 3.35rem;
+
+}
+
+.faq-hr {
+    border: solid 1px black;
+    margin: 0 4.3rem;
+}
+
+.frequently-asked {
+    margin: 0 6.7rem;
+}
+
+.frequently-asked h4 {
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 2.9rem;
+    margin-bottom: 1.8rem;
+}
+
+.faq-tab{
+    display :flex;
+}
+
+    .faq-tab p {
+        font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
+        white-space: break-spaces;
+        font-weight: lighter;
+        color: #656464;
+        font-size: small;
+    }
+
+#setting-up-faq {
+    font-weight: 600;
+    color: red;
+    font-size: 13px;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.questions p {
+    font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
+    font-weight: lighter;
+    color: #656464;
+    font-size: small;
+}
+
+.questions h5 {
+    font-weight:700;
+    padding: 1.2rem 0;
+}
+
+.questions hr {
+    border: solid 1px black;
+  
+}
+
+.social-logo-container{
+
+    margin-bottom:1.5rem;
+}
+
+.question-General img{
+    width:22rem;
+}
+
+
+.question-contents {
+}
