@@ -13,6 +13,10 @@ namespace RestaurantFrontend.Controllers
             _logger = logger;
         }
 
+        public IActionResult Testing()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
