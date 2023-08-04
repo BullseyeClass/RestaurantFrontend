@@ -22,6 +22,13 @@ namespace RestaurantFrontend.Repository.JsonHandler
             return JsonSerializer.Deserialize<List<MostPopularItem>>(jsonContent);
         }
 
-       
+
+        //public List<PopularSectionItem> ReadFromJsonss(string fullPath)
+        //{
+        //    fullPath = GetPath("data.json");
+        //    string jsonContent = File.ReadAllText(fullPath);
+        //    return JsonSerializer.Deserialize<List<PopularSectionItem>>(jsonContent);
+        //}
+
     }
 }

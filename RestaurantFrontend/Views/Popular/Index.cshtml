@@ -4,40 +4,115 @@
     ViewData["Title"] = "Most Popular";
 }
 
-<div class="row ">
-    @*container justify-content-center*@
+
+<link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
+
+<h1 id="popular">Most Popular</h1>
+
+
+<div class="main-container">
+    
+    <div class="filters">
+        <h4>Filter by</h4>
+        <hr />
+        <div class="filter-tab" id="toggleButton">
+            <p class="category">Category</p>
+            
+            <p class="category-minus" id="signDiv">-</p>
+        
+        </div>
+
+        <div class="filter-content" id="targetDiv">
+            
+            <p>All</p><br />
+            <a asp-controller="Popular" asp-action="Filter" asp-route-category="Vegetables">Vegetables</a><br />
+            <a> Fruit</a><br />
+            <a>Meat & Poultry</a><br />
+            <a> Fish & Seafood</a><br />
+            <a> Dairy & Eggs</a><br />
+            <a>Bakery</a><br />
+            <a>Pastas & Grains</a><br />
+            <a>Cereals & Snacks</a><br />
+            <a>Tea</a><br />
+            <a>Coffee</a><br />
+            <a>Soft Drinks</a><br />
+            <a>Beer</a><br />
+            <a>Wine</a><br />
+            <a>Home & Kitchen</a><br />
+            <a>Cleaning Supplies</a><br />
+            <a>Personal Hygiene</a><br />
+            <a>Babies</a><br />
+
+        </div>
+    <hr />
+    </div>
+    
+
+    <div class="row" style="margin-right: 0; padding-right:0;">
+
+        
+
     @foreach (var item in Model)
     {
-        if (item.mostPopular)
-        {
+            var testing = item.Tag;
+            var product = "";
 
 
 
-            <div class="col-md-2 col-xs-6 border-primary ">
-                <div class="card mb-5" style="max-width: 150px;">
-                <div class="row g-0">
-                    
-                    <div class="col-md-12">
-                        <img src="@item.image" width="100%" alt="" />
+
+            if (item.MostPopular)
+            {
+
+                <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
+
+
+                    <div class="popular">
+                        <div class="most-popular" id="most-popular"> <p> Most Popular </p> </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <p class="card-text">@item.category</p>
-                            <p class="card-text">@item.price</p>
-                        </div>
+                    <div class="image-display">
+                        <img src="@item.Image" width="170" margin-bottom="0" alt="" />
                     </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-end"><i class="bi bi-eye-fill"></i> Show Details</a>
-                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Cart ($ @item.price)</a>
+
+                    <div class="">
+                        <p class="" id="number">@item.Name</p>
+                        <p class="" id="price">$@item.Price</p>
+                    </div>
+
+                    <div class="">
+                        <div class="">
+                            <p class="">
+                                <div class="sign">
+                                    <div class="minus"><p> - </p></div>
+                                    <div class="one"> <p> 1 </p></div>
+                                    <div class="plus"><p> + </p></div>
+                                </div>
+                                <a class="btn btn-success text-white; background-color: bg-black "><i class="bi bi-cart-plus"></i> Add to Cart</a>
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        }
+            }
     }
 </div>
+</div>
+
+
+<script>
+    function toggleDiv() {
+        const targetDiv = document.getElementById("targetDiv");
+        const signDiv = document.getElementById("signDiv");
+        product = "rice";
+
+        if (targetDiv.classList.contains("hidden")) {
+            targetDiv.classList.remove("hidden");
+            signDiv.innerHTML = "+";
+        } else {
+            targetDiv.classList.add("hidden");
+            signDiv.innerHTML = "-";
+        }
+    }
+    const toggleButton = document.getElementById("toggleButton");
+    toggleButton.addEventListener("click", toggleDiv);
+</script>
+
 

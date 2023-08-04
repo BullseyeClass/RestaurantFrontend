@@ -6,5 +6,7 @@ namespace RestaurantFrontend.Repository.Interface
     {
         string GetPath(string fileName);
         List<MostPopularItem> ReadFromJsons(string fullPath);
+
+       // List<PopularSectionItem> ReadFromJsonss(string fullPath);
     }
 }

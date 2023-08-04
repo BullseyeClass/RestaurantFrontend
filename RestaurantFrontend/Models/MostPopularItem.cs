@@ -2,19 +2,22 @@
 {
     public class MostPopularItem
     {
-        public int id { get; set; }
-        public string category { get; set; }
-        public string tag { get; set; }
-        public string productName { get; set; }
-        public string image { get; set; }
-        public string SKU { get; set; }
-        public bool mostPopular { get; set; }
-        public bool bestDeal { get; set; }
-        public string price { get; set; }
-        public string discountedPrice { get; set; }
-        public string productInfo { get; set; }
-        public string returnPolicy { get; set; }
-        public string shippingInfo { get; set; }
+            public string Id { get; set; }
+            public string Category { get; set; }
+            public string Tag { get; set; }
+            public string Name { get; set; }
+            public string Image { get; set; }
+            public string SKU { get; set; }
+            public bool MostPopular { get; set; }
+            public bool BestDeal { get; set; }
+            public float Price { get; set; }
+            public float DiscountedPrice { get; set; }
+            public int QuantityInStock { get; set; }
+            public string ProductInfo { get; set; }
+            public string ReturnPolicy { get; set; }
+            public string DeliveryInfo { get; set; }
+            public string ShippingInfo { get; set; }
+        
 
 
     }

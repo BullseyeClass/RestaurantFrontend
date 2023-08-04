@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RestaurantFrontend.Models;
 using RestaurantFrontend.Repository.Interface;
+using System.Collections.Generic;
 
 namespace RestaurantFrontend.Controllers
 {
@@ -17,16 +20,13 @@ namespace RestaurantFrontend.Controllers
         }
         public IActionResult Index()
         {
-            var MostPopularItem = _gettingMostPopularItemsFromDB.GetMostPopularItemFromDataSource();
 
-            return View(MostPopularItem.ToList());
+            var MostPopularItems = _gettingMostPopularItemsFromDB.GetMostPopularItemFromDataSource();
+
+            
+            return View(MostPopularItems.ToList());
         }
 
-        //public IActionResult Index()
-        //{
-
-        //    return View();
-        //}
 
 
 
