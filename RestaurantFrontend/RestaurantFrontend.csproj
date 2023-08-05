@@ -7,39 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\Banana_Bunch.png" />
-    <None Include="wwwroot\images\Bartlett_Pear.png" />
-    <None Include="wwwroot\images\Beefsteak_Tomatoes.png" />
-    <None Include="wwwroot\images\Beef_Fillet.png" />
-    <None Include="wwwroot\images\Boneless_Chicken_Breasts.png" />
-    <None Include="wwwroot\images\Boneless_Chicken_Thighs.png" />
-    <None Include="wwwroot\images\Chocolate_Milk_Carton.png" />
-    <None Include="wwwroot\images\Country_White_Bread.png" />
-    <None Include="wwwroot\images\European_Style_Butter.png" />
-    <None Include="wwwroot\images\Everything_Bagels.png" />
-    <None Include="wwwroot\images\Fresh_Brioche_Buns.png" />
-    <None Include="wwwroot\images\Fresh_Plain_Baguette.png" />
-    <None Include="wwwroot\images\Greenhouse_Cucumber.png" />
-    <None Include="wwwroot\images\Hass_Avocados.png" />
-    <None Include="wwwroot\images\Iceberg_Mussels.png" />
-    <None Include="wwwroot\images\Italian_Chicken_Sausage.png" />
-    <None Include="wwwroot\images\King_Salmon_Fillet.png" />
-    <None Include="wwwroot\images\Lancaster_Farm_Fresh_Carrots.png" />
-    <None Include="wwwroot\images\Natural_Large_White_Eggs.png" />
-    <None Include="wwwroot\images\Navel_Orange.png" />
-    <None Include="wwwroot\images\Norwegian_Halibut_Fillet.png" />
-    <None Include="wwwroot\images\Reduced_Fat_Milk.png" />
-    <None Include="wwwroot\images\Red_Greenhouse_Bell_Pepper.png" />
-    <None Include="wwwroot\images\Ripe_Apple.png" />
-    <None Include="wwwroot\images\Steak_A-La-Minute.png" />
-    <None Include="wwwroot\images\Strawberries.png" />
-    <None Include="wwwroot\images\Tuna_Steak_Fillet.png" />
-    <None Include="wwwroot\images\Whole_Milk_Gallon.png" />
-    <None Include="wwwroot\images\Whole_Wheat_Bread.png" />
-    <None Include="wwwroot\images\Wild_Domestic_Shrimps.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
   </ItemGroup>
 
