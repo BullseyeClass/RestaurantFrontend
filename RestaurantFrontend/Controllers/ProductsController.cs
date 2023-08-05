@@ -14,9 +14,9 @@ namespace RestaurantFrontend.Controllers
         [Route("Vegetables")]
         public IActionResult Vegetables()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
 
@@ -24,57 +24,57 @@ namespace RestaurantFrontend.Controllers
         [Route("Fruits")]
         public IActionResult Fruits()
         {
-            var product = _gettingProductsFromDB.GetProductsFromDataSource();
+            var product = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fruit");
 
-            return View(product.ToList());
+            return View("Product", product);
         }
 
-        [Route("Meat_Poultry")]
+        [Route("Meat & Poultry")]
         public IActionResult Meat_Poultry()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Meat & Poultry");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
-        [Route("Fish_Seafood")]
+        [Route("Fish & Seafood")]
         public IActionResult Fish_Seafood()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood"); 
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
-        [Route("Dairy_Eggs")]
+        [Route("Dairy & Eggs")]
         public IActionResult Dairy_Eggs()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
         [Route("Bakery")]
         public IActionResult Bakery()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
         [Route("Pastas_Grains")]
         public IActionResult Pastas_Grains()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
         [Route("Cereals_Snacks")]
         public IActionResult Cereals_Snacks()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
 
-            return View(products.ToList());
+            return View("Product", products);
         }
 
 

@@ -5,11 +5,13 @@
 }
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 <link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
 
 <div class="main-section">
-    <div class="header"><h1>Vegetables</h1></div>
+    <div class="header"><h1>@Model.FirstOrDefault().Tag</h1></div>
     <div class="d-flex justify-content-around">
 
         <div class="filter-container">
@@ -56,29 +58,51 @@
         <div class="row g-4 justify-content-end">
             @foreach (var item in Model)
             {
-                @if (item.Tag == "Vegetables")
-                {
-                    <div class="col-md-3 col-sm-6 border-primary" style="max-width: 180px;">
-                        <div class="card">
+
+                <div class="col-md-3 col-sm-6 border-primary" style="max-width: 180px;">
+                    <div class="card">
+                        <div>
                             <img src="@item.Image" class="card-img-top" alt="" />
-                            <div class="card-body">
-                                <p class="card-text">@item.Name</p>
-                                <p class="card-text-dollar text-danger"> @item.Price</p>
+                            @{
 
-                                <div class="counter-container">
-                                    <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                    <p class="count">1</p>
-                                    <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                </div>
+                                if (item.BestDeal == true)
+                                {
+                                    <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
+                                }
+                                else
+                                {
+                                    <span></span>
+                                }
 
-                            </div>
-                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                if (item.MostPopular == true)
+                                {
+                                    <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
+                                }
+                                else
+                                {
+                                    <span></span>
+                                }
+                            }
+
                         </div>
+                        <div class="card-body">
+                            <p class="card-text">@item.Name</p>
+                            <p class="card-text-dollar text-danger"> @item.Price</p>
+                            <div class="counter-container">
+                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                <p class="count">1</p>
+                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                            </div>
+
+                        </div>
+                        <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
                     </div>
-                }
+                </div>
+
             }
         </div>
     </div>
 </div>
 <script src="~/js/Products.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
