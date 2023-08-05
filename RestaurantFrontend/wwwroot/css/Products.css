@@ -1,0 +1,149 @@
+﻿/*COUNTER*/
+.counter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    height:40px;
+    margin-bottom:-20%;
+}
+.decrementBtn {
+    font-size: 25px;
+}
+.incrementBtn {
+    font-size: 25px;
+}
+.count {
+    margin-top:1.5rem;
+    font-size: 20px;
+}
+
+button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#count {
+    margin: 0 10px;
+}
+.faded {
+    opacity: 0.5;
+}
+
+/*DROPDOWN*/
+
+.dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-right:4rem;
+}
+
+.dropdown-btn {
+    padding: 8px 12px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.category-text {
+    margin-right: 4rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #fff;
+}
+
+/*CARD*/
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.add-to-cart-btn {
+    margin-top: -20px;
+    border-radius: 20px;
+}
+
+
+.line-divider{
+    border: 0.5px solid #000000;
+    height: 0.5px;
+    width: 13rem;
+}
+.card-text-dollar{
+    font-size:20px;
+    font-weight:600;
+}
+.header h1{
+    text-align:center;
+    font-size:80px;
+    font-weight:bold;
+    margin:30px 0;
+}
+
+.p-2{
+    font-size:30px;
+    font-weight:300;
+}
+
+
+/*.item-number-container {
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 1px;
+    height: 2rem;
+    align-items: center;
+}
+.item-count
+{
+    margin-top:5px;
+
+}
+.minus-container
+{
+    font-size:1.5rem;
+}
+.plus-container
+{
+    font-size:1.5rem;
+}
+.main-section
+{
+    display:flex;
+}*/
+/*.label-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}*/

@@ -1,7 +1,14 @@
+using RestaurantFrontend.Repository.Interface;
+using RestaurantFrontend.Repository.JsonHandler;
+using RestaurantFrontend.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IJsonHelper, JsonHelper>();
+//builder.Services.AddSingleton<IWebHostEnvironment>(env => _env);
+builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
 
 var app = builder.Build();
 

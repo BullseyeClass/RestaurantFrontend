@@ -25,6 +25,29 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-bs-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                 Foods
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Vegetables">Vegetables</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Fruits">Fruits</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Meat_Poultry">Meat & Poultry</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Fish_Seafood">Fish & Seafood</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Dairy_Eggs">Dairy & Eggs</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Bakery">Bakery</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Pastas_Grains">Pastas & Grains</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Cereals_Snacks">Cereals & Snacks</a>
+                            </div>
+                        </li>
+
+
+
+
                     </ul>
                 </div>
             </div>
