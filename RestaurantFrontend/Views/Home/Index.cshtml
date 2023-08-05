@@ -1,8 +1,68 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model RestaurantFrontend.Models.RegistrationPage.CombineLogin_Registration
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/Registration.css" asp-append-version="true" />
+
+<h2>Restaurant Sign up and Login</h2>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form asp-action="Registration" asp-controller="Authentication" method="post">
+            <h2>Create Account</h2>
+            <span>Please kindly create an account with us</span>
+            <div class="form-group">
+                <input asp-for="Registration.UserName" placeholder="Enter Username" />
+                <span asp-validation-for="Registration.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Registration.Email" placeholder="Enter mail" />
+                <span asp-validation-for="Registration.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Registration.Password" placeholder="Enter Password" />
+                <span asp-validation-for="Registration.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Registration.ConfirmPassword" placeholder="Enter Confirm Password" />
+                <span asp-validation-for="Registration.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form asp-action="Login" asp-controller="Authentication" method="post">
+            <h2>Sign in</h2>
+            <span>Please kindly Login your account</span>
+            <div class="form-group">
+                <input asp-for="Login.Email" placeholder="Enter mail" />
+                <span asp-validation-for="Login.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Login.Password" placeholder="Enter password" />
+                <span asp-validation-for="Login.Password" class="text-danger"></span>
+            </div>
+            <a href="#">Forgot your password?</a>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/Script.js"></script>
+}
