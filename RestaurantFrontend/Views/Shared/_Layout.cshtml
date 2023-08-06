@@ -10,32 +10,75 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RestaurantFrontend</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CustomerSupport" asp-action="Index">CustomerSupport</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Popular" asp-action="Index">Most Popular</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Popular" asp-action="PopularSection">PopularSection</a>
-                        </li>
-                    </ul>
+        <nav class="nav-bar">
+            <div class="first-nav">
+                <div class="first-nav-content1">
+                    <a class="about">About Us</a>
+                    <a>Customer Support</a>
+                </div>
+                <div class="first-nav-content2">
+                    <a>Shop on the go, download our app. <u>Details</u></a>
+                    <a style="display:none;">Get 20% off your first order. Subscribe</a>
+                </div>
+                <div class="first-nav-content3">
+                    <a>
+                        <svg data-bbox="0 0 50 50" fill="white" data-type="shape" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50"><g><path d="M25 48.077c-5.924 0-11.31-2.252-15.396-5.921 2.254-5.362 7.492-8.267 15.373-8.267 7.889 0 13.139 3.044 15.408 8.418-4.084 3.659-9.471 5.77-15.385 5.77m.278-35.3c4.927 0 8.611 3.812 8.611 8.878 0 5.21-3.875 9.456-8.611 9.456s-8.611-4.246-8.611-9.456c0-5.066 3.684-8.878 8.611-8.878M25 0C11.193 0 0 11.193 0 25c0 .915.056 1.816.152 2.705.032.295.091.581.133.873.085.589.173 1.176.298 1.751.073.338.169.665.256.997.135.515.273 1.027.439 1.529.114.342.243.675.37 1.01.18.476.369.945.577 1.406.149.331.308.657.472.98.225.446.463.883.714 1.313.182.312.365.619.56.922.272.423.56.832.856 1.237.207.284.41.568.629.841.325.408.671.796 1.02 1.182.22.244.432.494.662.728.405.415.833.801 1.265 1.186.173.154.329.325.507.475l.004-.011A24.886 24.886 0 0 0 25 50a24.881 24.881 0 0 0 16.069-5.861.126.126 0 0 1 .003.01c.172-.144.324-.309.49-.458.442-.392.88-.787 1.293-1.209.228-.232.437-.479.655-.72.352-.389.701-.78 1.028-1.191.218-.272.421-.556.627-.838.297-.405.587-.816.859-1.24a26.104 26.104 0 0 0 1.748-3.216c.208-.461.398-.93.579-1.406.127-.336.256-.669.369-1.012.167-.502.305-1.014.44-1.53.087-.332.183-.659.256-.996.126-.576.214-1.164.299-1.754.042-.292.101-.577.133-.872.095-.89.152-1.791.152-2.707C50 11.193 38.807 0 25 0"></path></g></svg>
+                        <span>Log In</span>
+                    </a>
                 </div>
             </div>
+
+
+
+
+            <div class="second-nav">
+                <div class="web-logo">
+                    <a><h5>Clovers.</h5></a>
+                </div>
+
+                <div class="search-entity-container">
+
+                    <div class="search-entity">
+                        <div class="trending-container">
+                            <div class="search-input-container">
+                                <input type="search"   id="search" value="" placeholder="Search a product e.g. milk" aria-required="false" maxlength="100" autocomplete="off"   >
+
+                                <span class="search-icon">
+                                    <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="5 5 14 14"><path fill="#eb1414" d="m15.683 14.6 3.265 3.265a.2.2 0 0 1 0 .282l-.8.801a.2.2 0 0 1-.283 0l-3.266-3.265a5.961 5.961 0 1 1 1.084-1.084zm-4.727 1.233a4.877 4.877 0 1 0 0-9.754 4.877 4.877 0 0 0 0 9.754z"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-and-others">
+
+                    <a class="location-icon">
+                        <svg width="21" height="25" fill="white" preserveAspectRatio="none" data-bbox="41.501 20 116.999 160.001" viewBox="41.501 20 116.999 160.001" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img" aria-label="Location">
+                            <g>
+                                <path d="M157.367 66.82c-3.105-14.146-10.205-25.614-21.1-34.083-14.606-11.356-31.093-15.144-48.998-11.261-10.993 2.385-20.647 7.708-28.696 15.821-8.462 8.531-13.882 18.86-16.109 30.7-1.122 5.953-1.262 11.473-.43 16.874.862 5.609 2.729 10.685 4.442 14.912 4.273 10.539 9.918 20.076 14.358 27.205 8.241 13.235 17.874 26.672 29.45 41.082a248.399 248.399 0 0 0 3.199 3.874l6.694 8.057 5.455-6.944c13.755-16.57 25.171-32.357 34.9-48.262 6.309-10.316 10.816-19.203 14.182-27.969 3.898-10.164 4.793-20.259 2.653-30.006zM119.04 91.152c-5.093 5.141-11.835 7.976-18.984 7.983h-.025c-14.797.001-26.848-12.115-26.872-27.02-.023-14.812 11.962-26.911 26.717-26.972 7.134-.006 13.868 2.764 18.978 7.868 5.141 5.136 7.982 11.955 8 19.2.019 7.109-2.756 13.835-7.814 18.941z"></path>
+                            </g>
+                        </svg>
+                    </a>
+                    <a class="favorite-icon">
+                        <svg preserveAspectRatio="xMidYMid meet" fill="white" data-bbox="20.999 29 158 142" viewBox="20.999 29 158 142" width="21" height="25" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img" aria-label="My Wishlist">
+                            <g>
+                                <path d="M100.653 170.645l63.348-63.545c11.856-12.514 13.322-20.999 13.322-20.999 2.109-7.649 1.63-13.436 1.63-13.436 0-24.116-19.489-43.665-43.53-43.665-14.603 0-27.527 7.214-35.423 18.283l-.462-.636C91.605 35.938 78.898 29 64.576 29c-24.041 0-43.53 19.549-43.53 43.665 0 0-.478 5.787 1.631 13.436 0 0 1.466 8.485 13.321 20.999l63.348 63.545c.001 0 .689.799 1.307 0z"></path>
+                            </g>
+                        </svg>
+
+                    </a>
+                    <a>
+                        <svg fill="white" xmlns="http://www.w3.org/2000/svg" version="1.1" width="50" height="54" viewBox="0 0 329.7 134.5" data-hook="svg-icon-6"><path class="l7HJaJ" d="M281.6 3c35.7 10.7 56 47.6 45.2 83.3s-47.6 56-83.3 45.2c-35.7-10.7-56-47.6-45.2-83.3C209 13.1 245.9-7.2 281.6 3z"></path><text x="265" y="69" dy=".35em" text-anchor="middle" class="bGBBgJ" data-hook="items-count">2</text><path d="M74.1 134.4c-8.7 0-16.2-7.4-16.2-16.2S65.3 102 74.1 102s16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6 5.6-2.5 5.6-5.6-2.5-5.6-5.6-5.6zM120.5 134.5c-8.7 0-16.2-7.4-16.2-16.2s7.4-16.2 16.2-16.2 16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6c3.1 0 5.6-2.5 5.6-5.6s-2.5-5.6-5.6-5.6z"></path><path d="M141.2 92.1L53.5 92.1 23 10.6 0 10.6 0 0 30.4 0 61.2 81.6 133.5 81.6 152.4 30.4 38.5 30.4 34.8 19.9 167.9 19.9z"></path></svg>
+                    </a>
+
+                </div>
+
+            </div>
+
         </nav>
+
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -43,11 +86,84 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - RestaurantFrontend - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="">
+    <div class="footer-container">
+        <div class="footer-first-section">
+
+            <div class="footer-clovers">
+
+
+                    <h5>Clovers.</h5>
+
+                    <h4>Need Help?</h4>
+
+                    <a>Visit our <u>Customer Support</u></a><br />
+                    <a>for assistance or call us at</a><br />
+
+                    <h6>123-456-7890</h6>
+
+                    <div class="social-logos">
+                        <a><img width="25" height="25" src="~/images/facebooklogo.webp" /></a>
+                        <a><img width="25" height="25" src="~/images/instagramlogo.webp" /></a>
+                        <a><img width="25" height="25" src="~/images/tweeterlogo.webp" /></a>
+                        <a><img width="25" height="25" src="~/images/youtubelogo.webp" /></a>
+                    </div>
+
+            </div>
+            <div class="footer-menu">
+
+
+                    <h6>Menu</h6>
+
+                    <a>Deals</a><br />
+                    <a>Food</a><br />
+                    <a>Beverages</a><br />
+                    <a>Household</a><br />
+                    <a>Personal Care</a><br />
+                    <a>Most Popular</a><br />
+                    <a>My Orders</a><br />
+
+            </div>
+            <div class="footer-categories">
+
+
+                    <h6>Categories</h6>
+
+                    <a>Vegetables</a><br />
+                    <a>Bakery</a><br />
+                    <a>Wine</a><br />
+                    <a>Dairy & Eggs</a><br />
+                    <a>Meat & Poultry</a><br />
+                    <a>Soft Drinks</a><br />
+                    <a>Cleaning Supplies</a><br />
+                    <a>Cereal & Snacks</a><br />
+            </div>
+            <div class="footer-info">
+
+
+                    <h6>Info</h6>
+
+                    <a>FAQ</a><br />
+                    <a>About Us</a><br />
+                    <a>Customer Support</a><br />
+                    <a>Locations</a><br />
+
+                </div>
+            <div class="footer-myChoice">
+
+                <h6>My Choice</h6>
+
+                    <a>Favorites</a><br />
+                    <a>My Orders</a><br />
+
+            </div>
+
         </div>
-    </footer>*@
+
+            <hr />
+   
+    </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
