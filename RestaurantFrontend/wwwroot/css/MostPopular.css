@@ -1,0 +1,172 @@
+﻿
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 600;
+    margin-top: 9rem;
+    font-size: 5rem;
+    margin-left: 19rem;
+    margin-bottom: 6rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sign {
+    display: flex;
+    border: solid 1px;
+    height: 2.5rem;
+    width: 6.7rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.plus {
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 5.5px;
+}
+
+
+.one {
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 8px;
+}
+
+.minus {
+    font-size: 1.5rem;
+    margin-left: 8px;
+    margin-top: 4px;
+}
+
+.most-popular {
+    border: solid 1px;
+    border-radius: 15px;
+    width: 7rem;
+    height: 2rem;
+    margin-left: 1rem;
+    padding-left: 8px;
+    margin-top: 8px;
+    background-color: red;
+    color: white;
+    padding-top: 5px;
+    border-style: none;
+}
+
+#most-popular:hover {
+    cursor: pointer;
+    background-color: brown;
+}
+
+.main-container {
+    display: flex;
+}
+
+.card-content {
+    display: flex;
+}
+
+.filters a {
+    white-space: nowrap;
+}
+
+.filters h4 {
+    margin-right: 7rem;
+    white-space: nowrap;
+}
+
+.filters {
+    padding-right: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.filter-tab {
+    display: flex;
+}
+
+.category {
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+p {
+    margin-right: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#targetDiv a:hover {
+    color: #d7d3d3;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.image{
+    width: 500px;
+    height: 750px;
+    object-fit:cover;
+    object-position:50% 50%;
+    display:block;
+    box-sizing:border-box;
+    border: solid 1px; 
+}
+
+h4{
+    color: #000000;
+    font-size: 25px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+}
+
+#card-title {
+    margin-top: -3rem;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+#number {
+    margin-top: -3rem;
+    font-size: 15px;
+    margin-bottom: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#price {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    color: red;
+    margin-bottom: 0;
+}
+
+#cart {
+    display: flex;
+    font-size: 18px;
+    border-radius: 17px;
+    background-color: black;
+    color: white;
+    margin-top: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.number {
+    margin-bottom: -3rem;
+    margin-left: 4rem;
+}
+
+#one {
+    margin-top: -4.8rem;
+    margin-left: 4.9rem;
+}
