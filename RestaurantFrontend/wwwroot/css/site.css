@@ -169,3 +169,31 @@ html {
     margin-right:0.2rem;
 }
 
+.footer-second-section {
+    padding-left: 17rem;
+    padding-right: 11rem;
+}
+
+
+.footer-second-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 6.1rem 3.8rem 5rem;
+}
+    .footer-second-links a {
+        font-size: 13px;
+        cursor:pointer;
+
+    }
+
+.footer-second-img-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-second-logos h6 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 3.9rem;
+}
