@@ -45,7 +45,24 @@ html {
 }
 
 .first-nav-content2 {
-    padding-right: 8.8rem;
+    
+    padding-right: 19.8rem;
+    position:relative;
+    overflow:hidden;
+
+}
+
+.slide-up-text {
+    position: absolute;
+    margin:0;
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    
+}
+
+.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
 .first-nav-content3 svg {
@@ -90,7 +107,7 @@ html {
     height: 2rem;
     background-color: transparent;
     color: white;
-    margin: 0.3rem 0.5rem 0.3rem 0;
+    margin: 0.3rem 0.5rem 0.3rem 1rem;
     padding: 0 0.5rem; 
     border: none;
     outline: none;
@@ -115,6 +132,26 @@ html {
 }
 
 
+.third-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 12rem 0.2rem 9.5rem;
+    margin-bottom:3rem;
+}
+
+.third-nav a{
+    color: #5b5b5b !important;
+    font-size:17px;
+}
+
+.red-hover:hover {
+    color: orangered !important;
+    transition: color 0.5s ease;
+}
+
+.red-hover:active {
+    color: orangered !important;
+}
 
 
 
@@ -125,9 +162,7 @@ html {
     background-color: #eb1414;
     color: white !important;
     padding: 3.7rem 7.4rem 1rem 2.5rem;
-    margin-top:5.5rem;
-
-
+    margin-top: 5.5rem;
 }
 
 
@@ -197,3 +232,14 @@ html {
     font-weight: 600;
     line-height: 3.9rem;
 }
+
+.footer-copywrite{
+    text-align: center;
+    padding:1rem;
+}
+    .footer-copywrite p {
+        margin: 0;
+        font-size: 14px;
+        color: #3c3b3b !important;
+        
+    }
