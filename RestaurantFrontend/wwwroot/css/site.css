@@ -153,6 +153,115 @@ html {
     color: orangered !important;
 }
 
+.food-hover-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 1rem;
+    padding-right:1rem;
+    margin-top:2.4rem;
+    margin-left:5.7rem;
+    z-index:4;
+    list-style-type: none;
+    color:#808080;
+}
+
+.food-hover-link:hover + .food-hover-list {
+    display: block;
+}
+
+li{
+    line-height:2rem;
+}
+
+.food-hover-list:hover {
+    display: block;
+}
+
+.bevs-hover-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 1.2rem;
+    padding-right: 1rem;
+    margin-top: 2.4rem;
+    margin-left: 12.2rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+.bevs-hover-link:hover + .bevs-hover-list {
+    display: block;
+}
+
+
+.house-hover-list:hover {
+    display: block;
+}
+
+.house-hover-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 1.2rem;
+    padding-right: 1rem;
+    margin-top: 2.4rem;
+    margin-left: 21.1rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+.house-hover-link:hover + .house-hover-list {
+    display: block;
+}
+
+
+.care-hover-list:hover {
+    display: block;
+}
+
+.care-hover-list:hover {
+    display: block;
+}
+
+.care-hover-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 1.2rem;
+    padding-right: 1rem;
+    margin-top: 2.4rem;
+    margin-left: 30.3rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+.care-hover-link:hover + .care-hover-list {
+    display: block;
+}
+
+
+.care-hover-list:hover {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
