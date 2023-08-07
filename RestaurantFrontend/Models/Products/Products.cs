@@ -2,7 +2,7 @@
 {
     public class Products
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Category { get; set; }
         public string Tag { get; set; }
         public string Name { get; set; }
@@ -10,7 +10,7 @@
         public string SKU { get; set; }
         public bool MostPopular { get; set; }
         public bool BestDeal { get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
         public float DiscountedPrice { get; set; }
         public int QuantityInStock { get; set; }
         public string ProductInfo { get; set; }

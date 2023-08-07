@@ -52,21 +52,21 @@ counterContainers.forEach(container => {
     });
 });
 
-function toggleDiv() {
-    const targetDiv = document.getElementById("targetDiv");
-    const signDiv = document.getElementById("signDiv");
-    product = "rice";
+//function toggleDiv() {
+//    const targetDiv = document.getElementById("targetDiv");
+//    const signDiv = document.getElementById("signDiv");
+//    product = "rice";
 
-    if (targetDiv.classList.contains("hidden")) {
-        targetDiv.classList.remove("hidden");
-        signDiv.innerHTML = "+";
-    } else {
-        targetDiv.classList.add("hidden");
-        signDiv.innerHTML = "-";
-    }
-}
-const toggleButton = document.getElementById("toggleButton");
-toggleButton.addEventListener("click", toggleDiv);
+//    if (targetDiv.classList.contains("hidden")) {
+//        targetDiv.classList.remove("hidden");
+//        signDiv.innerHTML = "+";
+//    } else {
+//        targetDiv.classList.add("hidden");
+//        signDiv.innerHTML = "-";
+//    }
+//}
+//const toggleButton = document.getElementById("toggleButton");
+//toggleButton.addEventListener("click", toggleDiv);
 
 
 
