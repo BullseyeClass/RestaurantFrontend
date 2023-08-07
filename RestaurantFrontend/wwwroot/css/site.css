@@ -41,15 +41,15 @@ html {
     }
 
 .about {
-    margin-right: 2rem;
+    margin-right: 2em;
 }
 
 .first-nav-content2 {
-    
     padding-right: 19.8rem;
-    position:relative;
-    overflow:hidden;
-
+    position: relative;
+    overflow: hidden;
+    margin-right: -9em;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .slide-up-text {
@@ -59,14 +59,49 @@ html {
     transition: transform 0.5s ease, opacity 0.5s ease;
     
 }
+.filler-div{
+    margin-right:2px;
+}
 
 .hidden {
-    transform: translateY(-100%);
+    transform: translateY(-350%);
     opacity: 0;
 }
 
+.trending {
+    margin-top: 1em;
+    overflow: hidden;
+}
+    .trending img {
+        margin: 0%;
+        padding: 0%;
+    }
+
+.trending ul{
+     list-style:none;  
+}
+  
+.trending-details {
+    display: inline-block;
+ 
+    overflow: hidden;
+    
+}
+
+.small {
+    line-height: 0% !important ;
+    
+    margin: 0%;
+    padding: 0%;
+}
+.trending-title {
+    line-height: 0% !important;
+}
 .first-nav-content3 svg {
     margin-right: 0.54rem;
+}
+.first-nav-content3 span:hover{
+    color:#ccc;
 }
 
 .second-nav {
@@ -80,7 +115,7 @@ html {
 .web-logo{
     
     text-align:center;
-    margin-right:5rem;
+    margin-right:3em;
 }
 
 .web-logo h5 {
@@ -93,22 +128,17 @@ html {
 .search-input-container {
     display: flex;
     align-items: center;
-    overflow: hidden; 
-    border: 1px solid;
-    border-radius: 1.5625rem;
+    position:relative
 }
 
-.search-input-container:hover {
-    border: solid 2px;
-}
 
 #search {
-    width: calc(29.8rem - 2rem); 
-    height: 2rem;
+    width: calc(29.8em - 2em); 
+    height: 2em;
     background-color: transparent;
     color: white;
-    margin: 0.3rem 0.5rem 0.3rem 1rem;
-    padding: 0 0.5rem; 
+    margin: 0.3em 0.5em 0.3em 1em;
+    padding: 0; 
     border: none;
     outline: none;
 }
@@ -120,15 +150,48 @@ html {
     }
 .search-icon {
     background-color: white;
-    padding: 0.6rem 1rem;
+    padding: 0.6em 1em;
   
 }
 
 .cart-and-others a{
-    margin-left:1.5rem;
+    margin-left:1.5em;
 }
-.search-input-container{
-   
+.trending-container {
+    border: solid 1px;
+    border-radius: 1.5625rem;
+    overflow: hidden;
+    position: absolute;
+    background-color: #eb1414;
+    z-index: 150;
+}
+
+.trending-container:hover {
+    border: solid 2px;
+}
+
+.trending-container {
+    border: solid 2px;
+}
+
+.trending-content {
+    min-height: 3em;
+    display: none;
+    list-style: none;
+    color: white !important;
+    font-size: 0.9rem;
+    padding-left: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.trending-content a{
+    text-decoration:none;
+    color: white !important;
+}
+
+
+.fill-in-div{
+    margin-left:18rem;
 }
 
 
@@ -136,7 +199,7 @@ html {
     display: flex;
     justify-content: space-between;
     padding: 0.2rem 12rem 0.2rem 9.5rem;
-    margin-bottom:3rem;
+    margin-bottom: 3rem;
 }
 
 .third-nav a{
@@ -184,7 +247,7 @@ li{
     background-color: white;
     padding: 1.2rem;
     padding-right: 1rem;
-    margin-top: 2.4rem;
+    margin-top: 2.5em;
     margin-left: 12.2rem;
     z-index: 4;
     list-style-type: none;
@@ -192,6 +255,9 @@ li{
 }
 
 .bevs-hover-link:hover + .bevs-hover-list {
+    display: block;
+}
+.bevs-hover-list:hover {
     display: block;
 }
 
@@ -227,13 +293,13 @@ li{
 }
 
 .care-hover-list {
-    display: none;
+     display: none;
     position: absolute;
     background-color: white;
     padding: 1.2rem;
     padding-right: 1rem;
     margin-top: 2.4rem;
-    margin-left: 30.3rem;
+    margin-left: 37.9vw;
     z-index: 4;
     list-style-type: none;
     color: #808080;
@@ -247,6 +313,15 @@ li{
 .care-hover-list:hover {
     display: block;
 }
+
+
+
+
+
+
+
+
+
 
 
 
