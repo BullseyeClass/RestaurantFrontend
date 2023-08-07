@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RestaurantFrontend.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body >
     <header>
         <nav class="nav-bar">
-            <div class="first-nav">
+            <div class="first-nav" >
                 <div class="first-nav-content1">
                     <a class="about">About Us</a>
-                    <a>Customer Support</a>
+                    <a sp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a>
                 </div>
                 <div class="first-nav-content2">
                     <a class="slide-up-text">Shop on the go, download our app. <u>Details</u></a>
@@ -30,9 +30,6 @@
                     </a>
                 </div>
             </div>
-
-
-
 
             <div class="second-nav">
                 <div class="web-logo">
@@ -137,12 +134,10 @@
 
             </div>
         </nav>
-
-
-
-
     </header>
-    <div class="container">
+
+
+    <div class="container main-body-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -207,7 +202,7 @@
 
                     <a>FAQ</a><br />
                     <a>About Us</a><br />
-                    <a>Customer Support</a><br />
+                    <a sp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a><br />
                     <a>Locations</a><br />
 
                 </div>
@@ -248,14 +243,8 @@
                         <a><img width="57" height="37" src="~/images/Diners.webp" /></a>
                 </div>
 
-
-
             </div>
-
-
         </div>
-
-       
 
    
     </div>

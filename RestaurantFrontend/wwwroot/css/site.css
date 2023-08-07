@@ -21,6 +21,17 @@ html {
     cursor: pointer;
 }
 
+#main-header {
+    position: fixed;
+    margin-bottom: -5000rem;
+    transition: top 0.3s ease-in-out;
+    z-index: 400;
+}
+
+.sticky {
+    top: -60px;
+}
+
 
 .first-nav {
     background-color: #8c0303;
@@ -50,14 +61,15 @@ html {
     overflow: hidden;
     margin-right: -9em;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    text-decoration: none;
 }
 
 .slide-up-text {
     position: absolute;
-    margin:0;
+    margin: 0;
     opacity: 1;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    
+    text-decoration: none;
 }
 .filler-div{
     margin-right:2px;
@@ -110,6 +122,7 @@ html {
     justify-content: space-between;
     color: white;
     padding: 1.5rem 3.7rem 1rem 2.8rem;
+    text-decoration: none;
 }
 
 .web-logo{
@@ -154,8 +167,9 @@ html {
   
 }
 
-.cart-and-others a{
-    margin-left:1.5em;
+.cart-and-others a {
+    margin-left: 1.5em;
+    text-decoration: none;
 }
 .trending-container {
     border: solid 1px;
@@ -164,6 +178,7 @@ html {
     position: absolute;
     background-color: #eb1414;
     z-index: 150;
+    text-decoration: none;
 }
 
 .trending-container:hover {
@@ -198,14 +213,17 @@ html {
 .third-nav {
     display: flex;
     justify-content: space-between;
-    padding: 0.2rem 12rem 0.2rem 9.5rem;
+    padding: 0.6rem 12rem 0.2rem 9.5rem;
     margin-bottom: 3rem;
+    text-decoration: none;
+    min-height: 3rem;
 }
 
-.third-nav a{
-    color: #5b5b5b !important;
-    font-size:17px;
-}
+    .third-nav a {
+        color: #5b5b5b !important;
+        font-size: 17px;
+        text-decoration: none;
+    }
 
 .red-hover:hover {
     color: orangered !important;
@@ -293,7 +311,7 @@ li{
 }
 
 .care-hover-list {
-     display: none;
+    display: none;
     position: absolute;
     background-color: white;
     padding: 1.2rem;

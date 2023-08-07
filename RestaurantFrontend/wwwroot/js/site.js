@@ -7,10 +7,6 @@ setInterval(() => {
 }, 5000);
 
 
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const showListBtn = document.getElementById("search");
     const hiddenList = document.querySelector(".trending-content");
