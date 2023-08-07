@@ -14,19 +14,23 @@ setInterval(() => {
 document.addEventListener("DOMContentLoaded", function () {
     const showListBtn = document.getElementById("search");
     const hiddenList = document.querySelector(".trending-content");
+    const trendingContainer = document.querySelector('#trend')
 
     showListBtn.addEventListener("click", function () {
         if (hiddenList.style.display === "none") {
             hiddenList.style.display = "block";
+            trendingContainer.classList.add('addborder');
             slideDown(hiddenList);
         } else {
             hiddenList.style.display = "none";
+            trendingContainer.classList.remove('addborder');
         }
     });
 
     document.addEventListener("click", function (event) {
         if (!hiddenList.contains(event.target) && event.target !== showListBtn) {
             hiddenList.style.display = "none";
+            trendingContainer.classList.remove('addborder');
         }
     });
 
