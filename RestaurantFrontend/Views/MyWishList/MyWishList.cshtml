@@ -1,0 +1,24 @@
+﻿@model IEnumerable<RestaurantFrontend.Models.MyWishListPage.MyWishList>
+
+<div class="card">
+    <div class="card-header text-center">
+        <h1 class="h3">Saved Items (@Model.)</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <a href="#" class="text-decoration-none">
+                        <img src="@item.Image" class="card-img-top" alt="@item.Name">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">₦ @item.Price</p>
+                        <!-- Add a form here for saving/removing the item -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

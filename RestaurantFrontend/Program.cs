@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IJsonHelper, JsonHelper>();
+builder.Services.AddScoped<IJsonHelperMWL, JsonHelperMWL>();
 builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
+builder.Services.AddScoped<IGettingMyWishList, GettingMyWishListFromDB>();
 
 var app = builder.Build();
 
