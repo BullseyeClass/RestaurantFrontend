@@ -2,12 +2,11 @@
 
 <link rel="stylesheet" href="~/css/Registration.css" asp-append-version="true" />
 
-<h2>Restaurant Sign up and Login</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form asp-action="Registration" asp-controller="Authentication" method="post">
             <h2>Create Account</h2>
-            <span>Please kindly create an account with us</span>
+            <span>Please kindly create an account with us.</span>
             <div class="form-group">
                 <input asp-for="Registration.UserName" placeholder="Enter Username" />
                 <span asp-validation-for="Registration.UserName" class="text-danger"></span>
