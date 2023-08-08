@@ -13,10 +13,11 @@ namespace RestaurantFrontend.Controllers
         {
             _gettingMyWishListFromDB = gettingMyWishListFromDB;
         }
+        [Route("MyWishList")]
         public IActionResult MyWishList()
         {
-            var MyWishList = _gettingMyWishListFromDB.GetMyWishListFromDataSource();
-            return View(MyWishList.ToList());
+            var myWishList = _gettingMyWishListFromDB.GetMyWishListFromDataSource();
+            return View(myWishList.ToList());
         }
     }
 }
