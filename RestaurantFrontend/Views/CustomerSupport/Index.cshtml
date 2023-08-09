@@ -3,21 +3,73 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+
+
+@{
+
+    List<RestaurantFrontend.Models.CustomerSupportEntity.CustomerSupport> chatMessages = new List<RestaurantFrontend.Models.CustomerSupportEntity.CustomerSupport>
+    {
+        new  RestaurantFrontend.Models.CustomerSupportEntity.CustomerSupport { FirstName = "user", Message = "Hello! How can I help you?", Timestamp = DateTime.Now },
+        new RestaurantFrontend.Models.CustomerSupportEntity.CustomerSupport { FirstName = "bot", Message = "Hi there! I'm here to assist you.", Timestamp = DateTime.Now.AddMinutes(1) },
+    };
+}
+
+
+
+
 <link href="@Url.Content("~/css/CustomerSupport.css")" rel="stylesheet" type="text/css" />
 
 
+<div class="chat-button-container" style="">
 
+    <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasChat" aria-controls="offcanvasChat"  style=" border:none; padding:0.78rem; color: rgb(255, 255, 255); background-color: rgb(140, 0, 0); border-radius: 12px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="border-radius: 0px; fill: rgb(255, 255, 255); width: 32px; height: 32px; flex-shrink: 0;">
+            <g fill="none" fill-rule="evenodd">
+                <path d="M24.858 4.198A14.444 14.444 0 0019.6 1.376 15.617 15.617 0 0015.948.73c-.334-.042-.662-.042-.967-.042-.305 0-.569 0-.836.026-.82.042-1.637.13-2.448.265a14.875 14.875 0 00-4.71 1.708A12.601 12.601 0 002.26 7.146 9.948 9.948 0 00.994 14.96a10.903 10.903 0 003.554 5.747 14.751 14.751 0 008.113 3.597 3.405 3.405 0 013.05 3.625v.294c.67-.413 1.342-.875 2.01-1.356a62.562 62.562 0 007.362-6.115 15.122 15.122 0 001.957-2.218c1.227-1.732 1.9-3.8 1.927-5.925a10.211 10.211 0 00-.379-2.764 11.367 11.367 0 00-3.73-5.647zM8.314 15.134a1.85 1.85 0 01-1.719-1.143 1.865 1.865 0 01.404-2.031 1.842 1.842 0 012.024-.392c.691.295 1.136.98 1.125 1.735a1.843 1.843 0 01-1.834 1.83zm6.497 0a1.852 1.852 0 01-1.832-1.868 1.852 1.852 0 011.855-1.845 1.852 1.852 0 011.84 1.86 1.87 1.87 0 01-1.863 1.856v-.003zm6.535 0a1.847 1.847 0 01-1.714-1.14 1.862 1.862 0 01.396-2.027 1.84 1.84 0 012.015-.405 1.854 1.854 0 011.14 1.719 1.847 1.847 0 01-1.837 1.856v-.003z">
+                </path><path fill="currentColor" fill-rule="nonzero" d="M27.226 3.936A16.413 16.413 0 0021.312.765a17.566 17.566 0 00-4.086-.733C16.87 0 16.509 0 16.15 0c-.358 0-.64 0-.96.029a23.64 23.64 0 00-2.653.288A16.729 16.729 0 007.241 2.24 14.496 14.496 0 001.84 7.328a11.77 11.77 0 00-1.485 9.187 12.756 12.756 0 004.125 6.682 16.714 16.714 0 009.11 4.032 1.46 1.46 0 011.369 1.632c0 .525-.118 1.046-.182 1.568-.098.388-.12.79-.064 1.187a.42.42 0 00.39.384h.071a3.88 3.88 0 00.96-.25 21.448 21.448 0 003.863-2.31 64.08 64.08 0 007.549-6.256 16.735 16.735 0 002.214-2.483 12.225 12.225 0 002.24-6.96 11.998 11.998 0 00-.451-3.274 13.224 13.224 0 00-4.323-6.531zm.937 15.68a14.933 14.933 0 01-1.955 2.195 62.359 62.359 0 01-7.328 6.055c-.675.476-1.344.94-2.026 1.347v-.291a3.38 3.38 0 00-3.037-3.594A14.722 14.722 0 015.76 21.76a10.8 10.8 0 01-3.54-5.696A9.82 9.82 0 013.481 8.32 12.565 12.565 0 018.185 3.9a14.9 14.9 0 014.695-1.692 21.91 21.91 0 012.438-.262c.266-.026.544-.026.832-.026.288 0 .64 0 .96.029 1.234.069 2.455.284 3.639.64a14.39 14.39 0 015.232 2.8 11.267 11.267 0 013.721 5.61c.251.89.379 1.813.378 2.739a10.357 10.357 0 01-1.92 5.868l.003.01z"></path><path fill="currentColor" fill-rule="nonzero" d="M15.203 11.851a1.86 1.86 0 101.858 1.86 1.877 1.877 0 00-1.858-1.86zm-6.675 0a1.861 1.861 0 10-.05 3.723 1.861 1.861 0 00.05-3.723zm13.396 0a1.862 1.862 0 101.834 1.861 1.852 1.852 0 00-1.834-1.86z"></path>
+            </g>
+        </svg>
+    </button>
+</div>
+<div>
+    <div class="offcanvas offcanvas-bottom-end offcanvas-end " data-bs-backdrop="false" data-bs-scroll="true" style="  box-shadow: -8px 8px 32px -1px rgba(0,0,0,0.23); border-bottom-left-radius:1rem; max-width:21.5rem; border-bottom-right-radius:1rem; margin-right:1.3rem; margin-bottom:1.3rem;" tabindex="-1" id="offcanvasChat" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header" id="cart-modal">
+            <div>
+
+            <h5 style="color:white; margin-bottom:0; font-weight:600;">Clovers.</h5>
+                <p style="color:white; font-size:13px; margin-top:0px;"> <span style=" min-width:10px; border-radius:25px; min-height:10px;display:inline-flex; background-color:#4ab12a;"></span> We’ll reply as soon as we can</p>
+
+            </div>
+            <button type="button" style="color:white;" class="btn-close btn-light btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mt-5 cart-body">
+
+
+            <div class="chat-container">
+                @foreach (var message in chatMessages)
+                {
+                    <div class="message  @(message.FirstName)-message">
+                        <span class="timestamp">@message.Timestamp.ToString("HH:mm")</span>
+                        <p>@message.Message</p>
+                    </div>
+                }
+               
+            </div>
+
+            <div class="chat-input-container">
+                <input type="text" id="chat-user-input" placeholder="Type your message..." />
+                <button id="chat-send-button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <h1>Customer Support</h1>
 <div class="top-Paragraph-Container">
     <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place 
        for you to tell a story and let your users know a little more about you.</p>
 </div>
-
-
-
-
-
 
 
 
@@ -84,13 +136,8 @@
                     <a class="message-button"> Message Us </a>
                 </div>
             </div>
-
-
-
 </div>
-
-
-      
+    
 
 </div>
 
@@ -414,6 +461,183 @@
         faq.classList.add("hidden");
         general.classList.remove("hidden");
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const messageResponses = [
+            { userMessage: ['hello', 'hi', 'hey', 'yo', 'good morning'], botResponse: "Greetings! I am Jaggar, an AI bot. How may I be of assistance?" },
+            { userMessage: ['how are you?', 'how\'s it going?'], botResponse: "I'm an AI, so I don't experience emotions, but I'm here and ready to assist you!" },
+            { userMessage: ['what can you do?', 'features'], botResponse: "I'm capable of providing information, answering questions, performing calculations, and more. Just let me know what you require!" },
+            { userMessage: ['tell me a joke', 'joke'], botResponse: "Sure, here's one: Why did the computer go to therapy? Because it had too many bytes of emotional baggage!" },
+            { userMessage: ['how does weather work?', 'weather'], botResponse: "Weather is influenced by factors like temperature, air pressure, and humidity. Would you like more detailed weather information?" },
+            { userMessage: ['who created you?', 'your creator'], botResponse: "A team of developers at OpenAI brought me to life. I'm here to engage and assist users like you." },
+            { userMessage: ['thank you', 'thanks'], botResponse: "You're welcome! Should you have more queries, feel free to ask." },
+            { userMessage: ['how does your learning work?', 'learning process'], botResponse: "I learn through a process called machine learning. By analyzing and learning from text and data, I generate responses." },
+            { userMessage: ['what\'s the time?', 'current time'], botResponse: "I'm sorry, I lack real-time capabilities. Kindly check the time on your device." },
+            { userMessage: ['can you translate?', 'translate'], botResponse: "Certainly, I can assist with translations. Please provide the text and the target language." },
+            { userMessage: ['recommend a movie', 'movie recommendation'], botResponse: "Of course! What movie genre interests you: action, comedy, drama, sci-fi, or perhaps something else?" },
+            { userMessage: ['how does email work?', 'email'], botResponse: "Email is a method to send electronic messages over the internet. It involves composing, sending, and receiving messages via email servers. Need more details?" },
+            { userMessage: ['what\'s the capital of France?', 'capital of France'], botResponse: "The capital of France is Paris." },
+            { userMessage: ['can you do math?', 'math calculations'], botResponse: "Certainly! I can assist you with various math calculations. Just let me know what you need to calculate." },
+            { userMessage: ['define happiness', 'meaning of happiness'], botResponse: "Happiness is a positive emotional state characterized by feelings of well-being, contentment, and joy." },
+            { userMessage: ['what is mindfulness?', 'mindfulness practice'], botResponse: "Mindfulness is the practice of being fully present and attentive to the current moment. It involves non-judgmental awareness of thoughts, feelings, and surroundings." },
+            { userMessage: ['recommend a music genre', 'music genre suggestion'], botResponse: "Of course! Are you in the mood for some soothing jazz, energetic rock, melodic classical, or perhaps a bit of electronic dance music?" },
+            { userMessage: ['explain the concept of time dilation', 'time dilation'], botResponse: "Time dilation is a phenomenon in Einstein's theory of relativity where time passes differently for observers in relative motion or experiencing different gravitational forces. It leads to fascinating effects like time appearing to slow down at high speeds." },
+            { userMessage: ['tell me about endangered species', 'endangered animals'], botResponse: "Endangered species are those facing a high risk of extinction due to factors like habitat loss, poaching, and climate change. Iconic examples include the giant panda, tiger, and African elephant." },
+            { userMessage: ['how do digital cameras work?', 'digital photography process'], botResponse: "Digital cameras capture light using sensors, usually made of silicon. The light intensity is converted into electrical signals, which are then processed and stored as digital image files." },
+            { userMessage: ['what is climate change?', 'climate change definition'], botResponse: "Climate change refers to long-term shifts in global or regional weather patterns, often driven by human activities that release greenhouse gases into the atmosphere, leading to temperature increases and environmental impacts." },
+            { userMessage: ['recommend a productivity tip', 'productivity advice'], botResponse: "Sure! One effective productivity tip is to break your tasks into smaller, manageable chunks and focus on one task at a time. This can help reduce overwhelm and improve your efficiency." },
+            { userMessage: ['explain the concept of gravitational waves', 'gravitational waves'], botResponse: "Gravitational waves are ripples in the fabric of spacetime, caused by massive accelerating objects like colliding black holes. Their detection has provided a new way to study the universe and confirm Einstein's predictions." },
+            { userMessage: ['tell me about famous historical events', 'historical events'], botResponse: "Certainly! Some famous historical events include the signing of the Declaration of Independence, the Renaissance period, the Industrial Revolution, and the Moon landing in 1969." },
+            { userMessage: ['what is sustainable farming?', 'sustainable agriculture'], botResponse: "Sustainable farming focuses on practices that balance food production with environmental stewardship. It aims to minimize negative impacts on soil, water, and ecosystems while promoting long-term viability." },
+            { userMessage: ['what is artificial intelligence?', 'AI definition'], botResponse: "Artificial Intelligence, or AI, refers to the simulation of human intelligence in computers and machines. It involves tasks such as problem-solving, learning, reasoning, and decision-making." },
+            { userMessage: ['recommend a podcast', 'podcast suggestion'], botResponse: "Certainly! What are you interested in: technology, science, comedy, storytelling, or something else?" },
+            { userMessage: ['how do plants grow?', 'plant growth process'], botResponse: "Plants grow through a process called photosynthesis, where they convert light energy into chemical energy to produce glucose and oxygen. Growth also involves cell division, nutrient absorption, and root development." },
+            { userMessage: ['tell me a science fact', 'science trivia'], botResponse: "Here's a science fact: The Earth's core is hotter than the surface of the Sun! The temperature at the core can reach up to 9,932 degrees Fahrenheit (5,500 degrees Celsius)." },
+            { userMessage: ['explain the concept of entropy', 'entropy'], botResponse: "Entropy is a measure of disorder or randomness in a system. In natural processes, entropy tends to increase over time, leading to a decrease in the system's energy available to do work." },
+            { userMessage: ['whats the speed of light ? ', 'speed of light in vacuum'], botResponse: "The speed of light in a vacuum is approximately 299,792,458 meters per second (about 186,282 miles per second). Its a fundamental constant of nature." },
+            { userMessage: ['tell me about famous inventors', 'inventors'], botResponse: "Certainly! Some famous inventors include Thomas Edison (inventor of the light bulb), Alexander Graham Bell (inventor of the telephone), and Marie Curie (known for her pioneering research on radioactivity)." },
+            { userMessage: ['explain the Big Bang theory', 'Big Bang theory'], botResponse: "The Big Bang theory is the prevailing scientific explanation for the origin of the universe. It suggests that the universe began as an extremely hot and dense point roughly 13.8 billion years ago and has been expanding ever since." },
+            { userMessage: ['recommend a documentary', 'documentary suggestion'], botResponse: "Of course! Are you interested in documentaries about nature, history, space, or a specific topic?" },
+            { userMessage: ['how do electric cars work?', 'electric vehicle technology'], botResponse: "Electric cars use rechargeable batteries to power an electric motor. They produce zero tailpipe emissions and rely on electricity from the grid or renewable sources for operation." },
+            { userMessage: ['what is blockchain?', 'blockchain technology'], botResponse: "Blockchain is a decentralized and distributed digital ledger technology. It securely records and verifies transactions across multiple computers, ensuring transparency and immutability." },
+            { userMessage: ['recommend a language to learn', 'language learning suggestion'], botResponse: "Learning a new language is a great idea! Popular options include Spanish, French, Mandarin, and Arabic. Choose one that aligns with your interests and goals." },
+            { userMessage: ['how do earthquakes happen?', 'earthquake process'], botResponse: "Earthquakes occur due to the sudden release of energy along fault lines in the Earth's crust. This energy creates seismic waves that result in ground shaking and potential damage." },
+            { userMessage: ['tell me about space exploration', 'space exploration history'], botResponse: "Space exploration involves the investigation of celestial bodies beyond Earth. Significant milestones include the moon landing, Mars rovers, and ongoing efforts to explore the cosmos." },
+            { userMessage: ['explain the concept of sustainability', 'sustainability'], botResponse: "Sustainability refers to meeting current needs without compromising the ability of future generations to meet their own needs. It encompasses environmental, social, and economic considerations." },
+            { userMessage: ['what is virtual reality?', 'VR definition'], botResponse: "Virtual Reality (VR) is a technology that simulates a realistic three-dimensional environment, allowing users to interact and immerse themselves in a computer-generated world." },
+            { userMessage: ['recommend a workout routine', 'fitness routine suggestion'], botResponse: "Certainly! A well-rounded fitness routine could include cardio exercises like running, strength training with weights, and flexibility exercises like yoga or stretching." },
+            { userMessage: ['explain the water cycle', 'water cycle process'], botResponse: "The water cycle describes how water circulates between the Earth's surface, atmosphere, and back again. It includes processes like evaporation, condensation, precipitation, and runoff." },
+            { userMessage: ['tell me about famous artists', 'notable artists'], botResponse: "Certainly! Some famous artists include Leonardo da Vinci (known for the Mona Lisa), Vincent van Gogh (famous for Starry Night), and Pablo Picasso (recognized for his innovative styles)." },
+            { userMessage: ['how does the human brain work?', 'brain function'], botResponse: "The human brain is incredibly complex. It controls thoughts, emotions, and bodily functions. Neurons transmit signals, forming networks that contribute to learning, memory, and various cognitive processes." },
+            { userMessage: ['what is renewable energy?', 'renewable energy sources'], botResponse: "Renewable energy comes from sources that are naturally replenished, such as sunlight, wind, water, and geothermal heat. It's a sustainable alternative to fossil fuels for generating power." },
+            { userMessage: ['recommend a cooking recipe', 'recipe suggestion'], botResponse: "Absolutely! How about trying a classic spaghetti carbonara or a flavorful vegetable stir-fry? Let me know your preferences!" },
+            { userMessage: ['explain the concept of black holes', 'black holes'], botResponse: "Black holes are incredibly dense regions in space where gravity is so strong that nothing, not even light, can escape their grasp. They are formed from the remnants of massive stars." },
+            { userMessage: ['tell me about ancient civilizations', 'ancient civilizations history'], botResponse: "Ancient civilizations like the Egyptians, Greeks, Romans, and Mayans left lasting legacies in art, architecture, science, and culture. Each had unique achievements and influences." },
+            { userMessage: ['what is meditation?', 'meditation practice'], botResponse: "Meditation is a practice that involves focusing the mind and eliminating distractions. It promotes relaxation, mindfulness, and can have positive effects on mental well-being." },
+            { userMessage: ['explain the concept of genetics', 'genetics'], botResponse: "Genetics is the study of genes and heredity. It explores how traits are passed from parents to offspring and how variations in DNA contribute to differences among individuals." },
+            { userMessage: ['recommend a board game', 'board game suggestion'], botResponse: "Sure! How about trying a strategic game like Settlers of Catan, a cooperative game like Pandemic, or a word game like Scrabble?" },
+            { userMessage: ['how do wind turbines generate electricity?', 'wind energy process'], botResponse: "Wind turbines harness the kinetic energy of wind to spin their blades. This rotational motion is converted into electricity through a generator, contributing to clean and sustainable energy production." },
+            { userMessage: ['tell me about the Great Barrier Reef', 'Great Barrier Reef'], botResponse: "The Great Barrier Reef is the world's largest coral reef system, located off the coast of Australia. It's renowned for its incredible marine biodiversity and vibrant coral formations." },
+            { userMessage: ['what is quantum physics?', 'quantum mechanics'], botResponse: "Quantum physics is a branch of physics that deals with the behavior of matter and energy on the smallest scales, where classical physics laws break down. It has led to groundbreaking discoveries and technologies." },
+            { userMessage: ['what is mindfulness?', 'mindfulness practice'], botResponse: "Mindfulness is the practice of being fully present and attentive to the current moment. It involves non-judgmental awareness of thoughts, feelings, and surroundings." },
+            { userMessage: ['recommend a music genre', 'music genre suggestion'], botResponse: "Of course! Are you in the mood for some soothing jazz, energetic rock, melodic classical, or perhaps a bit of electronic dance music?" },
+            { userMessage: ['explain the concept of time dilation', 'time dilation'], botResponse: "Time dilation is a phenomenon in Einstein's theory of relativity where time passes differently for observers in relative motion or experiencing different gravitational forces. It leads to fascinating effects like time appearing to slow down at high speeds." },
+            { userMessage: ['tell me about endangered species', 'endangered animals'], botResponse: "Endangered species are those facing a high risk of extinction due to factors like habitat loss, poaching, and climate change. Iconic examples include the giant panda, tiger, and African elephant." },
+            { userMessage: ['how do digital cameras work?', 'digital photography process'], botResponse: "Digital cameras capture light using sensors, usually made of silicon. The light intensity is converted into electrical signals, which are then processed and stored as digital image files." },
+            { userMessage: ['what is climate change?', 'climate change definition'], botResponse: "Climate change refers to long-term shifts in global or regional weather patterns, often driven by human activities that release greenhouse gases into the atmosphere, leading to temperature increases and environmental impacts." },
+            { userMessage: ['recommend a productivity tip', 'productivity advice'], botResponse: "Sure! One effective productivity tip is to break your tasks into smaller, manageable chunks and focus on one task at a time. This can help reduce overwhelm and improve your efficiency." },
+            { userMessage: ['explain the concept of gravitational waves', 'gravitational waves'], botResponse: "Gravitational waves are ripples in the fabric of spacetime, caused by massive accelerating objects like colliding black holes. Their detection has provided a new way to study the universe and confirm Einstein's predictions." },
+            { userMessage: ['tell me about famous historical events', 'historical events'], botResponse: "Certainly! Some famous historical events include the signing of the Declaration of Independence, the Renaissance period, the Industrial Revolution, and the Moon landing in 1969." },
+            { userMessage: ['what is sustainable farming?', 'sustainable agriculture'], botResponse: "Sustainable farming focuses on practices that balance food production with environmental stewardship. It aims to minimize negative impacts on soil, water, and ecosystems while promoting long-term viability." },
+            { userMessage: ['explain the concept of dark matter', 'dark matter'], botResponse: "Dark matter is a mysterious form of matter that doesn't emit light or energy. Its presence is inferred from its gravitational effects on visible matter, and it is thought to make up a significant portion of the universe's mass." },
+            { userMessage: ['recommend a documentary series', 'documentary series suggestion'], botResponse: "Absolutely! How about exploring 'Planet Earth' for stunning nature footage, 'Cosmos' for an enlightening journey through space and time, or 'Chef's Table' for a culinary adventure?" },
+            { userMessage: ['how do electric eels generate electricity?', 'electric eel electric shock'], botResponse: "Electric eels have specialized cells called electrocytes that can generate electric charges. These charges add up to create a shock strong enough to stun prey or deter predators." },
+            { userMessage: ['tell me about the history of the internet', 'internet history'], botResponse: "The internet originated from research projects in the 1960s and 1970s. It evolved from ARPANET and gradually became a global network, transforming communication, commerce, and information exchange." },
+            { userMessage: ['explain the concept of quantum entanglement', 'quantum entanglement'], botResponse: "Quantum entanglement is a phenomenon where two particles become correlated in such a way that the state of one instantly influences the state of the other, regardless of the distance between them. It's a fundamental aspect of quantum physics." },
+            { userMessage: ['recommend a hobby to try', 'hobby suggestion'], botResponse: "Sure! How about experimenting with photography, learning a musical instrument, practicing gardening, or exploring the world of painting?" },
+            { userMessage: ['how do 3D printers work?', '3D printing process'], botResponse: "3D printers create objects by adding material layer by layer based on a digital design. They can use various materials like plastics, metals, and ceramics to produce intricate and customized items." },
+            { userMessage: ['tell me about different types of meditation', 'types of meditation'], botResponse: "Certainly! There are various types of meditation, including mindfulness meditation, transcendental meditation, loving-kindness meditation, and guided meditation. Each focuses on different techniques and goals." },
+            { userMessage: ['what is the human microbiome?', 'microbiome definition'], botResponse: "The human microbiome refers to the trillions of microorganisms, including bacteria, viruses, and fungi, living in and on the human body. It plays a crucial role in digestion, immunity, and overall health." },
+            { userMessage: ['explain the concept of virtual reality', 'virtual reality definition'], botResponse: "Virtual Reality (VR) is a technology that immerses users in a simulated environment, often using headsets and motion tracking. It creates a sense of presence and allows for interactive experiences." },
+
+        ];
+
+
+
+        function addMessage(sender, text) {
+            var timestamp = new Date().toLocaleTimeString();
+            var messageClass = sender === 'user' ? 'user-message' : 'bot-message';
+            var messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', messageClass);
+            messageDiv.innerHTML = `
+                <span class="timestamp">${timestamp}</span>
+                <p>${text}</p>
+            `;
+            document.querySelector('.chat-container').appendChild(messageDiv);
+        }
+
+        document.getElementById('chat-send-button').addEventListener('click', function () {
+            var userMessageInput = document.getElementById('chat-user-input');
+            var userMessage = userMessageInput.value;
+            if (userMessage.trim() !== '') {
+                addMessage('user', userMessage);
+
+                setTimeout(function () {
+                    let botResponse = "I'm sorry, I didn't understand that.";
+                    for (const entry of messageResponses) {
+                        if (entry.userMessage.includes(userMessage.trim().toLowerCase())) {
+                            botResponse = entry.botResponse;
+                            break;
+                        }
+                    }
+
+                    addMessage('bot', botResponse);
+
+
+
+                    if (botResponse === "I'm sorry, I didn't understand that.") {
+                        const lastUserMessage = getLastUserMessage();
+                        const contextSuggestions = getContextAwareSuggestions(lastUserMessage);
+
+                        if (contextSuggestions.length > 0) {
+                            setTimeout(function () {
+                                addMessage('bot', "I'm not sure I understand. Did you mean:");
+                                for (const suggestion of contextSuggestions) {
+                                    setTimeout(function () {
+                                        addMessage('bot', suggestion);
+                                    }, 500);
+                                }
+                            }, 1000);
+                        } else {
+                            setTimeout(function () {
+                                addMessage('bot', "I'm not sure I understand. Could you please provide more information?");
+                            }, 1000);
+                        }
+                    }
+                }, 1000);
+
+                userMessageInput.value = '';
+            }
+        });
+
+
+        function getLastUserMessage() {
+           
+            const messageElements = Array.from(document.getElementsByClassName('user-message'))[0].getElementsByTagName('p');
+
+            if (messageElements.length > 0) {
+                return messageElements[messageElements.length - 1].textContent;
+            }
+
+            return '';
+        }
+
+
+        function getContextAwareSuggestions(userMessage, conversationHistory) {
+            const keywordSuggestions = {
+                "clarify": "Could you clarify what you meant by that?",
+                "assist": "I'm here to assist you! How about asking me a question on a specific topic?",
+                "explore": "Feel free to explore different topics. You can ask about science, history, technology, and more!",
+            };
+
+            for (const keyword in keywordSuggestions) {
+                if (userMessage.toLowerCase().includes(keyword)) {
+                    return [keywordSuggestions[keyword]];
+                }
+            }
+            return ["I'm here to help! How can I assist you today?"];
+        }
+
+
+    });
+
+
+    
+
+
+
+      
+
 
 
 </script>

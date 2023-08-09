@@ -14,5 +14,6 @@ namespace RestaurantFrontend.Models.CustomerSupportEntity
         public string PhoneNumber { get; set; } = string.Empty;
         [Required]
         public string Message { get; set; } = string.Empty;
+        public DateTime Timestamp { get; set; } = DateTime.Now;
     }
 }

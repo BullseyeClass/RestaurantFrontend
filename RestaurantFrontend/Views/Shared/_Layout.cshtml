@@ -92,12 +92,14 @@
 
                     </a>
                     <a>
-                        <svg fill="white" xmlns="http://www.w3.org/2000/svg" version="1.1" width="50" height="54" viewBox="0 0 329.7 134.5" data-hook="svg-icon-6"><path class="l7HJaJ" d="M281.6 3c35.7 10.7 56 47.6 45.2 83.3s-47.6 56-83.3 45.2c-35.7-10.7-56-47.6-45.2-83.3C209 13.1 245.9-7.2 281.6 3z"></path><text x="265" y="69" dy=".35em" text-anchor="middle" class="bGBBgJ" data-hook="items-count">2</text><path d="M74.1 134.4c-8.7 0-16.2-7.4-16.2-16.2S65.3 102 74.1 102s16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6 5.6-2.5 5.6-5.6-2.5-5.6-5.6-5.6zM120.5 134.5c-8.7 0-16.2-7.4-16.2-16.2s7.4-16.2 16.2-16.2 16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6c3.1 0 5.6-2.5 5.6-5.6s-2.5-5.6-5.6-5.6z"></path><path d="M141.2 92.1L53.5 92.1 23 10.6 0 10.6 0 0 30.4 0 61.2 81.6 133.5 81.6 152.4 30.4 38.5 30.4 34.8 19.9 167.9 19.9z"></path></svg>
+                        <svg data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" fill="white" xmlns="http://www.w3.org/2000/svg" version="1.1" width="50" height="54" viewBox="0 0 329.7 134.5" data-hook="svg-icon-6"><path class="l7HJaJ" d="M281.6 3c35.7 10.7 56 47.6 45.2 83.3s-47.6 56-83.3 45.2c-35.7-10.7-56-47.6-45.2-83.3C209 13.1 245.9-7.2 281.6 3z"></path><text x="265" y="69" dy=".35em" text-anchor="middle" class="bGBBgJ" data-hook="items-count">2</text><path d="M74.1 134.4c-8.7 0-16.2-7.4-16.2-16.2S65.3 102 74.1 102s16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6 5.6-2.5 5.6-5.6-2.5-5.6-5.6-5.6zM120.5 134.5c-8.7 0-16.2-7.4-16.2-16.2s7.4-16.2 16.2-16.2 16.2 7.4 16.2 16.2-7.4 16.2-16.2 16.2zm0-21.7c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6c3.1 0 5.6-2.5 5.6-5.6s-2.5-5.6-5.6-5.6z"></path><path d="M141.2 92.1L53.5 92.1 23 10.6 0 10.6 0 0 30.4 0 61.2 81.6 133.5 81.6 152.4 30.4 38.5 30.4 34.8 19.9 167.9 19.9z"></path></svg>
                     </a>
 
                 </div>
+              
                
             </div>
+
             <div class="third-nav">
                 <a class="red-hover">Deals</a>
                 <a class="food-hover-link">Food</a>
@@ -134,6 +136,19 @@
 
             </div>
         </nav>
+        <div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header" id="cart-modal">
+                    <svg data-bs-dismiss="offcanvas" aria-label="Close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                        <h4 class="offcanvas-title cart-text" id="offcanvasRightLabel">Cart</h4>
+                </div>
+                <div class="offcanvas-body mt-5 cart-body">
+                    Cart is empty
+                </div>
+            </div>
+        </div>
     </header>
 
 
@@ -259,3 +274,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

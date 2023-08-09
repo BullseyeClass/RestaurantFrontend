@@ -28,6 +28,33 @@ html {
     z-index: 400;
 }
 
+
+
+
+
+
+
+#cart-modal {
+    height: 18vh;
+    background-color: red;
+    width: 100%;
+}
+
+.cart-text {
+    margin-right: 10rem;
+    color: white;
+}
+
+.cart-body {
+    margin: 0 auto !important;
+}
+
+
+
+
+
+
+
 .sticky {
     top: -60px;
 }
@@ -445,3 +472,25 @@ li{
         color: #3c3b3b !important;
         
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
