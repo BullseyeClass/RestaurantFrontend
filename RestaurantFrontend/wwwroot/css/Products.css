@@ -54,50 +54,7 @@ button {
     text-decoration:none;
     color: #333;
 }
-/*DROPDOWN*/
-/*.dropdown {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin-right: 4rem;
-}
 
-.dropdown-btn {
-    padding: 8px 12px;
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.category-text {
-    margin-right: 4rem;
-}
-.category-text_D {
-    margin-right: 5rem;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    background-color: #fff;
-    border: none;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 8px 12px;
-    color: #333;
-    text-decoration: none;*/
-}
-/*.dropdown-menu :hover {
-    background-color: #fff;
-}*/
 /*CARD*/
 .card {
     height: 100%;
@@ -151,11 +108,68 @@ button {
 }
 
 
-/*.hidden{
-    display:none;
-}
-*/
+/*FELTER*/
 
+.hidden {
+    display: none;
+}
+
+.category-minus {
+    cursor: pointer;
+}
+
+.filters {
+    margin-left: -3rem
+}
+
+.filter_title_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-content {
+    margin-left: -2.5rem
+}
+
+    .filter-content a {
+        text-decoration: none;
+        color: #333;
+    }
+
+.filter_list li {
+    list-style: none;
+}
+
+.filter_title {
+    margin-left: -2.5rem;
+    margin-right: 3.5rem;
+    font-size: 16px;
+}
+
+.filter_icon {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.filter-range {
+    display: none;
+    margin-left: -2.5rem;
+}
+
+    .filter-range.show {
+        display: block;
+    }
+
+
+/* .form-range{
+        width:5rem;
+       
+    }*/
+
+.form-range {
+    width: 50%;
+}
 
 
 
