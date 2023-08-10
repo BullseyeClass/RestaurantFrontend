@@ -144,10 +144,12 @@ html {
 }
 
 .second-nav {
-    background-color: #eb1414;
+    /*  background-color: #eb1414;*/
+    background: linear-gradient(to bottom, #8c0303, white);
     display: flex;
     justify-content: space-between;
-    color: white;
+    /* color: white;*/
+    color: #eb1414 !important;
     padding: 1.5rem 3.7rem 1rem 2.8rem;
     text-decoration: none;
 }
@@ -185,7 +187,8 @@ html {
 
 
     #search::placeholder {
-        color: white;
+       /* color: white;*/
+       color: red;
         font-size: 0.9rem;
     }
 .search-icon {
@@ -203,7 +206,8 @@ html {
     border-radius: 1.5625rem;
     overflow: hidden;
     position: absolute;
-    background-color: #eb1414;
+    background-color:#ffffff58;
+   /* background-color: #eb1414;*/
     z-index: 150;
     text-decoration: none;
 }
@@ -214,6 +218,8 @@ html {
 
 .addborder {
     border: solid 2px;
+    background-color:white;
+
 }
 
 .trending-content {
@@ -224,6 +230,7 @@ html {
     font-size: 0.9rem;
     padding-left: 1.5em;
     padding-bottom: 1.5em;
+    background: linear-gradient(to bottom, #8c0303, white);
 }
 
 .trending-content a{
