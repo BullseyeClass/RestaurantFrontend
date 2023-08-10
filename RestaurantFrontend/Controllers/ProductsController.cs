@@ -20,7 +20,15 @@ namespace RestaurantFrontend.Controllers
         }
 
 
-  
+        [Route("Vegetables/Deals")]
+        public IActionResult VegetablesDeals()
+        {
+            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables" && x.BestDeal);
+
+            return View("Product", products);
+        }
+
+
         [Route("Fruits")]
         public IActionResult Fruits()
         {

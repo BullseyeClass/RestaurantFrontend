@@ -1,22 +1,22 @@
 ﻿
-function toggleDropdown(buttonId, menuId, iconId) {
-    const button = document.getElementById(buttonId);
-    const menu = document.getElementById(menuId);
-    const icon = document.getElementById(iconId);
+//function toggleDropdown(buttonId, menuId, iconId) {
+//    const button = document.getElementById(buttonId);
+//    const menu = document.getElementById(menuId);
+//    const icon = document.getElementById(iconId);
 
-    button.addEventListener('click', () => {
-        if (menu.style.display === 'none') {
-            menu.style.display = 'block';
-            icon.textContent = '-';
-        } else {
-            menu.style.display = 'none';
-            icon.textContent = '+';
-        }
-    });
-}
+//    button.addEventListener('click', () => {
+//        if (menu.style.display === 'none') {
+//            menu.style.display = 'block';
+//            icon.textContent = '-';
+//        } else {
+//            menu.style.display = 'none';
+//            icon.textContent = '+';
+//        }
+//    });
+//}
 
-toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
-toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
+//toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
+//toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
 
 
 function handleDecrementClick(countElement) {
@@ -51,6 +51,23 @@ counterContainers.forEach(container => {
         handleIncrementClick(countElement);
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //function toggleDiv() {
 //    const targetDiv = document.getElementById("targetDiv");

@@ -11,11 +11,122 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
 
 <link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
 
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .category-minus {
+        cursor: pointer;
+    }
+
+    .filters{
+        margin-left: -3rem
+    }
+
+    .filter_title_wrapper{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        
+    }
+
+    .filter-content{
+        margin-left: -2.5rem
+    }
+
+    .filter-content a {
+        text-decoration:none;
+        color:#333;
+    }
+    .filter_list li{
+        list-style: none;
+    }
+
+    .filter_title{
+        margin-left:-2.5rem;
+        margin-right:3.5rem;
+        font-size:16px;
+    }
+
+    .filter_icon {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .filter-range {
+        display: none;
+        margin-left:-2.5rem;
+       
+    }
+
+    .filter-range.show {
+        display: block;
+    }
+
+   
+   /* .form-range{
+        width:5rem;
+       
+    }*/
+
+    .form-range {
+        width: 50%;
+    }
+
+
+
+
+    
+        
+
+
+    
+</style>
+
+
 <div class="main-section">
     <div class="header"><h1>@Model.FirstOrDefault().Tag</h1></div>
     <div class="d-flex justify-content-around">
+        <div class="filters">
+            <h4>Filter by</h4>
+            <hr />
+
+            <ul class="filter_list">
+                <li class="filter_category">
+                    <button class="filter_title_wrapper" onclick="toggleDiv('targetDiv', 'iconCategory')">
+                        <span class="filter_full_title">
+                            <span class="filter_title">Category</span>
+                        </span>
+                        <span class="filter_icon" id="iconCategory">-</span>
+                    </button>
+                    <div class="filter-content show" id="targetDiv">
+                        <a href="#">All</a><br />
+                        <a href="#">Deals</a><br />
+                        <a href="#">Most Popular</a><br />
+                    </div>
+                </li>
+            <hr/>
+                <li class="filter_price">
+                    <button class="filter_title_wrapper" onclick="toggleDiv('targetDivPrice', 'iconPrice')">
+                        <span class="filter_full_title">
+                            <span class="filter_title">Price</span>
+                        </span>
+                        <span class="filter_icon" id="iconPrice">+</span>
+                    </button>
+                    <div class="filter-range" id="targetDivPrice">
+                        <span class="me-1">$0.99</span>
+                        <input type="range" class="form-range" min="0" max="20" step="0.01" value="0.99">
+                        <span class="ms-1">$5.99</span>
+                    </div>
+                </li>
+            </ul>
+
+           <hr />
+        </div>
+
         
-        <div class="filter-container">
+@*        <div class="filter-container">
             <div class="d-flex flex-column mb-3">
                 <div class="p-2">
                     Filter by
@@ -48,53 +159,14 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
-        <div class="row g-4 justify-content-end" style="width: 90%">
-            @foreach (var item in Model)
-            {
+        <div class="row g-4 justify-content-end" style="width: 80.8%">
+           
 
-                <div class="col-md-3 col-sm-6 border-primary" style="max-width: 180px;">
-                    <div class="card">
-                        <div>
-                            <img src="@item.Image" class="card-img-top" alt="" />
-                            @{
+                @Html.Partial("_AllProductsCard")
 
-                                if (item.BestDeal == true)
-                                {
-                                    <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
-                                }
-                                else
-                                {
-                                    <span></span>
-                                }
-
-                                if (item.MostPopular == true)
-                                {
-                                    <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
-                                }
-                                else
-                                {
-                                    <span></span>
-                                }
-                            }
-
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">@item.Name</p>
-                            <p class="card-text-dollar text-danger">$@item.Price</p>
-                            <div class="counter-container">
-                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                <p class="count">1</p>
-                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                            </div>
-
-                        </div>
-                        <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
-                    </div>
-                </div>
-
-            }
+            
         </div>
     </div>
 </div>
@@ -102,3 +174,159 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+<script>
+
+    function toggleDiv(targetId, iconId) {
+        const targetDiv = document.getElementById(targetId);
+        const iconDiv = document.getElementById(iconId);
+
+        if (targetDiv.classList.contains('show')) {
+            targetDiv.classList.remove('show');
+            targetDiv.classList.add('hidden');
+            iconDiv.textContent = '+';
+        } else {
+            targetDiv.classList.remove('hidden');
+            targetDiv.classList.add('show');
+            iconDiv.textContent = '-';
+        }
+    }
+
+    
+    //function toggleDivs() {
+    //    const targetDiv = document.getElementById('targetDiv');
+    //    const signDiv = document.getElementById('signdiv');
+
+    //    if (targetDiv.classList.contains('show')) {
+    //        targetDiv.classList.remove('show');
+    //        targetDiv.classList.add('hidden');
+    //        signDiv.textContent = '+';
+    //    } else {
+    //        targetDiv.classList.remove('hidden');
+    //        targetDiv.classList.add('show');
+    //        signDiv.textContent = '-';
+    //    }
+    //}
+
+    //// Additional function to hide the category content
+    //function hideCategoryContent() {
+    //    const targetDiv = document.getElementById('targetDiv');
+    //    const signDiv = document.getElementById('signdiv');
+
+    //    targetDiv.classList.remove('show');
+    //    targetDiv.classList.add('hidden');
+    //    signDiv.textContent = '+';
+    //}
+
+
+    //function toggleDivs() {
+    //    const myDiv = document.getElementById('targetDiv');
+    //    const signdiv = document.getelementbyid("signdiv");
+    //    if (myDiv.classList.contains('hidden')) {
+    //        myDiv.classList.remove('hidden');
+    //        signdiv.innerhtml = "-";
+    //    } else {
+    //        myDiv.classList.add('hidden');
+    //        signdiv.innerhtml = "+";
+    //    }
+    //}
+
+
+    //document.addEventListener('DOMContentLoaded', function () {
+    //    const toggleButton = document.getElementById('toggleButton');
+    //    const myDiv = document.getElementById('targetDiv');
+
+    //    toggleButton.addEventListener('click', function () {
+    //        if (myDiv.classList.contains('hidden')) {
+    //            myDiv.classList.remove('hidden');
+    //        } else {
+    //            myDiv.classList.add('hidden');
+    //        }
+    //    });
+    //});
+
+
+
+
+
+
+
+    //function togglediv() {
+    //    const targetdiv = document.getelementbyid("targetdiv");
+    //    const signdiv = document.getelementbyid("signdiv");
+    //    product = "rice";
+
+    //    if (targetdiv.classlist.contains("hidden")) {
+    //        targetdiv.classlist.remove("hidden");
+    //        signdiv.innerhtml = "-";
+    //    } else {
+    //        targetdiv.classlist.add("hidden");
+    //        signdiv.innerhtml = "+";
+    //    }
+    //}
+
+    //const togglebutton = document.getelementbyid("togglebutton");
+    //togglebutton.addeventlistener("click", togglediv);
+
+
+
+    //function handleDecrementClick(countElement) {
+    //    const currentCount = parseInt(countElement.textContent);
+    //    if (currentCount > 1) {
+    //        countElement.textContent = currentCount - 1;
+    //    }
+    //    if (currentCount === 2) {
+    //        countElement.previousElementSibling.classList.add('faded');
+    //    }
+    //}
+
+    //function handleIncrementClick(countElement) {
+    //    const currentCount = parseInt(countElement.textContent);
+    //    countElement.textContent = currentCount + 1;
+    //    if (currentCount === 1) {
+    //        countElement.previousElementSibling.classList.remove('faded');
+    //    }
+    //}
+
+
+    //const counterContainers = document.querySelectorAll('.counter-container');
+    //counterContainers.forEach(container => {
+    //    const countElement = container.querySelector('.count');
+    //    const decrementBtn = container.querySelector('.decrementBtn');
+    //    const incrementBtn = container.querySelector('.incrementBtn');
+
+    //    decrementBtn.addEventListener('click', function () {
+    //        handleDecrementClick(countElement);
+    //    });
+
+    //    incrementBtn.addEventListener('click', function () {
+    //        handleIncrementClick(countElement);
+    //    });
+    //});
+
+
+
+                //(function () {
+
+                //    const priceTab = document.querySelector('.price-tab');
+                //    const priceMinus = priceTab.querySelector('.price-minus');
+                //    const priceHiddenDiv = priceTab.querySelector('#price_hidden');
+
+
+                //    priceTab.addEventListener('click', function (event) {
+
+                //        if (event.target === priceMinus) {
+                //            //priceHiddenDiv.classList.toggle('hidden');
+                //            event.target.remove("hidden");
+                //            event.target.removeEventListener = "-";
+                //        } else {
+                //            //priceHiddenDiv.classList.add("hidden");
+                //            event.target.addEventListener = "+";
+
+                //        }
+                //    });
+                //})();
+
+
+
+
+</script>

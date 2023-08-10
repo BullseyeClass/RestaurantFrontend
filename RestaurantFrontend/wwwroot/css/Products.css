@@ -43,14 +43,24 @@ button {
     opacity: 0.5;
 }
 
-/*DROPDOWN*/
 
-.dropdown {
+.main-filters h4{
+
+    margin-right:2.9rem;
+}
+
+.main-filters a{
+
+    text-decoration:none;
+    color: #333;
+}
+/*DROPDOWN*/
+/*.dropdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin-right:4rem;
+    margin-right: 4rem;
 }
 
 .dropdown-btn {
@@ -83,7 +93,7 @@ button {
     display: block;
     padding: 8px 12px;
     color: #333;
-    text-decoration: none;
+    text-decoration: none;*/
 }
 /*.dropdown-menu :hover {
     background-color: #fff;
@@ -130,15 +140,21 @@ button {
 .dropdown-item:hover {
     color: red;
 }
-/*.dropdown-menu a:hover {
+.dropdown-menu a:hover {
     background-color: #f1f1f1;
     color: red;
 }
+
+
+.category-minus{
+    margin-left:3.4rem;
+}
+
+
+/*.hidden{
+    display:none;
+}
 */
-
-
-
-
 
 
 
