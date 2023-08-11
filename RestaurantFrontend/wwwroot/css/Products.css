@@ -1,0 +1,175 @@
+﻿/*COUNTER*/
+.bool-label{
+    position: absolute;
+    margin-left: -9rem;
+    /*height: 4rem;
+    width: 6rem;
+    background-color: red;*/
+}
+
+.counter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    height: 40px;
+    margin-bottom: -20%;
+}
+.decrementBtn {
+    font-size: 25px;
+}
+.incrementBtn {
+    font-size: 25px;
+}
+.count {
+    margin-top:1.5rem;
+    font-size: 20px;
+}
+
+button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#count {
+    margin: 0 10px;
+}
+.faded {
+    opacity: 0.5;
+}
+
+
+.main-filters h4{
+
+    margin-right:2.9rem;
+}
+
+.main-filters a{
+
+    text-decoration:none;
+    color: #333;
+}
+
+/*CARD*/
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.add-to-cart-btn {
+    margin-top: -20px;
+    border-radius: 20px;
+}
+
+
+.line-divider{
+    border: 0.5px solid #000000;
+    height: 0.5px;
+    width: 13rem;
+}
+.card-text-dollar {
+    font-size: 20px;
+    font-weight: 600;
+    height: 4vh;
+    margin-top: 3rem;
+}
+.card-text{
+    height:4vh;
+   
+}
+.header h1 {
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.p-2{
+    font-size:30px;
+    font-weight:300;
+}
+.dropdown-item:hover {
+    color: red;
+}
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+    color: red;
+}
+
+
+.category-minus{
+    margin-left:3.4rem;
+}
+
+
+/*FELTER*/
+
+.hidden {
+    display: none;
+}
+
+.category-minus {
+    cursor: pointer;
+}
+
+.filters {
+    margin-left: -3rem
+}
+
+.filter_title_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-content {
+    margin-left: -2.5rem
+}
+
+    .filter-content a {
+        text-decoration: none;
+        color: #333;
+    }
+
+.filter_list li {
+    list-style: none;
+}
+
+.filter_title {
+    margin-left: -2.5rem;
+    margin-right: 3.5rem;
+    font-size: 16px;
+}
+
+.filter_icon {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.filter-range {
+    display: none;
+    margin-left: -2.5rem;
+}
+
+    .filter-range.show {
+        display: block;
+    }
+
+
+/* .form-range{
+        width:5rem;
+       
+    }*/
+
+.form-range {
+    width: 50%;
+}
+
+
+
