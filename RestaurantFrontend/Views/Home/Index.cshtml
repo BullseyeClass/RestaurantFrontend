@@ -1,6 +1,7 @@
 ﻿@model RestaurantFrontend.Models.RegistrationPage.CombineLogin_Registration
-
-<link rel="stylesheet" href="~/css/Registration.css" asp-append-version="true" />
+@{
+    Layout = "~/Views/Registration/RegLayouut.cshtml";
+}
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -8,38 +9,55 @@
             <h2>Create Account</h2>
             <span>Please kindly create an account with us.</span>
             <div class="form-group">
-                <input asp-for="Registration.UserName" placeholder="Enter Username" />
+                <input asp-for="Registration.UserName" placeholder="Username" />
                 <span asp-validation-for="Registration.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Registration.Email" placeholder="Enter mail" />
+                <input asp-for="Registration.Email" placeholder="Email" />
                 <span asp-validation-for="Registration.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Registration.Password" placeholder="Enter Password" />
+                <input asp-for="Registration.Password" placeholder="Password" />
                 <span asp-validation-for="Registration.Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input asp-for="Registration.ConfirmPassword" placeholder="Enter Confirm Password" />
-                <span asp-validation-for="Registration.ConfirmPassword" class="text-danger"></span>
-            </div>
             <button type="submit">Sign Up</button>
+            <div class="social-container">
+                <a href="#" class="social">
+                    <img src="/images/facebook1-f.svg" width="20px" height="20px" alt="Facebook" />
+                </a>
+                <a href="#" class="social">
+                    <img src="/images/google.svg" width="20px" height="20px" alt="Google" />
+                </a>
+                <a href="#" class="social">
+                    <img src="/images/linkedin.svg" width="20px" height="20px" alt="LinkedIn" />
+                </a>
+            </div>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form asp-action="Login" asp-controller="Authentication" method="post">
-            <h2>Sign in</h2>
             <span>Please kindly Login your account</span>
             <div class="form-group">
-                <input asp-for="Login.Email" placeholder="Enter mail" />
+                <input asp-for="Login.Email" placeholder="Email" />
                 <span asp-validation-for="Login.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Login.Password" placeholder="Enter password" />
+                <input asp-for="Login.Password" placeholder="Password" />
                 <span asp-validation-for="Login.Password" class="text-danger"></span>
             </div>
             <a href="#">Forgot your password?</a>
             <button type="submit">Sign In</button>
+            <div class="social-container">
+                <a href="#" class="social">
+                    <img src="/images/facebook1-f.svg" width="20px" height="20px" alt="Facebook" />
+                </a>
+                <a href="#" class="social">
+                    <img src="/images/google.svg" width="20px" height="20px" alt="Google" />
+                </a>
+                <a href="#" class="social">
+                    <img src="/images/linkedin.svg" width="20px" height="20px" alt="LinkedIn" />
+                </a>
+            </div>
         </form>
     </div>
     <div class="overlay-container">
@@ -64,4 +82,9 @@
     }
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/js/Script.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Script.js"></script>
+   @* @await RenderSectionAsync("Scripts", required: true)*@
 }
