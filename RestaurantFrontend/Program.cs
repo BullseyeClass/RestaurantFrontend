@@ -9,7 +9,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IJsonHelper, JsonHelper>();
 builder.Services.AddScoped<IJsonHelperMWL, JsonHelperMWL>();
 builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
-builder.Services.AddScoped<IGettingMyWishList, GettingMyWishListFromDB>();
+builder.Services.AddScoped<IGettingPolicyFromDB, GettingPolicyFromDB>();
+
 
 var app = builder.Build();
 
