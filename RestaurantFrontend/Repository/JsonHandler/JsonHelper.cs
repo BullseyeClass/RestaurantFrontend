@@ -22,28 +22,4 @@ namespace RestaurantFrontend.Repository.JsonHandler
         }
     }
 }
-//{
-//    "id": 5,
-//    "ImageURL": "http://dotnethow.net/images/movies/movie-5.jpeg",
-//    "Description": "This is the Cold Soles movie description",
-//    "Price": 39.50
-//  },
-//  {
-//    "id": 6,
-//    "ImageURL": "http://dotnethow.net/images/movies/movie-6.jpeg",
-//    "Description": "This is the Cold Soles movie description",
-//    "Price": 39.50
-//  },
 
-//  {
-//    "id": 7,
-//    "ImageURL": "http://dotnethow.net/images/movies/movie-7.jpeg",
-//    "Description": "This is the Cold Soles movie description",
-//    "Price": 39.50
-//  },
-//  {
-//    "id": 8,
-//    "ImageURL": "http://dotnethow.net/images/movies/movie-8.jpeg",
-//    "Description": "This is the Cold Soles movie description",
-//    "Price": 39.50
-//  }
