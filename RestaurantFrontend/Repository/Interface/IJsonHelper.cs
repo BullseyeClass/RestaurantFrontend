@@ -1,4 +1,6 @@
-﻿using RestaurantFrontend.Models.Products;
+﻿using RestaurantFrontend.Models.MostPopularProducts;
+using RestaurantFrontend.Models.Policy;
+using RestaurantFrontend.Models.Products;
 
 namespace RestaurantFrontend.Repository.Interface
 {
@@ -6,5 +8,11 @@ namespace RestaurantFrontend.Repository.Interface
     {
         string GetPath(string fileName);
         List<Products> ReadFromJsons(string fullPath);
+
+
+        List<MostPopularItem> ReadFromJsonsMostPopular(string fullPath);
+
+
+        List<PolicyAndTerms> ReadFromJsonsPolicy(string fullPath);
     }
 }
