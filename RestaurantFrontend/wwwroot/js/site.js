@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿
 const dropdownItem = document.querySelector('.dropdown');
 const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -12,7 +12,7 @@ dropdownItem.addEventListener('mouseleave', () => {
 });
 
 
-=======
+
 ﻿const slideUpElements = document.querySelectorAll('.slide-up-text');
 
 setInterval(() => {
@@ -70,4 +70,4 @@ const divElement = document.getElementById("myDiv");
 divElement.addEventListener("click", () => {
     divElement.focus();
 });
->>>>>>> Beta
+
