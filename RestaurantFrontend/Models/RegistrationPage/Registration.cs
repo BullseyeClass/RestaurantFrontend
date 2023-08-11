@@ -15,10 +15,10 @@ namespace RestaurantFrontend.Models.RegistrationPage
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Required(ErrorMessage = "Confirm Password is required")]
-            [Compare("Password", ErrorMessage = "Passwords do not match")]
-            [DataType(DataType.Password)]
-            public string ConfirmPassword { get; set; }
+            //[Required(ErrorMessage = "Confirm Password is required")]
+            //[Compare("Password", ErrorMessage = "Passwords do not match")]
+            //[DataType(DataType.Password)]
+            //public string ConfirmPassword { get; set; }
         
     }
 }
