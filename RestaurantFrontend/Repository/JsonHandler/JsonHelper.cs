@@ -24,16 +24,25 @@ namespace RestaurantFrontend.Repository.JsonHandler
         }
 
 
+        public string GetPathMostPopular(string fileName)
+        {
+            string currentDir = Environment.CurrentDirectory;
+            string dbFolderPath = Path.GetFullPath(Path.Combine(currentDir, @"JsonFiles"));
+            string filePath = Path.Combine(dbFolderPath, fileName);
+            return filePath;
+        }
+
+
         public List<MostPopularItem> ReadFromJsonsMostPopular(string fullPath)
         {
-            fullPath = GetPath("data.json");
+            fullPath = GetPathMostPopular("data.json");
             string jsonContent = File.ReadAllText(fullPath);
             return JsonSerializer.Deserialize<List<MostPopularItem>>(jsonContent);
         }
 
         public List<PolicyAndTerms> ReadFromJsonsPolicy(string fullPath)
         {
-            fullPath = GetPath("data.json");
+            fullPath = GetPathMostPopular("data.json");
             string jsonContent = File.ReadAllText(fullPath);
             return JsonSerializer.Deserialize<List<PolicyAndTerms>>(jsonContent);
         }
