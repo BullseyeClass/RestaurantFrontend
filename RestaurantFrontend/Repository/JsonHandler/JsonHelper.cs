@@ -1,5 +1,6 @@
 ﻿using NuGet.Packaging.Signing;
-using RestaurantFrontend.Models;
+using RestaurantFrontend.Models.MostPopularProducts;
+using RestaurantFrontend.Models.Policy;
 using RestaurantFrontend.Repository.Interface;
 using System.Text.Json;
 
@@ -22,13 +23,11 @@ namespace RestaurantFrontend.Repository.JsonHandler
             return JsonSerializer.Deserialize<List<MostPopularItem>>(jsonContent);
         }
 
-
-        //public List<PopularSectionItem> ReadFromJsonss(string fullPath)
-        //{
-        //    fullPath = GetPath("data.json");
-        //    string jsonContent = File.ReadAllText(fullPath);
-        //    return JsonSerializer.Deserialize<List<PopularSectionItem>>(jsonContent);
-        //}
-
+        public List<PolicyAndTerms> ReadFromJsonsPolicy(string fullPath)
+        {
+            fullPath = GetPath("data.json");
+            string jsonContent = File.ReadAllText(fullPath);
+            return JsonSerializer.Deserialize<List<PolicyAndTerms>>(jsonContent);
+        }
     }
 }

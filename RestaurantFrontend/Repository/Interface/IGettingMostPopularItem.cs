@@ -1,5 +1,5 @@
 ﻿using NuGet.Packaging.Signing;
-using RestaurantFrontend.Models;
+using RestaurantFrontend.Models.MostPopularProducts;
 
 namespace RestaurantFrontend.Repository.Interface
 {
