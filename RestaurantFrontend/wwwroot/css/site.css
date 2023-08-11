@@ -144,13 +144,13 @@ html {
 }
 
 .second-nav {
-    background-color:white;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     color: #eb1414 !important;
     padding: 1.5rem 3.7rem 1rem 2.8rem;
     text-decoration: none;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #8c0303;
 }
 
 .web-logo{
@@ -164,7 +164,7 @@ html {
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
     font-weight: 700;
     margin:0%;
-    color:#eb1414;
+    color:#8c0303;
 }
 
 .search-input-container {
@@ -178,7 +178,7 @@ html {
     width: calc(29.8em - 2em);
     height: 2em;
     background-color: transparent;
-    color: #eb1414;
+    color: #8c0303;
     margin: 0.3em 0.5em 0.3em 1em;
     padding: 0;
     border: none;
@@ -187,13 +187,12 @@ html {
 
 
     #search::placeholder {
-       color: red;
+        color: #8c0303;
         font-size: 0.9rem;
     }
 .search-icon {
-    background-color: white;
+    background-color: #8c0303;
     padding: 0.6em 1em;
-  
 }
 
 .cart-and-others a {
@@ -201,17 +200,17 @@ html {
     text-decoration: none;
 }
 .trending-container {
-    border: solid 1px;
+    border: solid 1px #8c0303;
     border-radius: 1.5625rem;
     overflow: hidden;
     position: absolute;
-    background-color:#ffffff58;
+    background-color: #ffffff58;
     z-index: 150;
     text-decoration: none;
 }
 
 .trending-container:hover {
-    border: solid 2px;
+    border: solid 2px #8c0303;
 }
 
 .addborder {
