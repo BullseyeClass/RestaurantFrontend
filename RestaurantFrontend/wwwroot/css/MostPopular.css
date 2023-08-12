@@ -80,6 +80,16 @@ h1 {
     margin-right: 40px;
     cursor: pointer;
 }
+.price {
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+/*p {
+    margin-right: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}*/
 
 p {
     margin-right: 10px;
@@ -130,6 +140,11 @@ h4 {
 .filter-content {
     width: 20%;
     height: 20%;
+}
+
+.filter-content a{
+    text-decoration: none;
+    color: #333 !important;
 }
 
 #all {
@@ -215,6 +230,13 @@ button {
     border-style: none;
 }
 
+
+
+input {
+    margin: 0.4rem;
+}
+
+/*
 .dropdown {
     display: flex;
     justify-content: space-between;
@@ -250,4 +272,4 @@ button {
 
  .dropdown-menu a:hover {
   background-color: #fff;
- }
+ }*/

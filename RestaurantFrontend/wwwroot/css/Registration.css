@@ -15,12 +15,12 @@ h2 {
     font-weight: bold;
 }
 
-span {
+.span {
     font-size: 12px;
 }
 
 
-a {
+.a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
@@ -69,7 +69,7 @@ form {
     text-align: center;
 }
 
-input {
+.input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
