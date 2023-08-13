@@ -11,7 +11,7 @@ namespace RestaurantFrontend.Controllers
         {
             _gettingProductsFromDB = gettingProductsFromDB;
         }
-        [Route("Vegetables")]
+        [Route("VegetablesMC")]
         public IActionResult Vegetables()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables");
@@ -29,7 +29,7 @@ namespace RestaurantFrontend.Controllers
         }
 
 
-        [Route("Fruits")]
+        [Route("FruitsMC")]
         public IActionResult Fruits()
         {
             var product = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fruit");
@@ -37,7 +37,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", product);
         }
 
-        [Route("Meat & Poultry")]
+        [Route("Meat & PoultryMC")]
         public IActionResult Meat_Poultry()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Meat & Poultry");
@@ -45,7 +45,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", products);
         }
 
-        [Route("Fish & Seafood")]
+        [Route("Fish & SeafoodMC")]
         public IActionResult Fish_Seafood()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood"); 
@@ -53,7 +53,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", products);
         }
 
-        [Route("Dairy & Eggs")]
+        [Route("Dairy & EggsMC")]
         public IActionResult Dairy_Eggs()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
@@ -61,7 +61,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", products);
         }
 
-        [Route("Bakery")]
+        [Route("BakeryMC")]
         public IActionResult Bakery()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
@@ -69,7 +69,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", products);
         }
 
-        [Route("Pastas_Grains")]
+        [Route("Pastas_GrainsMC")]
         public IActionResult Pastas_Grains()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
@@ -77,7 +77,7 @@ namespace RestaurantFrontend.Controllers
             return View("Product", products);
         }
 
-        [Route("Cereals_Snacks")]
+        [Route("Cereals_SnacksMC")]
         public IActionResult Cereals_Snacks()
         {
             var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");

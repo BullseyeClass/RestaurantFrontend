@@ -4,10 +4,22 @@ namespace RestaurantFrontend.Controllers.RegistrationPage
 {
     public class RegistrationController : Controller
     {
+
+
+
+
+        [Route("Registration")]
+        public ActionResult RegistrationPage()
+        {
+            return View();
+        }
+
+
         public ActionResult Index()
         {
             return View(new RegistrationController());
         }
+
 
         [HttpPost]
         public ActionResult Index(RegistrationController model)
@@ -23,6 +35,8 @@ namespace RestaurantFrontend.Controllers.RegistrationPage
         {
             return View();
         }
+    
+
     }
 
 }

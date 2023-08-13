@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IJsonHelper, JsonHelper>();
 builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
+builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
+
 
 
 var app = builder.Build();
