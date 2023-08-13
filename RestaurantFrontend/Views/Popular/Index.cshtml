@@ -59,26 +59,9 @@
 
         <div>
             <input type="range" id="volume" name="volume" min="0" max="11" />
-           @* <label for="volume">Volume</label>*@
+           
         </div>
 
-       @* <div class="dropdown">
-            <button id="dropdownButton2" class="dropdown-btn">
-                <span class="category-text">Price</span>
-                <span class="text-icon" id="dropdownIcon2"><i class="bi bi-plus"></i></span>
-            </button>
-            <div id="dropdownMenu2" class="dropdown-menu">
-                <div class="price-range-slider">
-
-                    <p class="range-value">
-                        <input type="text" id="amount" readonly>
-                    </p>
-                    <div id="slider-range" class="range-bar"></div>
-
-                </div>
-
-            </div>
-        </div>*@
         <hr />
     </div>
 
@@ -208,27 +191,6 @@
         rangeElem.max < rangeElem.min
             ? rangeElem.min
             : rangeElem.min + (rangeElem.max - rangeElem.min) / 2;
-
-
-
-//    function toggleDropdown(buttonId, menuId, iconId) {
-//    const button = document.getElementById(buttonId);
-//    const menu = document.getElementById(menuId);
-//    const icon = document.getElementById(iconId);
-
-//    button.addEventListener('click', () => {
-//        if (menu.style.display === 'none') {
-//            menu.style.display = 'block';
-//            icon.textContent = '-';
-//        } else {
-//            menu.style.display = 'none';
-//            icon.textContent = '+';
-//        }
-//    });
-//}
-
-//toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
-//toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
 
 </script>
 
