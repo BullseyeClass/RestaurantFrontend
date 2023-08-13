@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RestaurantFrontend.Models.MostPopularProducts.MostPopularItem>
 
 @{
-    ViewData["Title"] = "Most Popular";
+    ViewData["Title"] = "Start Your Cart";
 }
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -10,7 +10,7 @@
 
 <link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
 
-<h1 id="popular">Most Popular</h1>
+<h1 id="popular">Start Your Cart</h1>
 
 
 <div class="main-container">
@@ -27,58 +27,65 @@
 
         <div class="filter-content" id="targetDiv">
 
-            <a asp-controller="Popular" asp-action="Index" id="all"> All</a><br />
+            <p>All</p><br />
+            <a asp-controller="Popular" asp-action="Filter" asp-route-category="Deals">Deals</a><br />
+            <a asp-area="" asp-controller="Popular" asp-action="Index"> Most Popular</a><br />
+            
 
-            <a asp-controller="Popular" asp-action="Vegetables" asp-route-category="Vegetables">Vegetables</a><br />
-            <a asp-controller="Popular" asp-action="Fruits" asp-route-category="Fruits"> Fruit</a><br />
-            <a asp-controller="Popular" asp-action="Meat_Poultry" asp-route-category="Meat_Poultry">Meat & Poultry</a><br />
-            <a asp-controller="Popular" asp-action="Fish_Seafood" asp-route-category="Fish_Seafood"> Fish & Seafood</a><br />
-            <a asp-controller="Popular" asp-action="Dairy_Eggs" asp-route-category="Dairy_Eggs"> Dairy & Eggs</a><br />
-            <a asp-controller="Popular" asp-action="Bakery" asp-route-category="Bakery">Bakery</a><br />
-            <a asp-controller="Popular" asp-action="Pastas_Grains" asp-route-category="Pastas_Grains">Pastas & Grains</a><br />
-            <a asp-controller="Popular" asp-action="Cereals_Snacks" asp-route-category="Cereals_Snacks">Cereals & Snacks</a><br />
-            <a asp-controller="Popular" asp-action="Tea" asp-route-category="Tea">Tea</a><br />
-            <a asp-controller="Popular" asp-action="Coffee" asp-route-category="Coffee">Coffee</a><br />
-            <a asp-controller="Popular" asp-action="Soft_Drinks" asp-route-category="Soft_Drinks">Soft Drinks</a><br />
-            <a asp-controller="Popular" asp-action="Beer" asp-route-category="Beer">Beer</a><br />
-            <a asp-controller="Popular" asp-action="Wine" asp-route-category="Wine">Wine</a><br />
-            <a asp-controller="Popular" asp-action="Home_Kitchen" asp-route-category="Home_Kitchen">Home & Kitchen</a><br />
-            <a asp-controller="Popular" asp-action="Cleaning_Supplies" asp-route-category="Cleaning_Supplies">Cleaning Supplies</a><br />
-            <a asp-controller="Popular" asp-action="Personal_Hygiene" asp-route-category="Personal_Hygiene">Personal Hygiene</a><br />
-            <a asp-controller="Popular" asp-action="Babies" asp-route-category="Babies">Babies</a><br />
 
         </div>
         <hr />
 
-        <div class="filter-tab" id="toggleButtons">
-            <p class="price">Price</p>
+        <style>
+            .filter-content a {
+                text-decoration: none;
+                color: gray;
+            }
+        </style>
 
-            <p class="price-minus" id="signMinus">-</p>
-
-        </div>
-
-        <div>
+        <div class="filter-price-volume">
+            <a asp-area="" asp-controller="price" asp-action="Index"> Price</a><br />
             <input type="range" id="volume" name="volume" min="0" max="11" />
+            <label for="volume">Volume</label>
         </div>
-
-      
-        <hr />
     </div>
+    <style>
+        .filter-price-volume p, label {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
 
+        input {
+            margin: 0.4rem;
+        }
+
+        .filter-price-volume a {
+            text-decoration: none;
+            color: gray;
+        }
+
+    </style>
 
     <div class="row" style="margin-right: 0; padding-right:0;">
+
+
 
         @foreach (var item in Model)
         {
             var testing = item.Tag;
+            var product = "";
+
+
+
 
             if (item.MostPopular)
             {
 
                 <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
 
-                    <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
 
+                    <div class="popular">
+                        <div class="most-popular" id="most-popular"> <p> Most Popular </p> </div>
+                    </div>
                     <div class="image-display">
                         <img src="@item.Image" width="170" margin-bottom="0" alt="" />
                     </div>
@@ -86,6 +93,8 @@
                     <div class="">
                         <div class="">
                             <p class="">
+
+
 
                                 <div class="card-body">
                                     <p class="card-text">@item.Name</p>
@@ -95,7 +104,6 @@
                                         <p class="count">1</p>
                                         <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                     </div>
-
                                 </div>
                                 <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
                             </p>
@@ -107,16 +115,96 @@
     </div>
 </div>
 
+<style>
+    .counter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ccc;
+        height: 40px;
+        margin-bottom: -20%;
+    }
 
 
 
+    .decrementBtn {
+        font-size: 25px;
+        height: 4vh;
+    }
 
 
+
+    .incrementBtn {
+        font-size: 25px;
+    }
+
+
+
+    card-text-dollar {
+        font-size: 20px;
+        font-weight: 600;
+        height: 4vh;
+        margin-top: 30rem;
+    }
+
+
+
+    .count {
+        margin-top: 1.5rem;
+        font-size: 20px;
+    }
+
+
+
+    button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+
+
+    #count {
+        margin: 0 10px;
+    }
+
+
+
+    .faded {
+        opacity: 0.5;
+    }
+
+
+
+    .add-to-cart-btn {
+        margin-top: -20px;
+        border-radius: 20px;
+    }
+
+
+
+    .card-text {
+        height: 4vh;
+        margin-top: -3rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .add-to-cart-btn {
+        padding-left: 18px;
+        padding-right: 2rem;
+        margin-top: -20px;
+        border-radius: 20px;
+    }
+</style>
 <script>
     function toggleDiv() {
         const targetDiv = document.getElementById("targetDiv");
         const signDiv = document.getElementById("signDiv");
-      
+        product = "rice";
 
         if (targetDiv.classList.contains("hidden")) {
             targetDiv.classList.remove("hidden");
@@ -167,54 +255,23 @@
     });
 
 
+    function toggleDropdown(buttonId, menuId, iconId) {
+        const button = document.getElementById(buttonId);
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById(iconId);
 
-    function toggleDiv() {
-        const targetDiv = document.getElementById("targetDiv");
-        const signMinus = document.getElementById("signMinus");
-       
-
-        if (targetDiv.classList.contains("hidden")) {
-            targetDiv.classList.remove("hidden");
-            signMinus.innerHTML = "-";
-        } else {
-            targetDiv.classList.add("hidden");
-            signMinus.innerHTML = "+";
-        }
+        button.addEventListener('click', () => {
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+                icon.textContent = '-';
+            } else {
+                menu.style.display = 'none';
+                icon.textContent = '+';
+            }
+        });
     }
 
-    const toggleButtons = document.getElementById("toggleButtons");
-    toggleButtons.addEventListener("click", toggleDiv);
-
-
-
-    defaultValue =
-        rangeElem.max < rangeElem.min
-            ? rangeElem.min
-            : rangeElem.min + (rangeElem.max - rangeElem.min) / 2;
-
-
-
-//    function toggleDropdown(buttonId, menuId, iconId) {
-//    const button = document.getElementById(buttonId);
-//    const menu = document.getElementById(menuId);
-//    const icon = document.getElementById(iconId);
-
-//    button.addEventListener('click', () => {
-//        if (menu.style.display === 'none') {
-//            menu.style.display = 'block';
-//            icon.textContent = '-';
-//        } else {
-//            menu.style.display = 'none';
-//            icon.textContent = '+';
-//        }
-//    });
-//}
-
-//toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
-//toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
+    toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
+    toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
 
 </script>
-
-
-
-
