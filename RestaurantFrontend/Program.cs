@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc.Razor;
 using RestaurantFrontend.Repository.Interface;
 using RestaurantFrontend.Repository.JsonHandler;
 using RestaurantFrontend.Service;
@@ -11,12 +10,6 @@ builder.Services.AddScoped<IJsonHelper, JsonHelper>();
 builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
 builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
 
-builder.Services.AddMvc().AddViewOptions(options =>
-{
-    options.HtmlHelperOptions.ClientValidationEnabled = true;
-})
-.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-.AddDataAnnotationsLocalization();
 
 
 var app = builder.Build();
