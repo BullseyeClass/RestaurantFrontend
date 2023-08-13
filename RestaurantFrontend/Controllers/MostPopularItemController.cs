@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using RestaurantFrontend.Models;
 using RestaurantFrontend.Models.MostPopularProducts;
 using RestaurantFrontend.Repository.Interface;
