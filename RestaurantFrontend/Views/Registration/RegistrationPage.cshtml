@@ -3,13 +3,11 @@
 @{
     Layout = "";
     ViewData["Title"] = "RegistrationPage";
-    Layout = "";
 }
  
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/Registration.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/RestaurantFrontend.styles.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/Registration.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css/Registration.css"  />
+<link rel="stylesheet" href="~/RestaurantFrontend.styles.css"  />
 
 <div class="registration-container">
 
@@ -19,15 +17,19 @@
             <h2>Create Account</h2>
             <span class=" span">Please kindly create an account with us.</span>
             <div class="form-group">
-                <input asp-for="Registration.UserName" class=" input" placeholder="Username" />
-                <span asp-validation-for="Registration.UserName" class="text-danger span"></span>
+                <input asp-for="Registration.FirstName" class=" input" placeholder="First Name" />
+                <span asp-validation-for="Registration.FirstName" class="text-danger span"></span>
             </div>
+                <div class="form-group">
+                    <input asp-for="Registration.LastName" class=" input" placeholder="Last Name" />
+                    <span asp-validation-for="Registration.LastName" class="text-danger span"></span>
+                </div>
             <div class="form-group">
                 <input asp-for="Registration.Email" class=" input" placeholder="Email" />
                 <span asp-validation-for="Registration.Email" class="text-danger span"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Registration.Password" class=" input" placeholder="Password" />
+                <input asp-for="Registration.Password" class="input" placeholder="Password" type="password"/>
                 <span asp-validation-for="Registration.Password" class="text-danger span"></span>
             </div>
             <button type="submit">Sign Up</button>
@@ -98,12 +100,6 @@
 }
 
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-   
-}
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
