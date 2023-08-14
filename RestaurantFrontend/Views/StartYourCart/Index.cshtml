@@ -1,0 +1,277 @@
+﻿@model IEnumerable<RestaurantFrontend.Models.MostPopularProducts.MostPopularItem>
+
+@{
+    ViewData["Title"] = "Start Your Cart";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+<link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
+
+<h1 id="popular">Start Your Cart</h1>
+
+
+<div class="main-container">
+
+    <div class="filters">
+        <h4>Filter by</h4>
+        <hr />
+        <div class="filter-tab" id="toggleButton">
+            <p class="category">Category</p>
+
+            <p class="category-minus" id="signDiv">-</p>
+
+        </div>
+
+        <div class="filter-content" id="targetDiv">
+
+            <p>All</p><br />
+            <a asp-controller="Popular" asp-action="Filter" asp-route-category="Deals">Deals</a><br />
+            <a asp-area="" asp-controller="Popular" asp-action="Index"> Most Popular</a><br />
+            
+
+
+        </div>
+        <hr />
+
+        <style>
+            .filter-content a {
+                text-decoration: none;
+                color: gray;
+            }
+        </style>
+
+        <div class="filter-price-volume">
+            <a asp-area="" asp-controller="price" asp-action="Index"> Price</a><br />
+            <input type="range" id="volume" name="volume" min="0" max="11" />
+            <label for="volume">Volume</label>
+        </div>
+    </div>
+    <style>
+        .filter-price-volume p, label {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input {
+            margin: 0.4rem;
+        }
+
+        .filter-price-volume a {
+            text-decoration: none;
+            color: gray;
+        }
+
+    </style>
+
+    <div class="row" style="margin-right: 0; padding-right:0;">
+
+
+
+        @foreach (var item in Model)
+        {
+            var testing = item.Tag;
+            var product = "";
+
+
+
+
+            if (item.MostPopular)
+            {
+
+                <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
+
+
+                    <div class="popular">
+                        <div class="most-popular" id="most-popular"> <p> Most Popular </p> </div>
+                    </div>
+                    <div class="image-display">
+                        <img src="@item.Image" width="170" margin-bottom="0" alt="" />
+                    </div>
+
+                    <div class="">
+                        <div class="">
+                            <p class="">
+
+
+
+                                <div class="card-body">
+                                    <p class="card-text">@item.Name</p>
+                                    <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                    <div class="counter-container">
+                                        <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                        <p class="count">1</p>
+                                        <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                </div>
+                                <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    .counter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ccc;
+        height: 40px;
+        margin-bottom: -20%;
+    }
+
+
+
+    .decrementBtn {
+        font-size: 25px;
+        height: 4vh;
+    }
+
+
+
+    .incrementBtn {
+        font-size: 25px;
+    }
+
+
+
+    card-text-dollar {
+        font-size: 20px;
+        font-weight: 600;
+        height: 4vh;
+        margin-top: 30rem;
+    }
+
+
+
+    .count {
+        margin-top: 1.5rem;
+        font-size: 20px;
+    }
+
+
+
+    button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+
+
+    #count {
+        margin: 0 10px;
+    }
+
+
+
+    .faded {
+        opacity: 0.5;
+    }
+
+
+
+    .add-to-cart-btn {
+        margin-top: -20px;
+        border-radius: 20px;
+    }
+
+
+
+    .card-text {
+        height: 4vh;
+        margin-top: -3rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .add-to-cart-btn {
+        padding-left: 18px;
+        padding-right: 2rem;
+        margin-top: -20px;
+        border-radius: 20px;
+    }
+</style>
+<script>
+    function toggleDiv() {
+        const targetDiv = document.getElementById("targetDiv");
+        const signDiv = document.getElementById("signDiv");
+        product = "rice";
+
+        if (targetDiv.classList.contains("hidden")) {
+            targetDiv.classList.remove("hidden");
+            signDiv.innerHTML = "-";
+        } else {
+            targetDiv.classList.add("hidden");
+            signDiv.innerHTML = "+";
+        }
+    }
+
+    const toggleButton = document.getElementById("toggleButton");
+    toggleButton.addEventListener("click", toggleDiv);
+
+
+
+    function handleDecrementClick(countElement) {
+        const currentCount = parseInt(countElement.textContent);
+        if (currentCount > 1) {
+            countElement.textContent = currentCount - 1;
+        }
+        if (currentCount === 2) {
+            countElement.previousElementSibling.classList.add('faded');
+        }
+    }
+
+    function handleIncrementClick(countElement) {
+        const currentCount = parseInt(countElement.textContent);
+        countElement.textContent = currentCount + 1;
+        if (currentCount === 1) {
+            countElement.previousElementSibling.classList.remove('faded');
+        }
+    }
+
+
+    const counterContainers = document.querySelectorAll('.counter-container');
+    counterContainers.forEach(container => {
+        const countElement = container.querySelector('.count');
+        const decrementBtn = container.querySelector('.decrementBtn');
+        const incrementBtn = container.querySelector('.incrementBtn');
+
+        decrementBtn.addEventListener('click', function () {
+            handleDecrementClick(countElement);
+        });
+
+        incrementBtn.addEventListener('click', function () {
+            handleIncrementClick(countElement);
+        });
+    });
+
+
+    function toggleDropdown(buttonId, menuId, iconId) {
+        const button = document.getElementById(buttonId);
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById(iconId);
+
+        button.addEventListener('click', () => {
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+                icon.textContent = '-';
+            } else {
+                menu.style.display = 'none';
+                icon.textContent = '+';
+            }
+        });
+    }
+
+    toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
+    toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
+
+</script>
