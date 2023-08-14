@@ -3,6 +3,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#main-containerss {
+    display: flex;
+    padding-left: 2rem;
+}
+
 h1 {
     font-weight: 600;
     margin-top: 9rem;
@@ -45,10 +50,10 @@ h1 {
     background-color: brown;
 }
 
-.main-container {
+/*.main-container {
     display: flex;
 }
-
+*/
 .card-content {
     display: flex;
 }

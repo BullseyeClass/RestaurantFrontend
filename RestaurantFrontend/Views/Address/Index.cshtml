@@ -1,0 +1,33 @@
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@model IEnumerable<RestaurantFrontend.Models.Address.Address>
+
+@{
+    ViewData["Title"] = "Addresses";
+}
+
+<div class="row">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <hr />
+    @foreach (var address in Model)
+    {
+        <div class="col-md-3 col-xs-6 border-primary mb-3">
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="card-header text-white bg-danger">
+                <h5 class="card-title">Address</h5>
+                </div>
+                <p class="card-text">
+                    <strong>Street:</strong> @address.Street<br />
+                    <strong>City:</strong> @address.City<br />
+                    <strong>State:</strong> @address.State<br />
+                    <strong>Postal Code:</strong> @address.PostalCode<br />
+                    <strong>Country:</strong> @address.Country<br />
+                    <strong>Shipping Address:</strong> @address.IsShippingAddress
+                </p>
+            </div>
+        </div>
+        </div>
+    }
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
