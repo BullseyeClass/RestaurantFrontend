@@ -1,4 +1,5 @@
-﻿using RestaurantFrontend.Models.MostPopularProducts;
+﻿using RestaurantFrontend.Models.Error404;
+using RestaurantFrontend.Models.MostPopularProducts;
 using RestaurantFrontend.Models.Policy;
 using RestaurantFrontend.Models.Products;
 using RestaurantFrontend.Repository.Interface;
@@ -46,6 +47,7 @@ namespace RestaurantFrontend.Repository.JsonHandler
             string jsonContent = File.ReadAllText(fullPath);
             return JsonSerializer.Deserialize<List<PolicyAndTerms>>(jsonContent);
         }
+
     }
 }
 
