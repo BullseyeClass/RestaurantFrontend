@@ -82,7 +82,23 @@ body {
         color: #EB1414;
         border: 1px solid #EB1414;
     }
-
+.header-btn {
+    display: block;
+    background-color: #EB1414;
+    color: white;
+    text-decoration: none;
+    width: 15vw;
+    border-radius: 10px;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    height: 5vh;
+}
+    .header-btn:hover {
+        background-color: white;
+        color: #EB1414;
+        border: 1px solid #EB1414;
+    }
 .quick-customer-service {
     margin-top: 4%;
     padding-left: 8%;
@@ -361,6 +377,9 @@ body {
     background-color: black;
     height: 80vh;
 }
+.most-popular-section {
+    margin-top: 25%;
+}
 .phone {
     margin-left: 15%;
     margin-top: 5%;
@@ -383,7 +402,7 @@ body {
 }
 .shop-more-section {
     margin-top: 4%;
-    margin-bottom: 12%;
+    margin-bottom: -12%;
 }
 .shop-more-btn {
     margin-left: 45%;
