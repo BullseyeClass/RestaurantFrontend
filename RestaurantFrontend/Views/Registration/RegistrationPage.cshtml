@@ -1,15 +1,16 @@
 ﻿@model RestaurantFrontend.Models.RegistrationPage.CombineLogin_Registration
 
 @{
+    Layout = "";
     ViewData["Title"] = "RegistrationPage";
 }
  
-
-  <link rel="stylesheet" href="/css/Registration.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RestaurantFrontend.styles.css" asp-append-version="true" />
-
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/Registration.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/RestaurantFrontend.styles.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/Registration.css" asp-append-version="true" />
 
+<div class="registration-container">
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -32,6 +33,7 @@
             <div class="social-container">
                 <a href="https://www.facebook.com" class="social">
                     <img src="/images/facebook1-f.svg" width="20px" height="20px" alt="Facebook" />
+                </a>
                     <a href="https://accounts.google.com/signup" class="social">
                         <img src="/images/google.svg" width="20px" height="20px" alt="Google" />
                     </a>
@@ -86,16 +88,18 @@
         </div>
     </div>
 </div>
+</div>
+
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/js/Script.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/Script.js"></script>
-   @* @await RenderSectionAsync("Scripts", required: true)*@
+   
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/Script.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
