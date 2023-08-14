@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RestaurantFrontend.Models.Products;
+using RestaurantFrontend.Models.RegistrationPage;
 using RestaurantFrontend.Repository.Interface;
 
 namespace RestaurantFrontend.Controllers
@@ -6,17 +9,47 @@ namespace RestaurantFrontend.Controllers
     public class ProductsController : Controller
     {
         private readonly IGettingProductsFromDB _gettingProductsFromDB;
+        private readonly IConfiguration _configuration;
+        private readonly string _baseUrl;
 
-        public ProductsController(IGettingProductsFromDB gettingProductsFromDB)
+        public ProductsController(IGettingProductsFromDB gettingProductsFromDB, IConfiguration configuration)
         {
             _gettingProductsFromDB = gettingProductsFromDB;
+            _configuration = configuration;
+            _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
-        [Route("VegetablesMC")]
-        public IActionResult Vegetables()
-        {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables");
 
-            return View("Product", products);
+
+        [Route("VegetablesMC")]
+        public async Task<IActionResult> Vegetables()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
+
+                    return View("Product", vegetables);
+                }
+
+                else
+                {
+                    //Handle error case
+                        return View();
+                }
+
+                
+            }
+
+            //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables");
+
+            //return View("Product", products);
         }
 
 
@@ -46,27 +79,102 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Fish & SeafoodMC")]
-        public IActionResult Fish_Seafood()
+        public async Task<IActionResult> Fish_Seafood()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood"); 
+            using (var httpClient = new HttpClient())
+            {
 
-            return View("Product", products);
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> FishandSeafood = allProducts.Where(x => x.Tag == "Fish & Seafood").ToList();
+
+                    return View("Product", FishandSeafood);
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+                //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood");
+
+                //return View("Product", products);
+            }
         }
 
         [Route("Dairy & EggsMC")]
-        public IActionResult Dairy_Eggs()
+        public async Task<IActionResult> Dairy_Eggs()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> DairyandEggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
+
+                    return View("Product", DairyandEggs);
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+                //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood");
+
+                //return View("Product", products);
+            }
+            //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
+
+            //return View("Product", products);
         }
 
         [Route("BakeryMC")]
-        public IActionResult Bakery()
+        public async Task<IActionResult> Bakery()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> DairyandEggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
+
+                    return View("Product", DairyandEggs);
+                }
+
+                else
+                {
+                   
+                    return View();
+                }
+
+                //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood");
+
+                //return View("Product", products);
+            }
+
+            //var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
+
+            //return View("Product", products);
         }
 
         [Route("Pastas_GrainsMC")]
