@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantFrontend.Models;
+using RestaurantFrontend.Repository.Interface;
 using System.Diagnostics;
 
 namespace RestaurantFrontend.Controllers
@@ -7,10 +8,12 @@ namespace RestaurantFrontend.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IGettingProductsFromDB _gettingProductsFromDB;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGettingProductsFromDB gettingProductsFromDB)
         {
             _logger = logger;
+            _gettingProductsFromDB = gettingProductsFromDB;
         }
 
         public IActionResult Testing()
@@ -19,10 +22,15 @@ namespace RestaurantFrontend.Controllers
         }
         public IActionResult Index()
         {
-            
-            return View();
+
+            var products = _gettingProductsFromDB.GetProductsFromDataSource();
+            return View(products.ToList());
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

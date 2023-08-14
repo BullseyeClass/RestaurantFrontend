@@ -15,6 +15,19 @@ html {
     min-height: 100%;
 }
 
+
+body {
+  margin-bottom: 60px;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.dropdown-menu a:hover {
+    color: red;
+}
+
+
 .nav-bar {
     color: white !important;
     text-decoration: none;
@@ -144,12 +157,13 @@ html {
 }
 
 .second-nav {
-    background-color: #eb1414;
+    background-color: white;
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: #eb1414 !important;
     padding: 1.5rem 3.7rem 1rem 2.8rem;
     text-decoration: none;
+    border-bottom: 2px solid #8c0303;
 }
 
 .web-logo{
@@ -163,6 +177,7 @@ html {
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
     font-weight: 700;
     margin:0%;
+    color:#8c0303;
 }
 
 .search-input-container {
@@ -173,25 +188,24 @@ html {
 
 
 #search {
-    width: calc(29.8em - 2em); 
+    width: calc(29.8em - 2em);
     height: 2em;
     background-color: transparent;
-    color: white;
+    color: #8c0303;
     margin: 0.3em 0.5em 0.3em 1em;
-    padding: 0; 
+    padding: 0;
     border: none;
     outline: none;
 }
 
 
     #search::placeholder {
-        color: white;
+        color: #8c0303;
         font-size: 0.9rem;
     }
 .search-icon {
-    background-color: white;
+    background-color: #8c0303;
     padding: 0.6em 1em;
-  
 }
 
 .cart-and-others a {
@@ -199,21 +213,23 @@ html {
     text-decoration: none;
 }
 .trending-container {
-    border: solid 1px;
+    border: solid 1px #8c0303;
     border-radius: 1.5625rem;
     overflow: hidden;
     position: absolute;
-    background-color: #eb1414;
+    background-color: #ffffff58;
     z-index: 150;
     text-decoration: none;
 }
 
 .trending-container:hover {
-    border: solid 2px;
+    border: solid 2px #8c0303;
 }
 
 .addborder {
     border: solid 2px;
+    background-color:white;
+
 }
 
 .trending-content {
@@ -224,6 +240,7 @@ html {
     font-size: 0.9rem;
     padding-left: 1.5em;
     padding-bottom: 1.5em;
+    background: linear-gradient(to bottom, #8c0303, white);
 }
 
 .trending-content a{
@@ -388,7 +405,7 @@ li{
 
 
 .footer-container {
-    background-color: #eb1414;
+    background-color: #8c0303;
     color: white !important;
     padding: 3.7rem 7.4rem 1rem 2.5rem;
     margin-top: 5.5rem;
@@ -472,6 +489,7 @@ li{
         color: #3c3b3b !important;
         
     }
+
 
 
 

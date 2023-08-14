@@ -50,23 +50,18 @@
         </div>
         <hr />
 
-        <div class="dropdown">
-            <button id="dropdownButton2" class="dropdown-btn">
-                <span class="category-text">Price</span>
-                <span class="text-icon" id="dropdownIcon2"><i class="bi bi-plus"></i></span>
-            </button>
-            <div id="dropdownMenu2" class="dropdown-menu">
-                <div class="price-range-slider">
+        <div class="filter-tab" id="toggleButtons">
+            <p class="price">Price</p>
 
-                    <p class="range-value">
-                        <input type="text" id="amount" readonly>
-                    </p>
-                    <div id="slider-range" class="range-bar"></div>
+            <p class="price-minus" id="signMinus">-</p>
 
-                </div>
-
-            </div>
         </div>
+
+        <div>
+            <input type="range" id="volume" name="volume" min="0" max="11" />
+        </div>
+
+      
         <hr />
     </div>
 
@@ -121,7 +116,7 @@
     function toggleDiv() {
         const targetDiv = document.getElementById("targetDiv");
         const signDiv = document.getElementById("signDiv");
-        product = "rice";
+      
 
         if (targetDiv.classList.contains("hidden")) {
             targetDiv.classList.remove("hidden");
@@ -172,24 +167,51 @@
     });
 
 
-    function toggleDropdown(buttonId, menuId, iconId) {
-    const button = document.getElementById(buttonId);
-    const menu = document.getElementById(menuId);
-    const icon = document.getElementById(iconId);
 
-    button.addEventListener('click', () => {
-        if (menu.style.display === 'none') {
-            menu.style.display = 'block';
-            icon.textContent = '-';
+    function toggleDiv() {
+        const targetDiv = document.getElementById("targetDiv");
+        const signMinus = document.getElementById("signMinus");
+       
+
+        if (targetDiv.classList.contains("hidden")) {
+            targetDiv.classList.remove("hidden");
+            signMinus.innerHTML = "-";
         } else {
-            menu.style.display = 'none';
-            icon.textContent = '+';
+            targetDiv.classList.add("hidden");
+            signMinus.innerHTML = "+";
         }
-    });
-}
+    }
 
-toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
-toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
+    const toggleButtons = document.getElementById("toggleButtons");
+    toggleButtons.addEventListener("click", toggleDiv);
+
+
+
+    defaultValue =
+        rangeElem.max < rangeElem.min
+            ? rangeElem.min
+            : rangeElem.min + (rangeElem.max - rangeElem.min) / 2;
+
+
+
+//    function toggleDropdown(buttonId, menuId, iconId) {
+//    const button = document.getElementById(buttonId);
+//    const menu = document.getElementById(menuId);
+//    const icon = document.getElementById(iconId);
+
+//    button.addEventListener('click', () => {
+//        if (menu.style.display === 'none') {
+//            menu.style.display = 'block';
+//            icon.textContent = '-';
+//        } else {
+//            menu.style.display = 'none';
+//            icon.textContent = '+';
+//        }
+//    });
+//}
+
+//toggleDropdown('dropdownButton1', 'dropdownMenu1', 'dropdownIcon1');
+//toggleDropdown('dropdownButton2', 'dropdownMenu2', 'dropdownIcon2');
 
 </script>
 

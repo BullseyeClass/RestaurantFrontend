@@ -15,19 +15,18 @@ h2 {
     font-weight: bold;
 }
 
-p /*{
-    font-size: 14px;
-    font-weight: 100;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    margin: 20px 0 30px;
-}*/
-
-span {
+.span {
     font-size: 12px;
 }
 
-a {
+
+.registration-container{
+   display:flex;
+   justify-content:center;
+}
+
+
+.a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
@@ -62,6 +61,7 @@ button {
 
     button:hover {
         cursor: pointer;
+        background: red;
     }
 
 form {
@@ -75,7 +75,7 @@ form {
     text-align: center;
 }
 
-input {
+.input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
@@ -92,6 +92,7 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    margin-top: 3rem;
 }
 
 .form-container {

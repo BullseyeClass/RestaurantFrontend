@@ -19,7 +19,7 @@ namespace RestaurantFrontend.Service
         public IEnumerable<MostPopularItem> GetMostPopularItemFromDataSource()
         {
             string filePath = Path.Combine(_env.ContentRootPath, "JsonFiles", "data.json");
-            return _jsonHelper.ReadFromJsons(filePath);
+            return _jsonHelper.ReadFromJsonsMostPopular(filePath);
         }
     }
 }

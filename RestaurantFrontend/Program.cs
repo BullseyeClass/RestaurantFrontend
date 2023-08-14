@@ -6,11 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IJsonHelper, JsonHelper>()
-    .AddScoped<IJsonHelperMWL, JsonHelperMWL>()
-    .AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>()
-    .AddScoped<IGettingPolicyFromDB, GettingPolicyFromDB>()
-    .AddScoped<IGettingMyWishList, GettingMyWishListFromDB>();
+builder.Services.AddScoped<IJsonHelper, JsonHelper>();
+builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
+builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
+
 
 
 var app = builder.Build();
