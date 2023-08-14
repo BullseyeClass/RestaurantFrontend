@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "RegistrationPage";
+    Layout = "";
 }
  
 
@@ -12,19 +13,19 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form  asp-action="RegistrationPage">
+        <form asp-action="RegisteringUser">
             <h2>Create Account</h2>
             <span class=" span">Please kindly create an account with us</span>
             <div class="form-group">
-              <input asp-for="UserName" class="form-control input"  placeholder="UserName" />
-                <span asp-validation-for="UserName" class="text-danger span"></span>
+              <input asp-for="FirstName" class="form-control input"  placeholder="UserName" />
+                <span asp-validation-for="FirstName" class="text-danger span"></span>
             </div>
             <div class="form-group">
                 <input asp-for="Email" class="form-control input"  placeholder="Email" />
                 <span asp-validation-for="Email" class="text-danger span"></span>
             </div>
             <div class="form-group">
-                 <input asp-for="Password" class="form-control input"  placeholder="Password"/>
+                <input asp-for="Password" class="form-control input" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger span"></span>
             </div>
             <button type="submit">Sign Up</button>
@@ -61,6 +62,12 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 
 
