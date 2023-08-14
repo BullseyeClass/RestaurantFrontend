@@ -19,6 +19,7 @@ namespace RestaurantFrontend.Controllers
         {
             _gettingMostPopularItemsFromDB = gettingJobsFromDB;
         }
+       
         public IActionResult Index()
         {
 

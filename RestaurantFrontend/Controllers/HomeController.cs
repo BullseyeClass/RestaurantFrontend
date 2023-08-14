@@ -27,6 +27,10 @@ namespace RestaurantFrontend.Controllers
             return View(products.ToList());
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
