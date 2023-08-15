@@ -1,5 +1,9 @@
-﻿/*COUNTER*/
-.bool-label{
+﻿
+.main-section{
+    margin-top:3rem;
+}
+/*COUNTER*/
+.bool-label {
     position: absolute;
     margin-left: -9rem;
     /*height: 4rem;
