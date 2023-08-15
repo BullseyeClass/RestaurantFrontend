@@ -1,90 +1,385 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RestaurantFrontend.Models.Products;
+using RestaurantFrontend.Models.RegistrationPage;
 using RestaurantFrontend.Repository.Interface;
 
 namespace RestaurantFrontend.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IGettingProductsFromDB _gettingProductsFromDB;
+        private readonly IConfiguration _configuration;
+        private readonly string _baseUrl;
 
-        public ProductsController(IGettingProductsFromDB gettingProductsFromDB)
+        public ProductsController(IConfiguration configuration)
         {
-            _gettingProductsFromDB = gettingProductsFromDB;
+            _configuration = configuration;
+            _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
-        [Route("VegetablesMC")]
-        public IActionResult Vegetables()
-        {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables");
 
-            return View("Product", products);
+
+        [Route("VegetablesMC")]
+        public async Task<IActionResult> Vegetables()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
+
+                    if (vegetables.Count > 0)
+                    {
+
+                        return View("Product", vegetables);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
         }
 
 
         [Route("Vegetables/Deals")]
-        public IActionResult VegetablesDeals()
+        public async Task<IActionResult> VegetablesDeals()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Vegetables" && x.BestDeal);
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> VegetablesandDeals = allProducts.Where(x => x.Tag == "Vegetables" && x.BestDeal == true).ToList();
+
+                    if (VegetablesandDeals.Count > 0)
+                    {
+
+                        return View("Product", VegetablesandDeals);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
         }
 
 
         [Route("FruitsMC")]
-        public IActionResult Fruits()
+        public async Task<IActionResult> Fruits()
         {
-            var product = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fruit");
 
-            return View("Product", product);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Fruits = allProducts.Where(x => x.Tag == "Fruit").ToList();
+
+                    if (Fruits.Count > 0)
+                    {
+
+                        return View("Product", Fruits);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
         }
 
         [Route("Meat & PoultryMC")]
-        public IActionResult Meat_Poultry()
+        public async Task<IActionResult> Meat_Poultry()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Meat & Poultry");
+            using (var httpClient = new HttpClient())
+            {
 
-            return View("Product", products);
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> MeatandPoultry = allProducts.Where(x => x.Tag == "Meat & Poultry").ToList();
+
+                    if (MeatandPoultry.Count > 0)
+                    {
+
+                        return View("Product", MeatandPoultry);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
+
         }
 
         [Route("Fish & SeafoodMC")]
-        public IActionResult Fish_Seafood()
+        public async Task<IActionResult> Fish_Seafood()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Fish & Seafood"); 
+            using (var httpClient = new HttpClient())
+            {
 
-            return View("Product", products);
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> FishandSeafood = allProducts.Where(x => x.Tag == "Fish & Seafood").ToList();
+
+                    if (FishandSeafood.Count > 0)
+                    {
+
+                        return View("Product", FishandSeafood);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+                   
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+               
+            }
         }
 
         [Route("Dairy & EggsMC")]
-        public IActionResult Dairy_Eggs()
+        public async Task<IActionResult> Dairy_Eggs()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> DairyandEggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
+
+                    if (DairyandEggs.Count > 0)
+                    {
+
+                        return View("Product", DairyandEggs);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                   
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
+          
         }
 
         [Route("BakeryMC")]
-        public IActionResult Bakery()
+        public async Task<IActionResult> Bakery()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Bakery = allProducts.Where(x => x.Tag == "Bakery").ToList();
+
+                    if (Bakery.Count > 0)
+                    {
+
+                        return View("Product", Bakery);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                    
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
+
+           
         }
 
         [Route("Pastas_GrainsMC")]
-        public IActionResult Pastas_Grains()
+        public async Task<IActionResult> Pastas_Grains()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Dairy & Eggs");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> PastasandGrains = allProducts.Where(x => x.Tag == "Pastas & Grains").ToList();
+
+                    if (PastasandGrains.Count > 0)
+                    {
+
+                        return View("Product", PastasandGrains);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
+
         }
 
         [Route("Cereals_SnacksMC")]
-        public IActionResult Cereals_Snacks()
+        public async Task<IActionResult> Cereals_Snacks()
         {
-            var products = _gettingProductsFromDB.GetProductsFromDataSource().Where(x => x.Tag == "Bakery");
 
-            return View("Product", products);
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> CerealsandSnacks = allProducts.Where(x => x.Tag == "Cereals & Snacks").ToList();
+
+                    if (CerealsandSnacks.Count > 0)
+                    {
+
+                        return View("Product", CerealsandSnacks);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+            }
         }
 
+
+        [Route("NoProductFound")]
+        public IActionResult EmptyProduct()
+        {
+
+            return View();
+        }
 
 
     }

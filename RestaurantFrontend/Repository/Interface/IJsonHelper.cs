@@ -1,4 +1,5 @@
-﻿using RestaurantFrontend.Models.MostPopularProducts;
+﻿using RestaurantFrontend.Models.Error404;
+using RestaurantFrontend.Models.MostPopularProducts;
 using RestaurantFrontend.Models.Policy;
 using RestaurantFrontend.Models.Products;
 
