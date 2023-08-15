@@ -14,17 +14,17 @@
             <div class="first-nav" >
                 <div id="first-nav-content1" class="first-nav-content1">
                     <a class="about">About Us</a>
-                    <a sp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a>
+                    <a asp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a>
                 </div>
                 <div class="first-nav-content2">
-                    <a class="slide-up-text">Shop on the go, download our app. <u>Details</u></a>
-                    <a class="slide-up-text hidden">Get 20% off your first order. Subscribe</a>
+                    <a class="slide-up-text " id="slide-up-element1">Shop on the go, download our app. <u>Details</u></a>
+                    <a class="slide-up-text hiddens" id="slide-up-element2">Get 20% off your first order. Subscribe</a>
                 </div>
                 <div class="filler-div">
 
                 </div>
                 <div class="first-nav-content3">
-                    <a sp-area="" asp-controller="Registration" asp-action="RegistrationPage">
+                    <a asp-area="" asp-controller="Registration" asp-action="RegistrationPage">
                         <svg data-bbox="0 0 50 50" fill="white" data-type="shape" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50"><g><path d="M25 48.077c-5.924 0-11.31-2.252-15.396-5.921 2.254-5.362 7.492-8.267 15.373-8.267 7.889 0 13.139 3.044 15.408 8.418-4.084 3.659-9.471 5.77-15.385 5.77m.278-35.3c4.927 0 8.611 3.812 8.611 8.878 0 5.21-3.875 9.456-8.611 9.456s-8.611-4.246-8.611-9.456c0-5.066 3.684-8.878 8.611-8.878M25 0C11.193 0 0 11.193 0 25c0 .915.056 1.816.152 2.705.032.295.091.581.133.873.085.589.173 1.176.298 1.751.073.338.169.665.256.997.135.515.273 1.027.439 1.529.114.342.243.675.37 1.01.18.476.369.945.577 1.406.149.331.308.657.472.98.225.446.463.883.714 1.313.182.312.365.619.56.922.272.423.56.832.856 1.237.207.284.41.568.629.841.325.408.671.796 1.02 1.182.22.244.432.494.662.728.405.415.833.801 1.265 1.186.173.154.329.325.507.475l.004-.011A24.886 24.886 0 0 0 25 50a24.881 24.881 0 0 0 16.069-5.861.126.126 0 0 1 .003.01c.172-.144.324-.309.49-.458.442-.392.88-.787 1.293-1.209.228-.232.437-.479.655-.72.352-.389.701-.78 1.028-1.191.218-.272.421-.556.627-.838.297-.405.587-.816.859-1.24a26.104 26.104 0 0 0 1.748-3.216c.208-.461.398-.93.579-1.406.127-.336.256-.669.369-1.012.167-.502.305-1.014.44-1.53.087-.332.183-.659.256-.996.126-.576.214-1.164.299-1.754.042-.292.101-.577.133-.872.095-.89.152-1.791.152-2.707C50 11.193 38.807 0 25 0"></path></g></svg>
                         <span> Log In</span>
                     </a>
@@ -47,7 +47,7 @@
                                     <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="5 5 14 14"><path fill="white" d="m15.683 14.6 3.265 3.265a.2.2 0 0 1 0 .282l-.8.801a.2.2 0 0 1-.283 0l-3.266-3.265a5.961 5.961 0 1 1 1.084-1.084zm-4.727 1.233a4.877 4.877 0 1 0 0-9.754 4.877 4.877 0 0 0 0 9.754z"></path></svg>
                                 </span>
                             </div>
-                            <div class="trending-content">
+                            <div class="trending-content" id="trending-content">
 
                                 <div class="trending">
                                   <p>Trending</p>
@@ -83,7 +83,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="favorite-icon">
+                    <a asp-area="" asp-controller="MyWishList" asp-action="MyWishList" class="favorite-icon">
                         <svg preserveAspectRatio="xMidYMid meet" fill="#8c0303" data-bbox="20.999 29 158 142" viewBox="20.999 29 158 142" width="21" height="25" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="img" aria-label="My Wishlist">
                             <g>
                                 <path d="M100.653 170.645l63.348-63.545c11.856-12.514 13.322-20.999 13.322-20.999 2.109-7.649 1.63-13.436 1.63-13.436 0-24.116-19.489-43.665-43.53-43.665-14.603 0-27.527 7.214-35.423 18.283l-.462-.636C91.605 35.938 78.898 29 64.576 29c-24.041 0-43.53 19.549-43.53 43.665 0 0-.478 5.787 1.631 13.436 0 0 1.466 8.485 13.321 20.999l63.348 63.545c.001 0 .689.799 1.307 0z"></path>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="third-nav">
-                <a class="red-hover">Deals</a>
+                <a class="red-hover" asp-controller="Products" asp-action="VegetablesDeals">Deals</a>
                 <a class="food-hover-link">Food</a>
                 <ul class="food-hover-list">
                     <li><a class="red-hover" asp-controller="Products" asp-action="Vegetables">Vegetables</a></li>
@@ -165,11 +165,11 @@
             <div class="footer-clovers">
 
 
-                    <h5>BullsMart.</h5>
+                    <h5><a asp-area="" asp-controller="Home" asp-action="Index">BullsMart.</a> </h5>
 
                     <h4 style=" color: white !important; text-decoration:none;">Need Help?</h4>
 
-                    <a>Visit our <u>Customer Support</u></a><br />
+                    <a asp-area="" asp-controller="CustomerSupport" asp-action="Index">Visit our <u>Customer Support</u></a><br />
                     <a>for assistance or call us at</a><br />
 
                     <h6>123-456-7890</h6>
@@ -201,21 +201,21 @@
 
                     <h6>Categories</h6>
 
-                    <a >Vegetables</a><br />
-                    <a>Bakery</a><br />
-                    <a>Wine</a><br />
-                    <a>Dairy & Eggs</a><br />
-                    <a>Meat & Poultry</a><br />
-                    <a>Soft Drinks</a><br />
-                    <a>Cleaning Supplies</a><br />
-                    <a>Cereal & Snacks</a><br />
+                    <a class="red-hover" asp-controller="Products" asp-action="Vegetables">Vegetables</a><br />
+                    <a class="red-hover" asp-controller="Products" asp-action="Bakery">Bakery</a><br />
+                    <a class="red-hover">Wine</a><br />
+                    <a class="red-hover" asp-controller="Products" asp-action="Dairy_Eggs">Dairy & Eggs</a><br />
+                    <a class="red-hover" asp-controller="Products" asp-action="Meat_Poultry">Meat & Poultry</a><br />
+                    <a class="red-hover">Soft Drinks</a><br />
+                    <a class="red-hover">Cleaning Supplies</a><br />
+                    <a class="red-hover" asp-controller="Products" asp-action="Cereals_Snacks">Cereal & Snacks</a><br />
             </div>
             <div class="footer-info">
 
 
                     <h6>Info</h6>
 
-                    <a>FAQ</a><br />
+                    <a asp-area="" asp-controller="CustomerSupport" asp-action="Index" data-section="FAQ" onclick="navigateToFAQSection(event)">FAQ</a><br />
                     <a>About Us</a><br />
                     <a sp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a><br />
                     <a>Locations</a><br />
@@ -225,7 +225,7 @@
 
                 <h6>My Choice</h6>
 
-                    <a>Favorites</a><br />
+                    <a asp-area="" asp-controller="MyWishList" asp-action="MyWishList">Favorites</a><br />
                     <a>My Orders</a><br />
 
             </div>
@@ -237,10 +237,10 @@
 
            <div class="footer-second-links">
 
-                    <u><a> Shipping & Returns </a></u>
-                    <u><a> Terms & Conditions </a></u>
+                    <u><a asp-area ="" asp-controller="ShippingReturns" asp-action="Index"> Shipping & Returns </a></u>
+                    <u><a asp-area="" asp-controller="TermsAndConditions" asp-action="Index"> Terms & Conditions </a></u>
 
-                    <u><a> Payment Methods</a></u>
+                    <u><a asp-area="" asp-controller="TermsAndConditions" asp-action="Index"> Payment Methods</a></u>
            </div>
 
             <div class="footer-second-logos">
@@ -248,14 +248,14 @@
                     <h6>We accept the following payment methods</h6>
 
                 <div class="footer-second-img-container">
-                        <a><img width="57" height="37" src="~/images/brand-mastercard@3x.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/American Express.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/brand-chinaunionpay@3x.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/JCB.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/Discover.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/Visa.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/PayPal.webp" /></a>
-                        <a><img width="57" height="37" src="~/images/Diners.webp" /></a>
+                        <a href="#" ><img width="57" height="37" src="~/images/brand-mastercard@3x.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/American Express.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/brand-chinaunionpay@3x.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/JCB.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/Discover.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/Visa.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/PayPal.webp" /></a>
+                        <a href="#"><img width="57" height="37" src="~/images/Diners.webp" /></a>
                 </div>
 
             </div>
@@ -269,8 +269,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/Script.js"></script>
+    <script src="~/js/layout.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

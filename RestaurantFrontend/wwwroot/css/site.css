@@ -115,7 +115,11 @@ body {
     margin-right:2px;
 }
 
-.hidden {
+.slide-up-element {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.hiddens {
     transform: translateY(-350%);
     opacity: 0;
 }
@@ -258,7 +262,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.6rem 12rem 0.2rem 9.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: ;
     text-decoration: none;
     min-height: 3rem;
 }
@@ -284,7 +288,7 @@ body {
     background-color: white;
     padding: 1rem;
     padding-right:1rem;
-    margin-top:2.4rem;
+    margin-top:2.2rem;
     margin-left:5.7rem;
     z-index:4;
     list-style-type: none;
@@ -309,7 +313,7 @@ li{
     background-color: white;
     padding: 1.2rem;
     padding-right: 1rem;
-    margin-top: 2.5em;
+    margin-top: 2.2em;
     margin-left: 12.2rem;
     z-index: 4;
     list-style-type: none;
@@ -334,7 +338,7 @@ li{
     background-color: white;
     padding: 1.2rem;
     padding-right: 1rem;
-    margin-top: 2.4rem;
+    margin-top: 2.2rem;
     margin-left: 21.1rem;
     z-index: 4;
     list-style-type: none;
@@ -360,7 +364,7 @@ li{
     background-color: white;
     padding: 1.2rem;
     padding-right: 1rem;
-    margin-top: 2.4rem;
+    margin-top: 2.2rem;
     margin-left: 37.9vw;
     z-index: 4;
     list-style-type: none;
@@ -460,16 +464,24 @@ li{
     display: flex;
     justify-content: space-between;
     padding: 4rem 6.1rem 3.8rem 5rem;
+    
 }
     .footer-second-links a {
         font-size: 13px;
-        cursor:pointer;
-
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+    }
+    .footer-second-links a:hover{
+        color:inherit;
     }
 
 .footer-second-img-container {
     display: flex;
     justify-content: space-between;
+}
+.footer-second-img-container a{
+     cursor: pointer;
 }
 
 .footer-second-logos h6 {
