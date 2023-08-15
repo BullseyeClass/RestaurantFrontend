@@ -17,6 +17,122 @@ namespace RestaurantFrontend.Controllers
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
+        [Route("AllProduct")]
+        public async Task<IActionResult> AllProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    //List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
+
+                    if (allProducts.Count > 0)
+                    {
+
+                        return View("Product", allProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("MostPopuplar")]
+        public async Task<IActionResult> MostPopuplarProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> mostpopular = allProducts.Where(x => x.MostPopular == true).ToList();
+
+                    if (mostpopular.Count > 0)
+                    {
+
+                        return View("Product", mostpopular);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("BestDeal")]
+        public async Task<IActionResult> BestDealProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> bestDeal = allProducts.Where(x => x.MostPopular == true).ToList();
+
+                    if (mostpopular.Count > 0)
+                    {
+
+                        return View("Product", mostpopular);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
 
         [Route("VegetablesMC")]
         public async Task<IActionResult> Vegetables()
