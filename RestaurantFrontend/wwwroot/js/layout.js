@@ -23,3 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
         searchExtension.style.display = "none";
     });
 });
+
+
+function navigateToFAQSection(event) {
+    event.preventDefault();
+
+    var targetSection = document.querySelector("#" + event.target.getAttribute("data-section"));
+    if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+}
