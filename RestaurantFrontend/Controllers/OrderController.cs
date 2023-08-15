@@ -75,7 +75,7 @@ namespace RestaurantFrontend.Controllers
                     ProductInfo = "Bestselling fiction novel with captivating story.",
                     ReturnPolicy = "60-day return policy.",
                     DeliveryInfo = "Delivered",
-                    ShippingInfo = "Out for Delivering",
+                    ShippingInfo = "Shipped",
                     OrderDate = DateTime.Now,
                     TotalAmount = 19.99m,
                     CustomerId = Guid.NewGuid()
