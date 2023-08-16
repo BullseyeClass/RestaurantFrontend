@@ -38,7 +38,7 @@ namespace RestaurantFrontend.Controllers
                     {
                         var responseBody = await response.Content.ReadAsStringAsync();
                         // Process the response from the API
-                        return View();
+                        return RedirectToAction("RegistrationPage", "Registration");
 
                     }
                     else

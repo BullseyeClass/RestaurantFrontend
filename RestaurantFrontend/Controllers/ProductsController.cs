@@ -110,10 +110,10 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> bestDeal = allProducts.Where(x => x.MostPopular == true).ToList();
 
-                    if (mostpopular.Count > 0)
+                    if (bestDeal.Count > 0)
                     {
 
-                        return View("Product", mostpopular);
+                        return View("Product", bestDeal);
                     }
 
                     else

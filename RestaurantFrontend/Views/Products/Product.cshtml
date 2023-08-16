@@ -1,18 +1,20 @@
-﻿@model IEnumerable<RestaurantFrontend.Models.Products.Products>
+﻿
+
+@model IEnumerable<RestaurantFrontend.Models.Products.Products>
 
 @{
     ViewData["Title"] = "List of Products";
 }
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
 
-<div class="main-section px-2 " style="padding-left: 10%";>
+<div class="main-section">
     <div class="header"><h1>@Model.FirstOrDefault().Tag</h1></div>
-    <div class="d-flex justify-content-around" ">
-        <div class="filters p-2">
+    <div class="d-flex justify-content-around">
+        <div class="filters p-5">
             <h4>Filter by</h4>
             <hr />
 
@@ -30,7 +32,7 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
                         <a id="targetMost">Most Popular</a><br />
                     </div>
                 </li>
-            <hr/>
+                
                 <li class="filter_price">
                     <button class="filter_title_wrapper" onclick="toggleDiv('targetDivPrice', 'iconPrice')">
                         <span class="filter_full_title">
@@ -46,21 +48,20 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
                 </li>
             </ul>
 
-           <hr />
+            <hr />
         </div>
 
-        
+
         <div class="row g-4 justify-content-start" style="width: 80.8%">
-           
 
-                @Html.Partial("_AllProductsCard")
 
-            
+            @Html.Partial("_AllProductsCard")
+
+
         </div>
     </div>
 </div>
 <script src="~/js/Products.js" asp-append-version="true"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-  
