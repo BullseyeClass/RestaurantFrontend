@@ -33,20 +33,13 @@ counterContainers.forEach(container => {
 });
 
 
-function toggleDiv(targetId, iconId) {
-    const targetDiv = document.getElementById(targetId);
-    const iconDiv = document.getElementById(iconId);
-
-    if (targetDiv.classList.contains('show')) {
-        targetDiv.classList.remove('show');
-        targetDiv.classList.add('hidden');
-        iconDiv.textContent = '+';
-    } else {
-        targetDiv.classList.remove('hidden');
-        targetDiv.classList.add('show');
-        iconDiv.textContent = '-';
-    }
-}
+$(document).ready(function () {
+    $('.category-details-btn').click(function () {
+        var icon = $(this).find('.icon');
+        $('#collapseWidthCategory').collapse('toggle');
+        icon.text(icon.text() === '-' ? '+' : '-');
+    });
+});
 
 
 
