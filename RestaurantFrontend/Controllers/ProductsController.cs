@@ -18,7 +18,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("AllProduct")]
-        public async Task<IActionResult> AllProducts()
+        public async Task<IActionResult> AllProducts(string filter, string tag)
         {
             using (var httpClient = new HttpClient())
             {
@@ -30,12 +30,23 @@ namespace RestaurantFrontend.Controllers
                     string responseBody = await response.Content.ReadAsStringAsync();
                     List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    //List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
-
-                    if (allProducts.Count > 0)
+                    List<Products> filteredProducts;
+                    if (filter == "All")
                     {
+                        allProducts.Where(x => x.Tag == tag);
 
-                        return View("Product", allProducts);
+                        filteredProducts = allProducts;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        allProducts.Where(x => x.Tag == tag);
+                        filteredProducts = allProducts.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = allProducts.Where(p => p.MostPopular).ToList();
                     }
 
                     else
@@ -43,6 +54,7 @@ namespace RestaurantFrontend.Controllers
                         return RedirectToAction("EmptyProduct", "Products");
                     }
 
+                    return View("Product", filteredProducts);
                 }
 
                 else
@@ -134,8 +146,10 @@ namespace RestaurantFrontend.Controllers
 
         }
 
+       
+
         [Route("VegetablesMC")]
-        public async Task<IActionResult> Vegetables()
+        public async Task<IActionResult> Vegetables(string filter)
         {
             using (var httpClient = new HttpClient())
             {
@@ -149,9 +163,24 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
 
-                    if (vegetables.Count > 0)
+                    List<Products> filteredProducts;
+                    if (filter == "All")
                     {
+                        filteredProducts = vegetables;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = vegetables.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = vegetables.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (vegetables.Count > 0)
+                    {
                         return View("Product", vegetables);
                     }
 
@@ -159,6 +188,8 @@ namespace RestaurantFrontend.Controllers
                     {
                         return RedirectToAction("EmptyProduct", "Products");
                     }
+
+                    return View("Product", filteredProducts);
 
                 }
 
@@ -172,7 +203,6 @@ namespace RestaurantFrontend.Controllers
             }
 
         }
-
 
         [Route("Vegetables/Deals")]
         public async Task<IActionResult> VegetablesDeals()
