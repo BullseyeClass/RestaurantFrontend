@@ -8,11 +8,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 
-<link href="@Url.Content("~/css/BestDeal.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
 
 <div class="d-flex justify-content-center">
-
-    <h1 id="popular">Best Deal</h1>
+    <h1 id="popular">Most Popular</h1>
 </div>
 
 
@@ -30,28 +29,27 @@
 
         <div class="filter-content" id="targetDiv">
 
-            <a asp-controller="BestDealProduct" asp-action="AllBestDealProduct" id="all"> All</a><br />
+            <a asp-controller="Popular" asp-action="AllPopular" id="all"> All</a><br />
 
-            <a asp-controller="BestDealProduct" asp-action="VegetableBestDealProduct">Vegetables</a><br />
-            <a asp-controller="BestDealProduct" asp-action="FruitBestDealProduct"> Fruit</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Meat_PoultryBestDealProduct">Meat & Poultry</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Fish_SeafoodBestDealProduct"> Fish & Seafood</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Dairy_EggsBestDealProduct"> Dairy & Eggs</a><br />
-            <a asp-controller="BestDealProduct" asp-action="BakeryBestDealProduct">Bakery</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Pastas_GrainsBestDealProduct">Pastas & Grains</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Cereals_SnacksBestDealProduct">Cereals & Snacks</a><br />
-            <a asp-controller="BestDealProduct" asp-action="TeaBestDealProduct">Tea</a><br />
-            <a asp-controller="BestDealProduct" asp-action="CoffeeBestDealProduct">Coffee</a><br />
-            <a asp-controller="BestDealProduct" asp-action="SoftDrinksBestDealProduct">Soft Drinks</a><br />
-            <a asp-controller="BestDealProduct" asp-action="BeersBestDealProduct">Beer</a><br />
-            <a asp-controller="BestDealProduct" asp-action="WineBestDealProduct">Wine</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Home_KitchenBestDealProduct">Home & Kitchen</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Cleaning_SuppliesBestDealProduct">Cleaning Supplies</a><br />
-            <a asp-controller="BestDealProduct" asp-action="Personal_HygieneBestDealProduct">Personal Hygiene</a><br />
-            <a asp-controller="BestDealProduct" asp-action="BabiesBestDealProduct">Babies</a><br />
+            <a asp-controller="Popular" asp-action="VegetableMostPopularProduct">Vegetables</a><br />
+            <a asp-controller="Popular" asp-action="FruitMostPopularProduct"> Fruit</a><br />
+            <a asp-controller="Popular" asp-action="Meat_PoultryMostPopularProduct">Meat & Poultry</a><br />
+            <a asp-controller="Popular" asp-action="Fish_SeafoodMostPopularProduct"> Fish & Seafood</a><br />
+            <a asp-controller="Popular" asp-action="Dairy_EggsMostPopularProduct"> Dairy & Eggs</a><br />
+            <a asp-controller="Popular" asp-action="BakeryMostPopularProduct">Bakery</a><br />
+            <a asp-controller="Popular" asp-action="Pastas_GrainsMostPopularProduct">Pastas & Grains</a><br />
+            <a asp-controller="Popular" asp-action="Cereals_SnacksMostPopularProduct">Cereals & Snacks</a><br />
+            <a asp-controller="Popular" asp-action="TeaMostPopularProduct">Tea</a><br />
+            <a asp-controller="Popular" asp-action="CoffeeMostPopularProduct">Coffee</a><br />
+            <a asp-controller="Popular" asp-action="SoftDrinksMostPopularProduct">Soft Drinks</a><br />
+            <a asp-controller="Popular" asp-action="BeersMostPopularProduct">Beer</a><br />
+            <a asp-controller="Popular" asp-action="WineMostPopularProduct">Wine</a><br />
+            <a asp-controller="Popular" asp-action="Home_KitchenMostPopularProduct">Home & Kitchen</a><br />
+            <a asp-controller="Popular" asp-action="Cleaning_SuppliesMostPopularProduct">Cleaning Supplies</a><br />
+            <a asp-controller="Popular" asp-action="Personal_HygieneMostPopularProduct">Personal Hygiene</a><br />
+            <a asp-controller="Popular" asp-action="BabiesMostPopularProduct">Babies</a><br />
 
         </div>
-
 
     </div>
 
@@ -64,7 +62,7 @@
 
             <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
 
-                <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
+                <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
 
                 <div class="image-display">
                     <img src="@item.Image" width="170" margin-bottom="0" alt="" />
@@ -89,7 +87,6 @@
                     </div>
                 </div>
             </div>
-
         }
     </div>
 </div>
