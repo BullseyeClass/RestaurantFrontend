@@ -1,36 +1,27 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-//using Newtonsoft.Json;
-using RestaurantFrontend.Models;
-using RestaurantFrontend.Models.MostPopularProducts;
 using RestaurantFrontend.Models.Products;
-using RestaurantFrontend.Repository.Interface;
-using System.Collections.Generic;
 using System.Configuration;
 
 namespace RestaurantFrontend.Controllers
 {
-
-    public class PopularController : Controller
+    public class BestDealProductController : Controller
     {
         private readonly IConfiguration _configuration;
         private readonly string _baseUrl;
-
-        public PopularController(IConfiguration configuration)
+        public BestDealProductController(IConfiguration configuration)
         {
             _configuration = configuration;
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
-        [Route("Popular")]
-        public async Task<IActionResult> AllPopular()
+        [Route("BestDealProduct")]
+        public async Task<IActionResult> AllBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -39,12 +30,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (allProducts.Count > 0)
                     {
-                        return View("AllPopular", allProducts);
+                        return View("AllBestDealProduct", allProducts);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -61,13 +52,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("VegetableMostPopular")]
-        public async Task<IActionResult> VegetableMostPopularProduct()
+        [Route("VegetableBestDeal")]
+        public async Task<IActionResult> VegetableBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -78,12 +69,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (vegetablebestdeal.Count > 0)
                     {
-                        return View("AllPopular", vegetablebestdeal);
+                        return View("AllBestDealProduct", vegetablebestdeal);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -100,13 +91,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("FruitMostPopular")]
-        public async Task<IActionResult> FruitMostPopularProduct()
+        [Route("FruitBestDeal")]
+        public async Task<IActionResult> FruitBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -117,12 +108,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (fruitbestdeal.Count > 0)
                     {
-                        return View("AllPopular", fruitbestdeal);
+                        return View("AllBestDealProduct", fruitbestdeal);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -139,13 +130,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Meat&PoultryMostPopular")]
-        public async Task<IActionResult> Meat_PoultryMostPopularProduct()
+        [Route("Meat&PoultryBestDeal")]
+        public async Task<IActionResult> Meat_PoultryBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -156,12 +147,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (MeatandPoultry.Count > 0)
                     {
-                        return View("AllPopular", MeatandPoultry);
+                        return View("AllBestDealProduct", MeatandPoultry);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -178,13 +169,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Fish_SeafoodMostPopular")]
-        public async Task<IActionResult> Fish_SeafoodMostPopularProduct()
+        [Route("Fish_SeafoodBestDeal")]
+        public async Task<IActionResult> Fish_SeafoodBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -195,12 +186,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Fish_Seafood.Count > 0)
                     {
-                        return View("AllPopular", Fish_Seafood);
+                        return View("AllBestDealProduct", Fish_Seafood);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -217,13 +208,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Dairy_EggsMostPopular")]
-        public async Task<IActionResult> Dairy_EggsMostPopularProduct()
+        [Route("Dairy_EggsBestDeal")]
+        public async Task<IActionResult> Dairy_EggsBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -234,12 +225,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Dairy_Eggs.Count > 0)
                     {
-                        return View("AllPopular", Dairy_Eggs);
+                        return View("AllBestDealProduct", Dairy_Eggs);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -256,13 +247,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("BakeryMostPopular")]
-        public async Task<IActionResult> BakeryMostPopularProduct()
+        [Route("BakeryBestDeal")]
+        public async Task<IActionResult> BakeryBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -273,12 +264,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Bakery.Count > 0)
                     {
-                        return View("AllPopular", Bakery);
+                        return View("AllBestDealProduct", Bakery);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -296,13 +287,13 @@ namespace RestaurantFrontend.Controllers
         }
 
 
-        [Route("Pastas_GrainsMostPopular")]
-        public async Task<IActionResult> Pastas_GrainsMostPopularProduct()
+        [Route("Pastas_GrainsBestDeal")]
+        public async Task<IActionResult> Pastas_GrainsBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -313,12 +304,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Pastas_Grains.Count > 0)
                     {
-                        return View("AllPopular", Pastas_Grains);
+                        return View("AllBestDealProduct", Pastas_Grains);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -335,13 +326,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Cereals_SnacksMostPopular")]
-        public async Task<IActionResult> Cereals_SnacksMostPopularProduct()
+        [Route("Cereals_SnacksBestDeal")]
+        public async Task<IActionResult> Cereals_SnacksBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -352,12 +343,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Cereals_Snacks.Count > 0)
                     {
-                        return View("AllPopular", Cereals_Snacks);
+                        return View("AllBestDealProduct", Cereals_Snacks);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -374,13 +365,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("TeaMostPopular")]
-        public async Task<IActionResult> TeaMostPopularProduct()
+        [Route("TeaBestDeal")]
+        public async Task<IActionResult> TeaBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -391,12 +382,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Tea.Count > 0)
                     {
-                        return View("AllPopular", Tea);
+                        return View("AllBestDealProduct", Tea);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -413,13 +404,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("CoffeeMostPopular")]
-        public async Task<IActionResult> CoffeeMostPopularProduct()
+        [Route("CoffeeBestDeal")]
+        public async Task<IActionResult> CoffeeBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -430,12 +421,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Coffee.Count > 0)
                     {
-                        return View("AllPopular", Coffee);
+                        return View("AllBestDealProduct", Coffee);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -452,13 +443,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("SoftDrinksMostPopular")]
-        public async Task<IActionResult> SoftDrinksMostPopularProduct()
+        [Route("SoftDrinksBestDeal")]
+        public async Task<IActionResult> SoftDrinksBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -469,12 +460,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (SoftDrinks.Count > 0)
                     {
-                        return View("AllPopular", SoftDrinks);
+                        return View("AllBestDealProduct", SoftDrinks);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -491,13 +482,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("BeerMostPopular")]
-        public async Task<IActionResult> BeersMostPopularProduct()
+        [Route("BeerBestDeal")]
+        public async Task<IActionResult> BeersBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -508,12 +499,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Beer.Count > 0)
                     {
-                        return View("AllPopular", Beer);
+                        return View("AllBestDealProduct", Beer);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -530,13 +521,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Home_KitchenMostPopular")]
-        public async Task<IActionResult> Home_KitchenMostPopularProduct()
+        [Route("Home_KitchenBestDeal")]
+        public async Task<IActionResult> Home_KitchenBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -547,12 +538,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Home_Kitchen.Count > 0)
                     {
-                        return View("AllPopular", Home_Kitchen);
+                        return View("AllBestDealProduct", Home_Kitchen);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -569,13 +560,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("WineMostPopular")]
-        public async Task<IActionResult> WineMostPopularProduct()
+        [Route("WineBestDeal")]
+        public async Task<IActionResult> WineBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -586,12 +577,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Wine.Count > 0)
                     {
-                        return View("AllPopular", Wine);
+                        return View("AllBestDealProduct", Wine);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -608,13 +599,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Cleaning_SuppliesMostPopular")]
-        public async Task<IActionResult> Cleaning_SuppliesMostPopularProduct()
+        [Route("Cleaning_SuppliesBestDeal")]
+        public async Task<IActionResult> Cleaning_SuppliesBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -625,12 +616,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Cleaning_Supplies.Count > 0)
                     {
-                        return View("AllPopular", Cleaning_Supplies);
+                        return View("AllBestDealProduct", Cleaning_Supplies);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -647,13 +638,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("Personal_HygienesMostPopular")]
-        public async Task<IActionResult> Personal_HygieneMostPopularProduct()
+        [Route("Personal_HygienesBestDeal")]
+        public async Task<IActionResult> Personal_HygieneBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -664,12 +655,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Personal_Hygiene.Count > 0)
                     {
-                        return View("AllPopular", Personal_Hygiene);
+                        return View("AllBestDealProduct", Personal_Hygiene);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -686,13 +677,13 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("BabiesMostPopular")]
-        public async Task<IActionResult> BabiesMostPopularProduct()
+        [Route("BabiesBestDeal")]
+        public async Task<IActionResult> BabiesBestDealProduct()
         {
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -703,12 +694,12 @@ namespace RestaurantFrontend.Controllers
 
                     if (Babies.Count > 0)
                     {
-                        return View("AllPopular", Babies);
+                        return View("AllBestDealProduct", Babies);
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "Popular");
+                        return RedirectToAction("EmptyProduct", "BestDealProduct");
                     }
 
 
@@ -725,13 +716,11 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-        [Route("NoPopularFound")]
+        [Route("NoBestDealProductFound")]
         public IActionResult EmptyProduct()
         {
 
             return View();
         }
-
     }
 }
-

@@ -1,0 +1,183 @@
+﻿@model IEnumerable<RestaurantFrontend.Models.Products.Products>
+
+@{
+    ViewData["Title"] = "Most Popular";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+<link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
+
+<div class="d-flex justify-content-center">
+    <h1 id="popular">Most Popular</h1>
+</div>
+
+
+<div class="main-container" id="main-containerss">
+
+    <div class="filters">
+        <h4>Filter by</h4>
+        <hr />
+        <div class="filter-tab" id="toggleButton">
+            <p class="category">Category</p>
+
+            <p class="category-minus" id="signDiv">-</p>
+
+        </div>
+
+        <div class="filter-content" id="targetDiv">
+
+            <a asp-controller="Popular" asp-action="AllPopular" id="all"> All</a><br />
+
+            <a asp-controller="Popular" asp-action="VegetableMostPopularProduct">Vegetables</a><br />
+            <a asp-controller="Popular" asp-action="FruitMostPopularProduct"> Fruit</a><br />
+            <a asp-controller="Popular" asp-action="Meat_PoultryMostPopularProduct">Meat & Poultry</a><br />
+            <a asp-controller="Popular" asp-action="Fish_SeafoodMostPopularProduct"> Fish & Seafood</a><br />
+            <a asp-controller="Popular" asp-action="Dairy_EggsMostPopularProduct"> Dairy & Eggs</a><br />
+            <a asp-controller="Popular" asp-action="BakeryMostPopularProduct">Bakery</a><br />
+            <a asp-controller="Popular" asp-action="Pastas_GrainsMostPopularProduct">Pastas & Grains</a><br />
+            <a asp-controller="Popular" asp-action="Cereals_SnacksMostPopularProduct">Cereals & Snacks</a><br />
+            <a asp-controller="Popular" asp-action="TeaMostPopularProduct">Tea</a><br />
+            <a asp-controller="Popular" asp-action="CoffeeMostPopularProduct">Coffee</a><br />
+            <a asp-controller="Popular" asp-action="SoftDrinksMostPopularProduct">Soft Drinks</a><br />
+            <a asp-controller="Popular" asp-action="BeersMostPopularProduct">Beer</a><br />
+            <a asp-controller="Popular" asp-action="WineMostPopularProduct">Wine</a><br />
+            <a asp-controller="Popular" asp-action="Home_KitchenMostPopularProduct">Home & Kitchen</a><br />
+            <a asp-controller="Popular" asp-action="Cleaning_SuppliesMostPopularProduct">Cleaning Supplies</a><br />
+            <a asp-controller="Popular" asp-action="Personal_HygieneMostPopularProduct">Personal Hygiene</a><br />
+            <a asp-controller="Popular" asp-action="BabiesMostPopularProduct">Babies</a><br />
+
+        </div>
+
+    </div>
+
+
+    <div class="row ps-5" style="margin-right: 0; padding-right:0;">
+
+        @foreach (var item in Model)
+        {
+            var testing = item.Tag;
+
+            <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
+
+                <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
+
+                <div class="image-display">
+                    <img src="@item.Image" width="170" margin-bottom="0" alt="" />
+                </div>
+
+                <div class="">
+                    <div class="">
+                        <p class="">
+
+                            <div class="card-body">
+                                <p class="card-text">@item.Name</p>
+                                <p class="card-text-dollar text-danger">₦@item.Price</p>
+                                <div class="counter-container">
+                                    <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                    <p class="count">1</p>
+                                    <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                </div>
+
+                            </div>
+                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    function toggleDiv() {
+        const targetDiv = document.getElementById("targetDiv");
+        const signDiv = document.getElementById("signDiv");
+
+
+        if (targetDiv.classList.contains("hidden")) {
+            targetDiv.classList.remove("hidden");
+            signDiv.innerHTML = "-";
+        } else {
+            targetDiv.classList.add("hidden");
+            signDiv.innerHTML = "+";
+        }
+    }
+
+    const toggleButton = document.getElementById("toggleButton");
+    toggleButton.addEventListener("click", toggleDiv);
+
+
+
+    function handleDecrementClick(countElement) {
+        const currentCount = parseInt(countElement.textContent);
+        if (currentCount > 1) {
+            countElement.textContent = currentCount - 1;
+        }
+        if (currentCount === 2) {
+            countElement.previousElementSibling.classList.add('faded');
+        }
+    }
+
+    function handleIncrementClick(countElement) {
+        const currentCount = parseInt(countElement.textContent);
+        countElement.textContent = currentCount + 1;
+        if (currentCount === 1) {
+            countElement.previousElementSibling.classList.remove('faded');
+        }
+    }
+
+
+    const counterContainers = document.querySelectorAll('.counter-container');
+    counterContainers.forEach(container => {
+        const countElement = container.querySelector('.count');
+        const decrementBtn = container.querySelector('.decrementBtn');
+        const incrementBtn = container.querySelector('.incrementBtn');
+
+        decrementBtn.addEventListener('click', function () {
+            handleDecrementClick(countElement);
+        });
+
+        incrementBtn.addEventListener('click', function () {
+            handleIncrementClick(countElement);
+        });
+    });
+
+
+
+    function toggleDiv() {
+        const targetDiv = document.getElementById("targetDiv");
+        const signMinus = document.getElementById("signMinus");
+
+
+        if (targetDiv.classList.contains("hidden")) {
+            targetDiv.classList.remove("hidden");
+            signMinus.innerHTML = "-";
+        } else {
+            targetDiv.classList.add("hidden");
+            signMinus.innerHTML = "+";
+        }
+    }
+
+    const toggleButtons = document.getElementById("toggleButtons");
+    toggleButtons.addEventListener("click", toggleDiv);
+
+
+
+    defaultValue =
+        rangeElem.max < rangeElem.min
+            ? rangeElem.min
+            : rangeElem.min + (rangeElem.max - rangeElem.min) / 2;
+
+</script>
+
+
+
+
