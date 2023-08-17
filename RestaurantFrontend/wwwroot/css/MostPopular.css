@@ -8,12 +8,12 @@ body {
     padding-left: 2rem;
 }
 
-h1 {
+#popular {
     font-weight: 600;
-    margin-top: 9rem;
+    margin-top: 2rem;
     font-size: 5rem;
-    margin-left: 19rem;
-    margin-bottom: 6rem;
+    /*margin-left: 19rem;*/
+    margin-bottom: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

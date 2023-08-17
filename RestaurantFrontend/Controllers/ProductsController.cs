@@ -611,6 +611,538 @@ namespace RestaurantFrontend.Controllers
             }
         }
 
+        [Route("TeaMC")]
+        public async Task<IActionResult> Tea(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Tea = allProducts.Where(x => x.Tag == "Tea").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Tea;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Tea.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Tea.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Tea.Count > 0)
+                    {
+                        return View("Product", Tea);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("CoffeeMC")]
+        public async Task<IActionResult> Coffee(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Coffee = allProducts.Where(x => x.Tag == "Coffee").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Coffee;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Coffee.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Coffee.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Coffee.Count > 0)
+                    {
+                        return View("Product", Coffee);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("SoftDrinksMC")]
+        public async Task<IActionResult> SoftDrinks(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> SoftDrinks = allProducts.Where(x => x.Tag == "Soft Drinks").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = SoftDrinks;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = SoftDrinks.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = SoftDrinks.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (SoftDrinks.Count > 0)
+                    {
+                        return View("Product", SoftDrinks);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("BeerMC")]
+        public async Task<IActionResult> Beer(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Beer = allProducts.Where(x => x.Tag == "Beer").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Beer;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Beer.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Beer.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Beer.Count > 0)
+                    {
+                        return View("Product", Beer);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+
+        [Route("WineMC")]
+        public async Task<IActionResult> Wine(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Wine = allProducts.Where(x => x.Tag == "Wine").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Wine;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Wine.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Wine.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Wine.Count > 0)
+                    {
+                        return View("Product", Wine);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+
+        [Route("Home_KitchenMC")]
+        public async Task<IActionResult> Home_Kitchen(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Home_Kitchen = allProducts.Where(x => x.Tag == "Home & Kitchen").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Home_Kitchen;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Home_Kitchen.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Home_Kitchen.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Home_Kitchen.Count > 0)
+                    {
+                        return View("Product", Home_Kitchen);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("CleaningSuppliesMC")]
+        public async Task<IActionResult> CleaningSupplies(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> CleaningSupplies = allProducts.Where(x => x.Tag == "Cleaning Supplies").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = CleaningSupplies;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = CleaningSupplies.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = CleaningSupplies.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (CleaningSupplies.Count > 0)
+                    {
+                        return View("Product", CleaningSupplies);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("PersonalHygieneMC")]
+        public async Task<IActionResult> PersonalHygiene(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> PersonalHygiene = allProducts.Where(x => x.Tag == "Personal Hygiene").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = PersonalHygiene;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = PersonalHygiene.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = PersonalHygiene.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (PersonalHygiene.Count > 0)
+                    {
+                        return View("Product", PersonalHygiene);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("BabiesMC")]
+        public async Task<IActionResult> Babies(string filter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> Babies = allProducts.Where(x => x.Tag == "Babies").ToList();
+
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
+                    {
+                        filteredProducts = Babies;
+                    }
+
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Babies.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Babies.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Babies.Count > 0)
+                    {
+                        return View("Product", Babies);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
 
         [Route("NoProductFound")]
         public IActionResult EmptyProduct()
