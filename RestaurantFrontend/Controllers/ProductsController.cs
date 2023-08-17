@@ -17,9 +17,125 @@ namespace RestaurantFrontend.Controllers
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
+        [Route("AllProduct")]
+        public async Task<IActionResult> AllProducts(string filter, string tag)
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    if (allProducts.Count > 0)
+                    {
+                        return View("Product", allProducts);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                    
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("MostPopuplar")]
+        public async Task<IActionResult> MostPopuplarProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> mostpopular = allProducts.Where(x => x.MostPopular == true).ToList();
+
+                    if (mostpopular.Count > 0)
+                    {
+
+                        return View("Product", mostpopular);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+        [Route("BestDeal")]
+        public async Task<IActionResult> BestDealProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                //response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                    List<Products> bestDeal = allProducts.Where(x => x.BestDeal == true).ToList();
+
+                    if (bestDeal.Count > 0)
+                    {
+
+                        return View("Product", bestDeal);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("EmptyProduct", "Products");
+                    }
+
+                }
+
+                else
+                {
+                    //Handle error case
+                    return View();
+                }
+
+
+            }
+
+        }
+
+       
 
         [Route("VegetablesMC")]
-        public async Task<IActionResult> Vegetables()
+        public async Task<IActionResult> Vegetables(string filter)
         {
             using (var httpClient = new HttpClient())
             {
@@ -33,12 +149,32 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> vegetables = allProducts.Where(x => x.Tag == "Vegetables").ToList();
 
-                    if (vegetables.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = vegetables;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = vegetables.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = vegetables.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (vegetables.Count > 0)
+                    {
                         return View("Product", vegetables);
                     }
 
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
+                    }
+
                     else
                     {
                         return RedirectToAction("EmptyProduct", "Products");
@@ -55,50 +191,11 @@ namespace RestaurantFrontend.Controllers
 
             }
 
-        }
-
-
-        [Route("Vegetables/Deals")]
-        public async Task<IActionResult> VegetablesDeals()
-        {
-
-            using (var httpClient = new HttpClient())
-            {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    List<Products> VegetablesandDeals = allProducts.Where(x => x.Tag == "Vegetables" && x.BestDeal == true).ToList();
-
-                    if (VegetablesandDeals.Count > 0)
-                    {
-
-                        return View("Product", VegetablesandDeals);
-                    }
-
-                    else
-                    {
-                        return RedirectToAction("EmptyProduct", "Products");
-                    }
-
-                }
-
-                else
-                {
-                    //Handle error case
-                    return View();
-                }
-
-            }
         }
 
 
         [Route("FruitsMC")]
-        public async Task<IActionResult> Fruits()
+        public async Task<IActionResult> Fruits(string filter)
         {
 
             using (var httpClient = new HttpClient())
@@ -113,10 +210,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> Fruits = allProducts.Where(x => x.Tag == "Fruit").ToList();
 
-                    if (Fruits.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = Fruits;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Fruits.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Fruits.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Fruits.Count > 0)
+                    {
                         return View("Product", Fruits);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
@@ -136,7 +253,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Meat & PoultryMC")]
-        public async Task<IActionResult> Meat_Poultry()
+        public async Task<IActionResult> Meat_Poultry(string filter)
         {
             using (var httpClient = new HttpClient())
             {
@@ -150,10 +267,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> MeatandPoultry = allProducts.Where(x => x.Tag == "Meat & Poultry").ToList();
 
-                    if (MeatandPoultry.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = MeatandPoultry;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = MeatandPoultry.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = MeatandPoultry.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (MeatandPoultry.Count > 0)
+                    {
                         return View("Product", MeatandPoultry);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
@@ -174,7 +311,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Fish & SeafoodMC")]
-        public async Task<IActionResult> Fish_Seafood()
+        public async Task<IActionResult> Fish_Seafood(string filter)
         {
             using (var httpClient = new HttpClient())
             {
@@ -188,17 +325,38 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> FishandSeafood = allProducts.Where(x => x.Tag == "Fish & Seafood").ToList();
 
-                    if (FishandSeafood.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = FishandSeafood;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = FishandSeafood.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = FishandSeafood.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (FishandSeafood.Count > 0)
+                    {
                         return View("Product", FishandSeafood);
+                    }
+
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
                     {
                         return RedirectToAction("EmptyProduct", "Products");
                     }
-                   
+
                 }
 
                 else
@@ -211,7 +369,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Dairy & EggsMC")]
-        public async Task<IActionResult> Dairy_Eggs()
+        public async Task<IActionResult> Dairy_Eggs(string filter)
         {
 
             using (var httpClient = new HttpClient())
@@ -226,10 +384,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> DairyandEggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
 
-                    if (DairyandEggs.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = DairyandEggs;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = DairyandEggs.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = DairyandEggs.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (DairyandEggs.Count > 0)
+                    {
                         return View("Product", DairyandEggs);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
@@ -237,7 +415,7 @@ namespace RestaurantFrontend.Controllers
                         return RedirectToAction("EmptyProduct", "Products");
                     }
 
-                   
+
                 }
 
                 else
@@ -251,7 +429,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("BakeryMC")]
-        public async Task<IActionResult> Bakery()
+        public async Task<IActionResult> Bakery(string filter)
         {
 
             using (var httpClient = new HttpClient())
@@ -267,10 +445,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> Bakery = allProducts.Where(x => x.Tag == "Bakery").ToList();
 
-                    if (Bakery.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = Bakery;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = Bakery.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = Bakery.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (Bakery.Count > 0)
+                    {
                         return View("Product", Bakery);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
@@ -278,7 +476,7 @@ namespace RestaurantFrontend.Controllers
                         return RedirectToAction("EmptyProduct", "Products");
                     }
 
-                    
+
                 }
 
                 else
@@ -293,7 +491,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Pastas_GrainsMC")]
-        public async Task<IActionResult> Pastas_Grains()
+        public async Task<IActionResult> Pastas_Grains(string filter)
         {
 
             using (var httpClient = new HttpClient())
@@ -309,10 +507,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> PastasandGrains = allProducts.Where(x => x.Tag == "Pastas & Grains").ToList();
 
-                    if (PastasandGrains.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = PastasandGrains;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = PastasandGrains.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = PastasandGrains.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (PastasandGrains.Count > 0)
+                    {
                         return View("Product", PastasandGrains);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
@@ -334,7 +552,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("Cereals_SnacksMC")]
-        public async Task<IActionResult> Cereals_Snacks()
+        public async Task<IActionResult> Cereals_Snacks(string filter)
         {
 
             using (var httpClient = new HttpClient())
@@ -350,10 +568,30 @@ namespace RestaurantFrontend.Controllers
 
                     List<Products> CerealsandSnacks = allProducts.Where(x => x.Tag == "Cereals & Snacks").ToList();
 
-                    if (CerealsandSnacks.Count > 0)
+                    List<Products> filteredProducts = new();
+                    if (filter == "All")
                     {
+                        filteredProducts = CerealsandSnacks;
+                    }
 
+                    else if (filter == "Deals")
+                    {
+                        filteredProducts = CerealsandSnacks.Where(p => p.BestDeal).ToList();
+                    }
+
+                    else if (filter == "Most Popular")
+                    {
+                        filteredProducts = CerealsandSnacks.Where(p => p.MostPopular).ToList();
+                    }
+
+                    else if (CerealsandSnacks.Count > 0)
+                    {
                         return View("Product", CerealsandSnacks);
+                    }
+
+                    if (filteredProducts.Count > 0)
+                    {
+                        return View("Product", filteredProducts);
                     }
 
                     else
