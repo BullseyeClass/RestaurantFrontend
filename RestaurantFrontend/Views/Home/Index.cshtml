@@ -37,7 +37,7 @@
                         <div class="favorite-brands small-bold">
                             Favorite Brands
                         </div>
-                        <a href="#" class="anchor-btn">
+                        <a asp-area="" asp-controller="StartYourCart" asp-action="Index" class="anchor-btn">
                             <div class="landing-btn all-btn">
                                 Shop Now
                             </div>
@@ -62,7 +62,7 @@
                         <div class="favorite-brands small-bold">
                             Favorite Brands
                         </div>
-                        <a href="#" class="anchor-btn">
+                        <a asp-area="" asp-controller="StartYourCart" asp-action="Index" class="anchor-btn">
                             <div class="landing-btn all-btn">
                                 Shop Now
                             </div>
@@ -87,7 +87,7 @@
                         <div class="favorite-brands small-bold">
                             Favorite Brands
                         </div>
-                        <a href="#" class="anchor-btn">
+                        <a asp-area="" asp-controller="StartYourCart" asp-action="Index" class="anchor-btn">
                             <div class="landing-btn all-btn">
                                 Shop Now
                             </div>
@@ -140,7 +140,7 @@
                             Local Pickup
                         </div>
                         <div class="service-light">
-                            Check Out <a href="#" class="quick-service-anchor">Locations</a>
+                            Check Out <a asp-area="" asp-controller="CustomerSupport" asp-action="Index" asp-fragment="LocationSection" class="quick-service-anchor">Locations</a>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                             Available for You
                         </div>
                         <div class="service-light">
-                            <a href="#" class="quick-service-anchor">Online Support</a> 24/7
+                            <a asp-controller="CustomerSupport" asp-action="Index" asp-fragment="support-section" class="quick-service-anchor">Online Support</a> 24/7
                         </div>
                     </div>
                 </div>
@@ -211,13 +211,13 @@
                                     @if (item.BestDeal == true)
                                     {
                                         <div class="selling-tag">
-                                            Best Deal
+                                            <p> Best Deal </p>
                                         </div>
                                     }
                                     else if (item.MostPopular == true)
                                     {
                                         <div class="selling-tag">
-                                            Most Popular
+                                          <p>  Most Popular </p>
                                         </div>
                                     }
                                     else
@@ -253,7 +253,7 @@
 
         <div class="shop-best-section deals-picture-section">
             
-            <a href="#" class="shop-more-btn header-btn">
+            <a asp-controller="BestDealProduct" asp-action="AllBestDealProduct" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Shop Best Deals
                 </div>
@@ -289,7 +289,7 @@
                                 <div class="freestyle">
                                     Unwind with Premium Wines at Unbeatable Prices!
                                 </div>
-                                <a href="#" class="anchor-btn">
+                                <a asp-controller="Products" asp-action="Wine" class="anchor-btn">
                                     <div class="wine-btn all-btn">
                                         Shop Now
                                     </div>
@@ -317,7 +317,7 @@
                                 <div class="cleaning">
                                     Cleaning Supplies
                                 </div>
-                                <a href="#" class="anchor-btn">
+                                <a asp-controller="Products" asp-action="CleaningSupplies" class="anchor-btn">
                                     <div class="wine-btn all-btn">
                                         Shop Now
                                     </div>
@@ -340,10 +340,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061507/Bullseye/vegetables-removebg-preview_dmgvih.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Vegetables"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061507/Bullseye/vegetables-removebg-preview_dmgvih.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Vegetables</a>
+                            <a asp-controller="Products" asp-action="Vegetables">Vegetables</a>
                         </div>
                     </div>
 
@@ -352,10 +352,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061404/Bullseye/bakery-removebg-preview_wydbas.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Bakery"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061404/Bullseye/bakery-removebg-preview_wydbas.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Bakery</a>
+                            <a asp-controller="Products" asp-action="Bakery">Bakery</a>
                         </div>
                     </div>
 
@@ -364,10 +364,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061508/Bullseye/wine-removebg-preview_ccqp8a.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Wine"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061508/Bullseye/wine-removebg-preview_ccqp8a.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category ms-5">
-                            <a href="#">Wine</a>
+                            <a asp-controller="Products" asp-action="Wine">Wine</a>
                         </div>
                     </div>
 
@@ -378,10 +378,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061502/Bullseye/Diary___eggs-removebg-preview_oa0m1n.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Dairy_Eggs"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061502/Bullseye/Diary___eggs-removebg-preview_oa0m1n.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Diary & Eggs</a>
+                            <a asp-controller="Products" asp-action="Dairy_Eggs">Diary & Eggs</a>
                         </div>
                     </div>
 
@@ -398,10 +398,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061504/Bullseye/meat___poultry-removebg-preview_tdkrfs.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Meat_Poultry"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061504/Bullseye/meat___poultry-removebg-preview_tdkrfs.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Meat & Poultry</a>
+                            <a asp-controller="Products" asp-action="Meat_Poultry">Meat & Poultry</a>
                         </div>
                     </div>
                 </div>
@@ -409,10 +409,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061507/Bullseye/soft_drinks-removebg-preview_pzvoyx.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="SoftDrinks"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061507/Bullseye/soft_drinks-removebg-preview_pzvoyx.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Soft Drinks</a>
+                            <a  <a asp-controller="Products" asp-action="SoftDrinks">Soft Drinks</a>
                         </div>
                     </div>
                 </div>
@@ -420,10 +420,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061502/Bullseye/cleaning_supplies-removebg-preview_zv81wn.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="CleaningSupplies"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061502/Bullseye/cleaning_supplies-removebg-preview_zv81wn.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Cleaning Supplies</a>
+                            <a asp-controller="Products" asp-action="CleaningSupplies">Cleaning Supplies</a>
                         </div>
                     </div>
                 </div>
@@ -432,10 +432,10 @@
                     <div class="position-relative">
                         <div class="sku-background"></div>
                         <div class="position-absolute top-0 start-0 p-3">
-                            <a href="#"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061500/Bullseye/cereal___snacks-removebg-preview_v5svhx.png" alt="Your Image" class="img-fluid all-popular-img"></a>
+                            <a asp-controller="Products" asp-action="Cereals_Snacks"><img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061500/Bullseye/cereal___snacks-removebg-preview_v5svhx.png" alt="Your Image" class="img-fluid all-popular-img"></a>
                         </div>
                         <div class="category">
-                            <a href="#">Cereal & Snacks</a>
+                            <a asp-controller="Products" asp-action="Cereals_Snacks">Cereal & Snacks</a>
                         </div>
                     </div>
                 </div>
@@ -462,13 +462,13 @@
                                     @if (item.BestDeal == true)
                                     {
                                         <div class="selling-tag">
-                                            Best Deal
+                                            <p> Best Deal </p>
                                         </div>
                                     }
                                     else if (item.MostPopular == true)
                                     {
                                         <div class="selling-tag">
-                                            Most Popular
+                                            <p>Most Popular </p>
                                         </div>
                                     }
                                     else
@@ -563,13 +563,13 @@
                                     @if (item.BestDeal == true)
                                     {
                                         <div class="selling-tag">
-                                            Best Deal
+                                            <p> Best Deal </p>
                                         </div>
                                     }
                                     else if (item.MostPopular == true)
                                     {
                                         <div class="selling-tag">
-                                            Most Popular
+                                            <p>Most Popular </p>
                                         </div>
                                     }
                                     else
@@ -605,7 +605,7 @@
 
         <div class="shop-best-section deals-picture-section">
             
-            <a href="#" class="shop-more-btn header-btn">
+            <a asp-controller="Popular" asp-action="AllPopular" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Shop Most Popular
                 </div>
@@ -631,7 +631,7 @@
                                     </div>
                            
                            
-                                    <a href="#" class="anchor-btn">
+                                    <a asp-controller="Products" asp-action="Pastas_Grains" class="anchor-btn">
                                         <div class="wine-btn all-btn">
                                             Shop Now
                                         </div>
@@ -671,7 +671,7 @@
                                 <div class="cereals-bold">
                                     Cereal Brands
                                 </div>
-                                <a href="#" class="anchor-btn">
+                                <a asp-controller="Products" asp-action="Cereals_Snacks" class="anchor-btn">
                                     <div class="wine-btn all-btn">
                                         Shop Now
                                     </div>
@@ -702,13 +702,13 @@
                                     @if (item.BestDeal == true)
                                     {
                                         <div class="selling-tag">
-                                            Best Deal
+                                             <p> Best Deal </p>
                                         </div>
                                     }
                                     else if (item.MostPopular == true)
                                     {
                                         <div class="selling-tag">
-                                            Most Popular
+                                            <p>Most Popular </p>
                                         </div>
                                     }
                                     else
