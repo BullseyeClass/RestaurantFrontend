@@ -115,21 +115,21 @@
                 </ul>
                 <a class="bevs-hover-link">Beverages</a>
                 <ul class="bevs-hover-list">
-                    <li><a class="red-hover">Tea</a></li>
-                    <li><a class="red-hover">Coffee</a></li>
-                    <li><a class="red-hover">Soft Drinks</a></li>
-                    <li><a class="red-hover">Beer</a></li>
-                    <li><a class="red-hover">Wine</a></li>
+                    <li><a asp-controller="Products" asp-action="Tea" class="red-hover">Tea</a></li>
+                    <li><a asp-controller="Products" asp-action="Coffee" class="red-hover">Coffee</a></li>
+                    <li><a asp-controller="Products" asp-action="SoftDrinks" class="red-hover">Soft Drinks</a></li>
+                    <li><a asp-controller="Products" asp-action="Beer" class="red-hover">Beer</a></li>
+                    <li><a asp-controller="Products" asp-action="Wine" class="red-hover">Wine</a></li>
                 </ul>
                 <a class="house-hover-link">Household</a>
                 <ul class="house-hover-list">
-                    <li><a class="red-hover">Home &  Kitchen</a></li>
-                    <li><a class="red-hover">Cleaning Supplies</a></li>
+                    <li><a asp-controller="Products" asp-action="Home_Kitchen" class="red-hover">Home &  Kitchen</a></li>
+                    <li><a asp-controller="Products" asp-action="CleaningSupplies" class="red-hover">Cleaning Supplies</a></li>
                 </ul>
                 <a class="care-hover-link">Personal Care</a>
                 <ul class="care-hover-list">
-                    <li><a class="red-hover">Home &  Kitchen</a></li>
-                    <li><a class="red-hover">Cleaning Supplies</a></li>
+                    <li><a asp-controller="Products" asp-action="PersonalHygiene" class="red-hover">Personal Hygiene</a></li>
+                    <li><a asp-controller="Products" asp-action="Babies" class="red-hover">Babies</a></li>
                 </ul>
                 <a asp-area="" asp-controller="Popular" asp-action="AllPopular" class="red-hover">Most Popular</a>
                 <a asp-area="" asp-controller="Order" asp-action="Index" class="red-hover">My Orders</a>
