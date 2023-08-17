@@ -27,27 +27,22 @@
 
         <div class="filter-content" id="targetDiv">
 
-            <p>All</p><br />
+            <a>All</a>
             <a asp-controller="Popular" asp-action="Filter" asp-route-category="Deals">Deals</a><br />
-            <a asp-area="" asp-controller="Popular" asp-action="Index"> Most Popular</a><br />
+            <a asp-area="" asp-controller="Popular" asp-action="Index"> Most Popular</a>
             
-
-
         </div>
         <hr />
 
         <style>
+            #popular{
+                text-align:center;
+            }
             .filter-content a {
                 text-decoration: none;
                 color: gray;
             }
         </style>
-
-        <div class="filter-price-volume">
-            <a asp-area="" asp-controller="price" asp-action="Index"> Price</a><br />
-            <input type="range" id="volume" name="volume" min="0" max="11" />
-            <label for="volume">Volume</label>
-        </div>
     </div>
     <style>
         .filter-price-volume p, label {
@@ -84,7 +79,7 @@
 
 
                     <div class="popular">
-                        <div class="most-popular" id="most-popular"> <p> Most Popular </p> </div>
+                        <div class="Popular-tag" id=""> <p> Most Popular </p> </div>
                     </div>
                     <div class="image-display">
                         <img src="@item.Image" width="170" margin-bottom="0" alt="" />
@@ -116,6 +111,10 @@
 </div>
 
 <style>
+    .main-container{
+        display:flex;
+        padding:3rem;
+    }
     .counter-container {
         display: flex;
         justify-content: space-between;
@@ -125,7 +124,15 @@
         margin-bottom: -20%;
     }
 
-
+    .Popular-tag p{
+        color:white;
+        background-color:red;
+        text-align:center;
+        margin:0.7rem;
+        margin-bottom:0;
+        border-radius:25px;
+        font-size:13px;
+    }
 
     .decrementBtn {
         font-size: 25px;
