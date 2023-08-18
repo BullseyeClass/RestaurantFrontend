@@ -188,7 +188,8 @@
                     <h6>Menu</h6>
 
                     <a asp-controller="BestDealProduct" asp-action="AllBestDealProduct">Deals</a><br />
-                    <a id="footer-food-hover-link">Food</a><br />
+                    <div id="footer-food-hover-link">
+                    <a >Food</a><br />
                     <ul id="footer-food-hover-list">
                         <li><a class="red-hover" asp-controller="Products" asp-action="Vegetables">Vegetables</a></li>
                         <li><a class="red-hover" asp-controller="Products" asp-action="Fruits">Fruit</a></li>
@@ -199,24 +200,31 @@
                         <li><a class="red-hover" asp-controller="Products" asp-action="Pastas_Grains">Pastas & Grains</a></li>
                         <li><a class="red-hover" asp-controller="Products" asp-action="Cereals_Snacks">Cereals & Snacks</a></li>
                     </ul>
-                    <a class="footer-bevs-hover-link">Beverages</a><br />
-                    <ul class="footer-bevs-hover-list">
+                    </div>
+                    <div id="footer-bevs-hover-link">
+                    <a >Beverages</a><br />
+                    <ul id="footer-bevs-hover-list">
                         <li><a asp-controller="Products" asp-action="Tea" class="red-hover">Tea</a></li>
                         <li><a asp-controller="Products" asp-action="Coffee" class="red-hover">Coffee</a></li>
                         <li><a asp-controller="Products" asp-action="SoftDrinks" class="red-hover">Soft Drinks</a></li>
                         <li><a asp-controller="Products" asp-action="Beer" class="red-hover">Beer</a></li>
                         <li><a asp-controller="Products" asp-action="Wine" class="red-hover">Wine</a></li>
                     </ul>
-                    <a class="footer-house-hover-link">Household</a><br />
-                    <ul class="footer-house-hover-list">
+                    </div>
+                    <div id="footer-house-hover-link">
+                    <a >Household</a><br />
+                    <ul id="footer-house-hover-list">
                         <li><a asp-controller="Products" asp-action="Home_Kitchen" class="red-hover">Home &  Kitchen</a></li>
                         <li><a asp-controller="Products" asp-action="CleaningSupplies" class="red-hover">Cleaning Supplies</a></li>
                     </ul>
-                    <a class="footer-care-hover-link">Personal Care</a><br />
-                    <ul class="footer-care-hover-list">
+                    </div>
+                    <div id="footer-care-hover-link">
+                    <a >Personal Care</a><br />
+                    <ul id="footer-care-hover-list">
                         <li><a asp-controller="Products" asp-action="PersonalHygiene" class="red-hover">Personal Hygiene</a></li>
                         <li><a asp-controller="Products" asp-action="Babies" class="red-hover">Babies</a></li>
                     </ul>
+                    </div>
                     <a asp-area="" asp-controller="Popular" asp-action="AllPopular">Most Popular</a><br />
                     <a asp-controller="Order" asp-action="Index">My Orders</a><br />
 
