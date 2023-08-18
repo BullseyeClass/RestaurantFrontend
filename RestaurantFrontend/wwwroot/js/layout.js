@@ -1,5 +1,13 @@
 ﻿const slideUpElement1 = document.getElementById('slide-up-element1');
 const slideUpElement2 = document.getElementById('slide-up-element2');
+const food = document.getElementById('footer-food-hover-link');
+const flist = document.getElementById('footer-food-hover-list');
+const bevs = document.getElementById('footer-bevs-hover-link');
+const blist = document.getElementById('footer-bevs-hover-list');
+const house = document.getElementById('footer-house-hover-link');
+const hlist = document.getElementById('footer-house-hover-list');
+const care = document.getElementById('footer-care-hover-link');
+const clist = document.getElementById('footer-care-hover-list');
 
 
 setInterval(() => {
@@ -33,3 +41,46 @@ function navigateToFAQSection(event) {
         targetSection.scrollIntoView({ behavior: "smooth" });
     }
 }
+
+
+
+
+
+
+food.addEventListener('mouseover', () => {
+    flist.style.display = 'grid';
+});
+
+
+food.addEventListener('mouseout', () => {
+    flist.style.display = 'none'; 
+});
+
+bevs.addEventListener('mouseover', () => {
+    blist.style.display = 'grid';
+});
+
+
+bevs.addEventListener('mouseout', () => {
+    blist.style.display = 'none';
+});
+
+
+house.addEventListener('mouseover', () => {
+    hlist.style.display = 'grid';
+});
+
+
+house.addEventListener('mouseout', () => {
+    hlist.style.display = 'none';
+});
+
+care.addEventListener('mouseover', () => {
+    clist.style.display = 'grid';
+});
+
+
+care.addEventListener('mouseout', () => {
+    clist.style.display = 'none';
+});
+

@@ -503,6 +503,107 @@ li{
     }
 
 
+#footer-food-hover-list {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 1rem;
+    padding-right: 1rem;
+    margin-top: -2.3rem ;
+    margin-left:2.5rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+#footer-food-hover-link:hover  {
+    display: block;
+    background-color: black;
+}
+#footer-food-hover-list:hover {
+    display: block;
+}
+
+li {
+    line-height: 2rem;
+}
+
+#footer-food-hover-list:hover {
+    display: block;
+}
+
+#footer-bevs-hover-list {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 1rem;
+    padding-right: 1rem;
+    margin-top: -2.3rem;
+    margin-left: 4.5rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+#footer-bevs-hover-link:hover {
+    display: block;
+    background-color: black;
+}
+
+
+
+#footer-house-hover-list:hover {
+    display: block;
+}
+
+#footer-house-hover-list {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 1rem;
+    padding-right: 1rem;
+    margin-top: -2.3rem;
+    margin-left: 6rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+#footer-house-hover-link:hover {
+    display: block;
+    background-color: black;
+}
+
+
+#footer-care-hover-list:hover {
+    display: block;
+}
+
+#footer-care-hover-list {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 1rem;
+    padding-right: 1rem;
+    margin-top: -2.3rem;
+    margin-left: 6rem;
+    z-index: 4;
+    list-style-type: none;
+    color: #808080;
+}
+
+#footer-care-hover-link:hover {
+    display: block;
+    background-color: black;
+}
+
+
+#footer-care-hover-list:hover {
+    display: block;
+}
+
+
+
 
 
 
