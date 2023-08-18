@@ -16,7 +16,7 @@ body {
         font-size: 50px
     }
 
-.about {
+.aboutus {
     padding: 5% 0;
     width: 100%;
     height: auto;
@@ -24,38 +24,38 @@ body {
     margin-top: -5rem;
 }
 
-    .about .left {
+    .aboutus .left {
         padding: 2% 0;
         float: left;
         width: 50%;
         display: inline-block;
     }
 
-    .about .right {
+    .aboutus .right {
         width: 50%;
         display: inline-block;
     }
 
-        .about .right img {
+        .aboutus .right img {
             width: 100%;
             margin-top: 2rem;
             height: 55vh;
             
         }
 
-    .about .left h1 {
+    .aboutus .left h1 {
         text-align: center;
         color: #8c0303;
         margin: 0 0 10px 0;
     }
 
-    .about .left hr {
+    .aboutus .left hr {
         width: 20%;
         border-top: 2px solid #000;
         border-bottom: none;
     }
 
-    .about .left p {
+    .aboutus .left p {
         font-size: 1rem;
         margin: 20px auto;
         width: 80%

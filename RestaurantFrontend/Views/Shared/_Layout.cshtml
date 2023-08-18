@@ -13,7 +13,7 @@
         <nav class="nav-bar">
             <div class="first-nav" >
                 <div id="first-nav-content1" class="first-nav-content1">
-                    <a class="about">About Us</a>
+                    <a asp-area="" asp-controller="AboutUs" asp-action="Index" class="about">About Us</a>
                     <a asp-area="" asp-controller="CustomerSupport" asp-action="Index" >Customer Support</a>
                 </div>
                 <div class="first-nav-content2">
@@ -249,7 +249,7 @@
                     <h6>Info</h6>
 
                     <a asp-area="" asp-controller="CustomerSupport" asp-action="Index" asp-fragment="FAQ" data-section="FAQ">FAQ</a><br />
-                    <a>About Us</a><br />
+                    <a asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a><br />
                     <a sp-area="" asp-controller="CustomerSupport" asp-action="Index">Customer Support</a><br />
                     <a asp-area="" asp-controller="CustomerSupport" asp-action="Index" asp-fragment="LocationSection">Locations</a><br />
 
