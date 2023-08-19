@@ -17,6 +17,7 @@ namespace RestaurantFrontend.Controllers
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             using (var httpClient = new HttpClient())
