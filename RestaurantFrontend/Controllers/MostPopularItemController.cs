@@ -23,7 +23,7 @@ namespace RestaurantFrontend.Controllers
             _configuration = configuration;
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
-
+        
         [Route("Popular")]
         public async Task<IActionResult> AllPopular()
         {

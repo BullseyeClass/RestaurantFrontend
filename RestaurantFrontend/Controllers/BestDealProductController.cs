@@ -14,7 +14,7 @@ namespace RestaurantFrontend.Controllers
             _configuration = configuration;
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
-
+  
         [Route("BestDealProduct")]
         public async Task<IActionResult> AllBestDealProduct()
         {
