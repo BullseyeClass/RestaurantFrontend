@@ -23,7 +23,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api​/ProductFilter​/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -60,7 +60,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api​/ProductFilter​/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -99,7 +99,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api​/ProductFilter​/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -132,7 +132,7 @@ namespace RestaurantFrontend.Controllers
 
         }
 
-       
+       ///api​/ProductFilter​/AllProduct
 
         [Route("VegetablesMC")]
         public async Task<IActionResult> Vegetables(string filter)
@@ -140,7 +140,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -185,7 +185,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -201,7 +201,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -246,7 +246,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -258,7 +258,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -303,7 +303,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -316,7 +316,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -362,7 +362,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
                
             }
@@ -375,7 +375,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -421,7 +421,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -435,7 +435,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -482,7 +482,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -497,7 +497,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -544,7 +544,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -558,7 +558,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -605,7 +605,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
             }
@@ -617,7 +617,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -662,7 +662,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -676,7 +676,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -721,7 +721,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -735,7 +735,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -780,7 +780,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -794,7 +794,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -839,7 +839,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -854,7 +854,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -899,7 +899,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -914,7 +914,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -959,7 +959,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -973,7 +973,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -1018,7 +1018,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -1032,7 +1032,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -1077,7 +1077,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -1091,7 +1091,7 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                 //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -1136,7 +1136,7 @@ namespace RestaurantFrontend.Controllers
                 else
                 {
                     //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
