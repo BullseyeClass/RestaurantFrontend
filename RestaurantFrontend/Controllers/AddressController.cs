@@ -19,12 +19,10 @@ namespace RestaurantFrontend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Simulate getting addresses from a database or other source
             using (var httpClient = new HttpClient())
             {
 
                 HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/Address/GetAllAddress");
-                //response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
