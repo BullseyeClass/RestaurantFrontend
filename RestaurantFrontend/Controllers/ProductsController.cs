@@ -25,7 +25,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -69,7 +69,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -115,7 +115,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -162,7 +162,7 @@ namespace RestaurantFrontend.Controllers
             {
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -230,7 +230,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -294,7 +294,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -359,7 +359,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -425,7 +425,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -491,7 +491,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -560,7 +560,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -627,7 +627,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -693,7 +693,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -759,7 +759,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -826,7 +826,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -892,7 +892,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -959,7 +959,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -1025,7 +1025,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -1091,7 +1091,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -1158,7 +1158,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -1223,7 +1223,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterAllProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
