@@ -26,9 +26,9 @@
                 <div class="collapse show" id="collapseWidthCategory">
                     <div class="category-list" style="width: 150px;">
                         <div class="row g-2 sku-overlay">
-                            <a href="#targetAll">All</a>
-                            <a href="#targetDeal">Best Deal</a>
-                            <a href="#targetMost">Most Popular</a>
+                            <a asp-controller="Products" asp-route-filter="All">All</a>
+                            <a asp-route-filter="Deals">Best Deal</a>
+                            <a asp-route-filter="Most Popular">Most Popular</a>
                         </div>
                     </div>
                 </div>
