@@ -20,33 +20,38 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    if (allProducts.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", allProducts);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        if (allProducts.Count > 0)
+                        {
+                            return View("AllBestDealProduct", allProducts);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
-
 
             }
 
@@ -57,33 +62,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> vegetablebestdeal = allProducts.Where(x => x.Tag == "Vegetables").ToList();
-
-                    if (vegetablebestdeal.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", vegetablebestdeal);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> vegetablebestdeal = allProducts.Where(x => x.Tag == "Vegetables").ToList();
+
+                        if (vegetablebestdeal.Count > 0)
+                        {
+                            return View("AllBestDealProduct", vegetablebestdeal);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -96,33 +108,39 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    List<Products> fruitbestdeal = allProducts.Where(x => x.Tag == "Fruit").ToList();
-
-                    if (fruitbestdeal.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", fruitbestdeal);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> fruitbestdeal = allProducts.Where(x => x.Tag == "Fruit").ToList();
+
+                        if (fruitbestdeal.Count > 0)
+                        {
+                            return View("AllBestDealProduct", fruitbestdeal);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -135,33 +153,39 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    List<Products> MeatandPoultry = allProducts.Where(x => x.Tag == "Meat & Poultry").ToList();
-
-                    if (MeatandPoultry.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", MeatandPoultry);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> MeatandPoultry = allProducts.Where(x => x.Tag == "Meat & Poultry").ToList();
+
+                        if (MeatandPoultry.Count > 0)
+                        {
+                            return View("AllBestDealProduct", MeatandPoultry);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -174,33 +198,39 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    List<Products> Fish_Seafood = allProducts.Where(x => x.Tag == "Fish & Seafood").ToList();
-
-                    if (Fish_Seafood.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Fish_Seafood);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Fish_Seafood = allProducts.Where(x => x.Tag == "Fish & Seafood").ToList();
+
+                        if (Fish_Seafood.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Fish_Seafood);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -213,33 +243,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Dairy_Eggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
-
-                    if (Dairy_Eggs.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Dairy_Eggs);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Dairy_Eggs = allProducts.Where(x => x.Tag == "Dairy & Eggs").ToList();
+
+                        if (Dairy_Eggs.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Dairy_Eggs);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -252,33 +289,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Bakery = allProducts.Where(x => x.Tag == "Bakery").ToList();
-
-                    if (Bakery.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Bakery);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Bakery = allProducts.Where(x => x.Tag == "Bakery").ToList();
+
+                        if (Bakery.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Bakery);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -292,33 +336,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Pastas_Grains = allProducts.Where(x => x.Tag == "Pastas & Grains").ToList();
-
-                    if (Pastas_Grains.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Pastas_Grains);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Pastas_Grains = allProducts.Where(x => x.Tag == "Pastas & Grains").ToList();
+
+                        if (Pastas_Grains.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Pastas_Grains);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -331,33 +382,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Cereals_Snacks = allProducts.Where(x => x.Tag == "Cereals & Snacks").ToList();
-
-                    if (Cereals_Snacks.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Cereals_Snacks);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Cereals_Snacks = allProducts.Where(x => x.Tag == "Cereals & Snacks").ToList();
+
+                        if (Cereals_Snacks.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Cereals_Snacks);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -370,33 +428,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Tea = allProducts.Where(x => x.Tag == "Tea").ToList();
-
-                    if (Tea.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Tea);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Tea = allProducts.Where(x => x.Tag == "Tea").ToList();
+
+                        if (Tea.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Tea);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -410,34 +475,42 @@ namespace RestaurantFrontend.Controllers
             using (var httpClient = new HttpClient())
             {
 
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Coffee = allProducts.Where(x => x.Tag == "Coffee").ToList();
-
-                    if (Coffee.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Coffee);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Coffee = allProducts.Where(x => x.Tag == "Coffee").ToList();
+
+                        if (Coffee.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Coffee);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
 
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
-
 
             }
 
@@ -448,33 +521,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> SoftDrinks = allProducts.Where(x => x.Tag == "Soft Drinks").ToList();
-
-                    if (SoftDrinks.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", SoftDrinks);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> SoftDrinks = allProducts.Where(x => x.Tag == "Soft Drinks").ToList();
+
+                        if (SoftDrinks.Count > 0)
+                        {
+                            return View("AllBestDealProduct", SoftDrinks);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -487,33 +567,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Beer = allProducts.Where(x => x.Tag == "Beer").ToList();
-
-                    if (Beer.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Beer);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Beer = allProducts.Where(x => x.Tag == "Beer").ToList();
+
+                        if (Beer.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Beer);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -526,33 +613,40 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Home_Kitchen = allProducts.Where(x => x.Tag == "Home & Kitchen").ToList();
-
-                    if (Home_Kitchen.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Home_Kitchen);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Home_Kitchen = allProducts.Where(x => x.Tag == "Home & Kitchen").ToList();
+
+                        if (Home_Kitchen.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Home_Kitchen);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -565,33 +659,41 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Wine = allProducts.Where(x => x.Tag == "Wine").ToList();
-
-                    if (Wine.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Wine);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Wine = allProducts.Where(x => x.Tag == "Wine").ToList();
+
+                        if (Wine.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Wine);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
 
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -604,33 +706,41 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Cleaning_Supplies = allProducts.Where(x => x.Tag == "Cleaning Supplies").ToList();
-
-                    if (Cleaning_Supplies.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Cleaning_Supplies);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Cleaning_Supplies = allProducts.Where(x => x.Tag == "Cleaning Supplies").ToList();
+
+                        if (Cleaning_Supplies.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Cleaning_Supplies);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
 
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
@@ -643,35 +753,42 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
 
-                    List<Products> Personal_Hygiene = allProducts.Where(x => x.Tag == "Personal Hygiene").ToList();
-
-                    if (Personal_Hygiene.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Personal_Hygiene);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Personal_Hygiene = allProducts.Where(x => x.Tag == "Personal Hygiene").ToList();
+
+                        if (Personal_Hygiene.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Personal_Hygiene);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
 
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
-
 
             }
 
@@ -682,33 +799,39 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-
-                HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/BestDealProduct");
-                //response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
-
-                    List<Products> Babies = allProducts.Where(x => x.Tag == "Babies").ToList();
-
-                    if (Babies.Count > 0)
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/FilterBestDealProduct");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
                     {
-                        return View("AllBestDealProduct", Babies);
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        List<Products> Babies = allProducts.Where(x => x.Tag == "Babies").ToList();
+
+                        if (Babies.Count > 0)
+                        {
+                            return View("AllBestDealProduct", Babies);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        }
+
+
                     }
 
                     else
                     {
-                        return RedirectToAction("EmptyProduct", "BestDealProduct");
+                        //Handle error case
+                        return View();
                     }
-
-
                 }
-
-                else
+                catch (Exception ex)
                 {
-                    //Handle error case
-                    return View();
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
 
 
