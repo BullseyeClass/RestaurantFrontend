@@ -24,6 +24,8 @@ namespace RestaurantFrontend.Controllers
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
+        // /api/ProductFilter/MostPopularProduct
+
         [Route("Popular")]
         public async Task<IActionResult> AllPopular()
         {
@@ -32,7 +34,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -76,7 +78,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -122,7 +124,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -167,7 +169,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -213,7 +215,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -259,7 +261,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -305,7 +307,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -352,7 +354,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -397,7 +399,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -443,7 +445,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -489,7 +491,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -536,7 +538,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -583,7 +585,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -628,7 +630,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -674,7 +676,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -721,7 +723,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -765,7 +767,7 @@ namespace RestaurantFrontend.Controllers
             {
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
@@ -811,7 +813,7 @@ namespace RestaurantFrontend.Controllers
                 try
                 {
 
-                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetMostPopularProduct");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/MostPopularProduct");
                     //response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
