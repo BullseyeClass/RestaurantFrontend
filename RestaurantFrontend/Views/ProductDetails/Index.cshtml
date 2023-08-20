@@ -1,0 +1,86 @@
+﻿@model IEnumerable<RestaurantFrontend.Models.ProductDetails.ProductDetails>
+
+@{
+    ViewData["Title"] = "List of ProductDetails";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
+<style>
+    #navbar{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin: 0.75rem 0;
+        width:100vw;
+    }
+   #img-content{
+       margin-left:-20px;
+   }
+</style>
+<div class="container ">
+    <div class="row">
+    @*container justify-content-center*@
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12 mb-5">
+            <div class="row g-0">
+                 <div class="col-md-12" id="navbar">
+                    <div class="breadcrumb">
+                        <a href="#">Home</a> /
+                        <a href="#"> @item.Tag</a> /
+                        <span>@item.Name</span>
+                    </div>
+                    <div class="pagination">
+                        <a href="#" class="prev">  <i class="bi bi-chevron-left"></i> Prev</a> |
+                        <a href="#" class="next">Next <i class="bi bi-chevron-right"></i></a>
+                    </div>
+                 </div>
+                 <div class="col-md-6" >
+                        <div class="card mb-2" id="img-content" style="width: 450px;">
+                        <img src="@item.Image" width="50%" alt="@item.Name">
+                    </div>
+                    <div class="card-content" style="max-width: 460px;">
+                        <p>I'm a product description. This is a great place to "sell" your product and
+                            grab buyers' attention. Describe your product clearly and concisely.
+                            Use unique keywords. Write your own description instead of using
+                            manufacturers' copy.
+                        </p>
+                    </div>
+                 </div>
+                 <div class="col-md-6">
+                        <div class="card-body">
+                        <p class="card-text"><b>@item.Name</b></p>
+                            <p class="card-text">@item.SKU</p>
+                            <p class="card-text"><b>@item.Price </b></p>
+                            <p class="card-text">Quantity</p>
+                        </div>
+                        <div>
+                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                        </div>
+                         <div class="category-details">
+
+                            <button class="category-details-btn" type="button" style="width: 30vw;">
+                                Category
+                                <span class="icon">-</span>
+                            </button>
+
+                            <div class="collapse show" id="collapseWidthCategory">
+                                <div class="category-list" style="width: 400px;">
+                                    <div class="row g-2 sku-overlay">
+                                        I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            @* </div> *@
+        </div>
+    }
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/Products.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
