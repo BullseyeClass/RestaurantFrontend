@@ -32,7 +32,6 @@ counterContainers.forEach(container => {
     });
 });
 
-
 $(document).ready(function () {
     $('.category-details-btn').click(function () {
         var icon = $(this).find('.icon');
@@ -40,6 +39,7 @@ $(document).ready(function () {
         icon.text(icon.text() === '-' ? '+' : '-');
     });
 });
+
 
 
 
