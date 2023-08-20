@@ -12,7 +12,7 @@
     }
 </style>
 
-<div class="container">
+
     <div class="row">
     @*container justify-content-center*@
     @foreach (var item in Model)
@@ -37,9 +37,9 @@
                             <p class="card-text"><b>@item.Price </b></p>
                             <p class="card-text">Quantity</p>
                         </div>
-                         <div class="category-details">
+                       @*   <div class="category-details">
 
-                        <button class="category-details-btn" type="button" style="width: 30vw;">
+                            <button class="category-details-btn" type="button" style="width: 30vw;">
                                 Category
                                 <span class="icon">-</span>
                             </button>
@@ -51,13 +51,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             @* </div> *@
         @* </div> *@
     }
-</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/Products.js" asp-append-version="true"></script>
