@@ -30,22 +30,6 @@ namespace RestaurantFrontend.Controllers
                     ShippingInfo = "Delivered",
 
                 },
-
-                new ProductDetails
-               {
-                    Id = Guid.NewGuid(),
-                    Category = "Food",
-                    Tag ="Fish & Seafood",
-                    Name ="Tuna Steak Fillet - 1lb",
-                    Image =  "./images/Tuna_Steak_Fillet.png",
-                    SKU = "SKU202",
-                    Price = 500,
-                    ProductInfo = "High-quality yoga mat for comfortable workout sessions.",
-                    ReturnPolicy = "30-day return policy.",
-                    DeliveryInfo = "Delivered",
-                    ShippingInfo = "Shipped",
-                    
-               },
                 };
 
             return productDetails;
