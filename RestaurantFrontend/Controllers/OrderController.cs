@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantFrontend.Models.Order;
 
 namespace RestaurantFrontend.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         public IActionResult Index()

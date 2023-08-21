@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<RestaurantFrontend.Models.MyWishListPage.MyWishList>
 
-<div class="container">
-   <div class="row">
-    
+@*<div class="container">
+    <div class="row">
+
         <div class="col-md-4">
             <div class="card mt-1">
                 <nav class="d-flex flex-column">
@@ -37,50 +37,64 @@
                         <span class="px-2">Address</span>
                     </a>
                     <hr />
-                    <form method="get" class="text-center" action="/customer/account/logout/">
-                        <button class="btn btn-light  text-danger">Logout</button>
+                    <form method="post" class="text-center" asp-action="Logout" asp-controller="Authentication">
+                        <button type="submit" class="btn btn-light  text-danger">Logout</button>
                     </form>
                 </nav>
             </div>
         </div>
 
 
-       <div class="col-md-8">
-    <div class="card-header text-start">
-        <h1 class="h3">Saved Items</h1>
+        
     </div>
-    <div class="row row-cols-1 row-cols-md-1 g-4">
-        @foreach (var item in Model)
-        {
-            <div class="col">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <a href="#" class="text-decoration-none ">
-                                <img src="@item.Image"  alt="@item.Name" style="max-width: 110px;">
-                            </a>
-                                <div class="ms-4">
-                                    <h5 class="card-title">@item.Name</h5>
-                                    <p class="card-text">₦ @item.Price</p>
+</div>*@
+
+
+<div>
+    <div class="d-flex justify-content-between mt-3 p-5">
+
+        <div style="width: 30%;">
+            @Html.Partial("_MyAccountLayout")
+        </div>
+
+        <div class="col-md-8">
+            <div class="card-header text-start p-3" style="background-color: #8c0303;">
+                <h1 class="h3 text-light">Saved Items</h1>
+            </div>
+            <div class="row row-cols-1 row-cols-md-1 g-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <a href="#" class="text-decoration-none ">
+                                        <img src="@item.Image" alt="@item.Name" style="max-width: 110px;">
+                                    </a>
+                                    <div class="ms-4">
+                                        <h5 class="card-title">@item.Name</h5>
+                                        <p class="card-text">₦ @item.Price</p>
+                                    </div>
                                 </div>
-                        </div>
-                        <div class="col-md-8 d-flex align-items-center justify-content-between">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-end mb-3">
-                                    <a href="#" class="btn btn-primary disabled">Out of Stock</a>
-                                    <form method="post" action="/customer/wishlist/remove/" class="mt-4">
-                                        @Html.AntiForgeryToken()
-                                        <input type="hidden" name="itemToRemove" value="@item.Id" />
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remove</button>
-                                    </form>
+                                <div class="col-md-8 d-flex align-items-center justify-content-between">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-column align-items-end mb-3">
+                                            <a href="#" class="btn btn-primary disabled">Out of Stock</a>
+                                            <form method="post" action="/customer/wishlist/remove/" class="mt-4">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="itemToRemove" value="@item.Id" />
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remove</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
-        }
+        </div>
+
+
     </div>
-      </div>
-   </div>
 </div>
