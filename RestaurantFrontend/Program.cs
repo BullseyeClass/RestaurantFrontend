@@ -16,6 +16,7 @@ builder.Services.AddScoped<IJsonHelperMWL, JsonHelperMWL>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
         {
+            options.Cookie.Name = CookieAuthenticationDefaults.AuthenticationScheme;
             options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
             options.LoginPath = "/Registration"; // Specify the login page URL
             //options.AccessDeniedPath = "/Account/AccessDenied"; // Specify the access denied page URL

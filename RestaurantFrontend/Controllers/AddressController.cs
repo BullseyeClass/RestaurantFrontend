@@ -83,11 +83,13 @@ namespace RestaurantFrontend.Controllers
 
             if (ModelState.IsValid)
             {
+                //Address address = new Address();
+                //address.CustomerId = userId;
+
                 using (var httpClient = new HttpClient())
                 {
-                    var userId = HttpContext.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
 
-                    address.CustomerId = Guid.Parse(userId);
+                    //address.CustomerId = Guid.Parse(userId);
                     var json = JsonConvert.SerializeObject(address);
                     var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 

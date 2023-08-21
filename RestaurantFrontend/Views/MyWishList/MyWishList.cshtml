@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<RestaurantFrontend.Models.MyWishListPage.MyWishList>
 
-<div class="container">
+@*<div class="container">
     <div class="row">
 
         <div class="col-md-4">
@@ -45,9 +45,21 @@
         </div>
 
 
+        
+    </div>
+</div>*@
+
+
+<div>
+    <div class="d-flex justify-content-between mt-3 p-5">
+
+        <div style="width: 30%;">
+            @Html.Partial("_MyAccountLayout")
+        </div>
+
         <div class="col-md-8">
-            <div class="card-header text-start">
-                <h1 class="h3">Saved Items</h1>
+            <div class="card-header text-start p-3" style="background-color: #8c0303;">
+                <h1 class="h3 text-light">Saved Items</h1>
             </div>
             <div class="row row-cols-1 row-cols-md-1 g-4">
                 @foreach (var item in Model)
@@ -82,5 +94,7 @@
                 }
             </div>
         </div>
+
+
     </div>
 </div>
