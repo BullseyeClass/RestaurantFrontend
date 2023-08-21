@@ -1,35 +1,67 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using RestaurantFrontend.Models;
 using RestaurantFrontend.Models.CartItems;
+using RestaurantFrontend.Models.Products;
 using RestaurantFrontend.Repository.Interface;
 using System.Diagnostics;
+using System.Net.Http;
 
 namespace RestaurantFrontend.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
         private readonly IGettingProductsFromDB _gettingProductsFromDB;
-        private readonly IMemoryCache _memoryCache;
+        private readonly string _baseUrl;
 
-        public HomeController(ILogger<HomeController> logger, IGettingProductsFromDB gettingProductsFromDB, IMemoryCache memoryCache)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IGettingProductsFromDB gettingProductsFromDB)
         {
             _logger = logger;
+            _configuration = configuration;
             _gettingProductsFromDB = gettingProductsFromDB;
-            _memoryCache = memoryCache;
+            _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
         public IActionResult Testing()
         {
             return View();
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            _memoryCache.Set("MyCachedDataKey", 1, TimeSpan.FromMinutes(10));
             var products = _gettingProductsFromDB.GetProductsFromDataSource();
-            return View(products.ToList());
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/AllProduct");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+
+                        List<Products> allProducts = JsonConvert.DeserializeObject<List<Products>>(responseBody);
+
+                        return View(allProducts);
+                    }
+                    else
+                    {
+                       
+                        return View(products.ToList());
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    return View(products.ToList());
+                    //return RedirectToAction("Index", "ErrorMessage");
+                }
+            }
         }
 
         public IActionResult Login()
@@ -46,27 +78,5 @@ namespace RestaurantFrontend.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        //public int CalculateTotalCartQuantity()
-        //{
-        //    if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
-        //    {
-        //        int totalQuantity = cartItems.Sum(item => item.Quantity);
-        //        //return totalQuantity;
-        //        return 2;
-        //    }
-
-        //    return 0;
-        //}
-
-
-        //public override void OnActionExecuting(ActionExecutingContext context)
-        //{
-        //    base.OnActionExecuting(context);
-
-        //    int totalCartQuantity = CalculateTotalCartQuantity();
-        //    //ViewBag.TotalCartQuantity = totalCartQuantity;
-        //    ViewBag.TotalCartQuantity = 3;
-        //}
     }
 }
