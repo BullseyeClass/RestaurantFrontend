@@ -27,18 +27,18 @@
             <div class="row g-0">
                  <div class="col-md-12" id="navbar">
                     <div class="breadcrumb">
-                        <a href="#">Home</a> /
-                        <a href="#"> @item.Tag</a> /
-                        <span>@item.Name</span>
+                        <a href="#" class="text-decoration-none text-dark me-1">Home</a> /
+                            <a href="#" class="text-decoration-none text-dark me-1 ms-1"> @item.Tag</a> /
+                        <span class="ms-1">@item.Name</span>
                     </div>
-                    <div class="pagination">
+                    @*<div class="pagination">
                         <a href="#" class="prev">  <i class="bi bi-chevron-left"></i> Prev</a> |
                         <a href="#" class="next">Next <i class="bi bi-chevron-right"></i></a>
-                    </div>
+                    </div>*@
                  </div>
                  <div class="col-md-6" >
-                        <div class="card mb-2" id="img-content" style="width: 450px;">
-                        <img src="@item.Image" width="50%" alt="@item.Name">
+                    <div class="card mb-2" id="img-content" style="width: 450px; height: 80vh">
+                            <img src="@item.Image" style="width: 30vw; height: 70vh;" alt="@item.Name" class="position-absolute top-50 start-50 translate-middle">
                     </div>
                     <div class="card-content" style="max-width: 460px;">
                         <p>I'm a product description. This is a great place to "sell" your product and
@@ -52,59 +52,64 @@
                         <div class="card-body">
                         <p class="card-text"><b>@item.Name</b></p>
                             <p class="card-text">@item.SKU</p>
-                            <p class="card-text"><b>@item.Price </b></p>
+                            <p class="card-text text-danger"><b>$@item.Price </b></p>
                             <p class="card-text">Quantity</p>
+                            <form>
+                                <input placeholder="1" style="width: 7vw; height: 8vh;border: solid 1px; border-color:dimgray; display:flex; text-align: center; justify-content:center; padding:4px">
+                            </form>
                         </div>
                         <div>
-                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                            <a class="btn btn-danger text-white add-to-cart-btn m-5" style="width: 25vw;"> Add to Cart</a>
                         </div>
                         <div class="category-details">
 
-                            <button class="category-details-btn" type="button" style="width: 30vw;">
+                            <button class="category-details-btn fs-4" type="button" style="width: 30vw;">
                                 Product Info
-                                <span class="icon">-</span>
+                                <span class="icon">+</span>
                             </button>
 
-                            <div class="collapse show" id="collapseWidthCategory">
+                            <div class="collapse" id="collapseWidthCategory">
                                 <div class="category-list" style="width: 400px;">
-                                    <div class="row g-2 sku-overlay">
+                                    <div class="row g-2 ms-1 sku-overlay">
                                         I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <hr style="width: 30vw">
                         <div class="category-details">
 
-                            <button class="category-details-btn" type="button" style="width: 30vw;">
+                            <button class="category-details-btn fs-4" type="button" style="width: 30vw;">
                                 Return & Refund Policy
-                                <span class="icon">-</span>
+                                <span class="icon">+</span>
                             </button>
 
-                            <div class="collapse show" id="collapseWidthCategory">
+                            <div class="collapse" id="collapseWidthCategory">
                                 <div class="category-list" style="width: 400px;">
-                                    <div class="row g-2 sku-overlay">
+                                    <div class="row g-2 ms-1 sku-overlay">
                                         I'm a return and refund policy. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <hr style="width: 30vw">
                         <div class="category-details">
 
-                            <button class="category-details-btn" type="button" style="width: 30vw;">
+                            <button class="category-details-btn fs-4" type="button" style="width: 30vw;">
                                 Shipping Info
-                                <span class="icon">-</span>
+                                <span class="icon">+</span>
                             </button>
 
-                            <div class="collapse show" id="collapseWidthCategory">
+                            <div class="collapse" id="collapseWidthCategory">
                                 <div class="category-list" style="width: 400px;">
-                                    <div class="row g-2 sku-overlay">
+                                    <div class="row g-2 ms-1 sku-overlay">
                                         I'm a Shipping info. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                 </div>
+            </div>
                
             @* </div> *@
         </div>
