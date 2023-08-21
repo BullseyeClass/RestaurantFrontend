@@ -79,12 +79,12 @@
                                 <p class="card-text-dollar text-danger">₦@item.Price</p>
                                 <div class="counter-container">
                                     <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                    <p class="count">1</p>
+                                    <p class="count count-@item.Id">1</p>
                                     <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                 </div>
 
                             </div>
-                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                            <a onclick="addToCart(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                         </p>
                     </div>
                 </div>
@@ -97,87 +97,88 @@
 
 
 
-
+<script src="~/js/site.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    function toggleDiv() {
-        const targetDiv = document.getElementById("targetDiv");
-        const signDiv = document.getElementById("signDiv");
+    function togglediv() {
+        const targetdiv = document.getelementbyid("targetdiv");
+        const signdiv = document.getelementbyid("signdiv");
 
 
-        if (targetDiv.classList.contains("hidden")) {
-            targetDiv.classList.remove("hidden");
-            signDiv.innerHTML = "-";
+        if (targetdiv.classlist.contains("hidden")) {
+            targetdiv.classlist.remove("hidden");
+            signdiv.innerhtml = "-";
         } else {
-            targetDiv.classList.add("hidden");
-            signDiv.innerHTML = "+";
+            targetdiv.classlist.add("hidden");
+            signdiv.innerhtml = "+";
         }
     }
 
-    const toggleButton = document.getElementById("toggleButton");
-    toggleButton.addEventListener("click", toggleDiv);
+    const togglebutton = document.getelementbyid("togglebutton");
+    togglebutton.addeventlistener("click", togglediv);
 
 
 
-    function handleDecrementClick(countElement) {
-        const currentCount = parseInt(countElement.textContent);
-        if (currentCount > 1) {
-            countElement.textContent = currentCount - 1;
+    function handledecrementclick(countelement) {
+        const currentcount = parseint(countelement.textcontent);
+        if (currentcount > 1) {
+            countelement.textcontent = currentcount - 1;
         }
-        if (currentCount === 2) {
-            countElement.previousElementSibling.classList.add('faded');
-        }
-    }
-
-    function handleIncrementClick(countElement) {
-        const currentCount = parseInt(countElement.textContent);
-        countElement.textContent = currentCount + 1;
-        if (currentCount === 1) {
-            countElement.previousElementSibling.classList.remove('faded');
+        if (currentcount === 2) {
+            countelement.previouselementsibling.classlist.add('faded');
         }
     }
 
+    function handleincrementclick(countelement) {
+        const currentcount = parseint(countelement.textcontent);
+        countelement.textcontent = currentcount + 1;
+        if (currentcount === 1) {
+            countelement.previouselementsibling.classlist.remove('faded');
+        }
+    }
 
-    const counterContainers = document.querySelectorAll('.counter-container');
-    counterContainers.forEach(container => {
-        const countElement = container.querySelector('.count');
-        const decrementBtn = container.querySelector('.decrementBtn');
-        const incrementBtn = container.querySelector('.incrementBtn');
 
-        decrementBtn.addEventListener('click', function () {
-            handleDecrementClick(countElement);
+    const countercontainers = document.queryselectorall('.counter-container');
+    countercontainers.foreach(container => {
+        const countelement = container.queryselector('.count');
+        const decrementbtn = container.queryselector('.decrementbtn');
+        const incrementbtn = container.queryselector('.incrementbtn');
+
+        decrementbtn.addeventlistener('click', function () {
+            handledecrementclick(countelement);
         });
 
-        incrementBtn.addEventListener('click', function () {
-            handleIncrementClick(countElement);
+        incrementbtn.addeventlistener('click', function () {
+            handleincrementclick(countelement);
         });
     });
 
 
 
-    function toggleDiv() {
-        const targetDiv = document.getElementById("targetDiv");
-        const signMinus = document.getElementById("signMinus");
+    function togglediv() {
+        const targetdiv = document.getelementbyid("targetdiv");
+        const signminus = document.getelementbyid("signminus");
 
 
-        if (targetDiv.classList.contains("hidden")) {
-            targetDiv.classList.remove("hidden");
-            signMinus.innerHTML = "-";
+        if (targetdiv.classlist.contains("hidden")) {
+            targetdiv.classlist.remove("hidden");
+            signminus.innerhtml = "-";
         } else {
-            targetDiv.classList.add("hidden");
-            signMinus.innerHTML = "+";
+            targetdiv.classlist.add("hidden");
+            signminus.innerhtml = "+";
         }
     }
 
-    const toggleButtons = document.getElementById("toggleButtons");
-    toggleButtons.addEventListener("click", toggleDiv);
+    const togglebuttons = document.getelementbyid("togglebuttons");
+    togglebuttons.addeventlistener("click", togglediv);
 
 
 
-    defaultValue =
-        rangeElem.max < rangeElem.min
-            ? rangeElem.min
-            : rangeElem.min + (rangeElem.max - rangeElem.min) / 2;
+    defaultvalue =
+        rangeelem.max < rangeelem.min
+            ? rangeelem.min
+            : rangeelem.min + (rangeelem.max - rangeelem.min) / 2;
 
 </script>
 
