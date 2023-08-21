@@ -45,6 +45,7 @@ namespace RestaurantFrontend.Controllers
                     {
                         string token = apiResponse.Data.Token;
                         string fullName = apiResponse.Data.FullName.ToString();
+                        string userId = apiResponse.Data.Id;
 
                         // Decode the JWT token to access its claims, including expiration
                         var tokenHandler = new JwtSecurityTokenHandler();
@@ -68,6 +69,7 @@ namespace RestaurantFrontend.Controllers
                         var claims = new List<Claim>
                 {
                     //new Claim(ClaimTypes.Name, login.Email),
+                    new Claim(ClaimTypes.NameIdentifier, userId)
                     new Claim(ClaimTypes.Name, fullName)
                     // Add other claims as needed
                 };
