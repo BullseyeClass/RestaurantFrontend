@@ -23,7 +23,7 @@ namespace RestaurantFrontend.Controllers
 
 
 
-        public async Task<ActionResult> AddToCart(string productId, string quantity)
+        public async Task<IActionResult> AddToCart(string productId, string quantity)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace RestaurantFrontend.Controllers
                     {
                         cartItems.Add(cartItem);
                     }
-                    
+
 
                     _memoryCache.Set("CartItems", cartItems);
 
@@ -79,6 +79,15 @@ namespace RestaurantFrontend.Controllers
             return 0;
         }
 
+        public async Task<IActionResult> DisplayCartItem()
+        {
+            if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+            {
+                return Ok(cartItems); 
+            }
+
+            return NotFound();
+        }
 
 
 
@@ -92,54 +101,54 @@ namespace RestaurantFrontend.Controllers
 
 
 
-        //        public async Task<ActionResult> AddToCart(string productId, string quantity)
-        //        {
-        //            //using (var httpClient = new HttpClient())
-        //            //{
-        //            try
-        //            {
-        //                //HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/ProductById/{productId}");
+//        public async Task<ActionResult> AddToCart(string productId, string quantity)
+//        {
+//            //using (var httpClient = new HttpClient())
+//            //{
+//            try
+//            {
+//                //HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/ProductById/{productId}");
 
-        //                if (productId != null && Parse(quantity) > 0)
-        //                {
-        //                    var product = await response.Content.ReadFromJsonAsync<Products>(); // Deserialize the product data
+//                if (productId != null && Parse(quantity) > 0)
+//                {
+//                    var product = await response.Content.ReadFromJsonAsync<Products>(); // Deserialize the product data
 
-        //                    var cartItems = new List<Products>(); // Create a list to store cart items
+//                    var cartItems = new List<Products>(); // Create a list to store cart items
 
-        //                    for (int i = 0; i < Parse(quantity); i++)
-        //                    {
-        //                        var cartItem = new Products
-        //                        {
-        //                            Id = product.Id,
-        //                            Name = product.Name,
-        //                            Price = product.Price,
-        //                            QuantityInStock = product.QuantityInStock,
-        //                            Image = product.Image,
-        //                            DeliveryInfo = product.DeliveryInfo,
-        //                            DiscountedPrice = product.DiscountedPrice,
-        //                            SKU = product.SKU,
-        //                            ShippingInfo = product.ShippingInfo,
-        //                            ProductInfo = product.ProductInfo,
-        //                        };
+//                    for (int i = 0; i < Parse(quantity); i++)
+//                    {
+//                        var cartItem = new Products
+//                        {
+//                            Id = product.Id,
+//                            Name = product.Name,
+//                            Price = product.Price,
+//                            QuantityInStock = product.QuantityInStock,
+//                            Image = product.Image,
+//                            DeliveryInfo = product.DeliveryInfo,
+//                            DiscountedPrice = product.DiscountedPrice,
+//                            SKU = product.SKU,
+//                            ShippingInfo = product.ShippingInfo,
+//                            ProductInfo = product.ProductInfo,
+//                        };
 
-        //                        cartItems.Add(cartItem); // Add the cart item to the list
-        //                    }
+//                        cartItems.Add(cartItem); // Add the cart item to the list
+//                    }
 
-        //                    // Now you can do something with the cartItems list, like adding it to the user's cart
+//                    // Now you can do something with the cartItems list, like adding it to the user's cart
 
-        //                    return Json(new { success = true });
-        //                }
+//                    return Json(new { success = true });
+//                }
 
-        //                return Json(new { success = false });
-        //            }
-        //                catch (Exception ex)
-        //            {
-        //                return RedirectToAction("Index", "ErrorMessage");
-        //            }
-        //            //}
-        //        }
+//                return Json(new { success = false });
+//            }
+//                catch (Exception ex)
+//            {
+//                return RedirectToAction("Index", "ErrorMessage");
+//            }
+//            //}
+//        }
 
-        //        private int Parse(string quantity)
-        //        {
-        //            throw new NotImplementedException();
-        //        }
+//        private int Parse(string quantity)
+//        {
+//            throw new NotImplementedException();
+//        }
