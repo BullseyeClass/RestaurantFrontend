@@ -58,6 +58,14 @@
                 <input asp-for="Login.Password" class=" input" placeholder="Password" />
                 <span asp-validation-for="Login.Password" class="text-danger span"></span>
             </div>
+
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="alert alert-danger validationSpan mt-2 mb-2">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+
             <a class="a" href="#">Forgot your password?</a>
             <button type="submit">Sign In</button>
 
