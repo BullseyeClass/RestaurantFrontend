@@ -203,6 +203,7 @@
                     <div class="row g-4 sku-overlay">
                         @{
                             var bestDeals = Model.Where(item => item.BestDeal == true).Take(5).ToList();
+                            
                         }
                         @foreach (var item in bestDeals)
                         {
@@ -236,14 +237,15 @@
                                         </div>
                                         <div class="counter-container">
                                             <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count">1</p>
+                                            <p class="count count-@item.Id">1</p>
                                             <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                         </div>
 
                                     </div>
-                                    <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                 </div>
                             </div>
+                           
                         }
                     </div>
                 </div>
@@ -454,6 +456,7 @@
                     <div class="row g-4 sku-overlay">
                         @{
                             var startCart = Model.Where(item => item.Tag == "Dairy & Eggs").Take(5).ToList();
+                            int indexcount1 = 0;
                         }
                         @foreach (var item in startCart)
                         {
@@ -487,14 +490,15 @@
                                         </div>
                                         <div class="counter-container">
                                             <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count">1</p>
+                                            <p class="count count-@item.Id">1</p>
                                             <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                         </div>
 
                                     </div>
-                                    <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                 </div>
                             </div>
+                            indexcount1++;
                         }
                     </div>
                 </div>
@@ -588,12 +592,12 @@
                                         </div>
                                         <div class="counter-container">
                                             <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count">1</p>
+                                            <p class="count count-@item.Id">1</p>
                                             <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                         </div>
 
                                     </div>
-                                    <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                 </div>
                             </div>
                         }
@@ -727,12 +731,12 @@
                                         </div>
                                         <div class="counter-container">
                                             <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count">1</p>
+                                            <p class="count count-@item.Id">1</p>
                                             <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                         </div>
 
                                     </div>
-                                    <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                 </div>
                             </div>
                         }

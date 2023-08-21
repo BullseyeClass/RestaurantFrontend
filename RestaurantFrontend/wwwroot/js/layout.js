@@ -84,3 +84,24 @@ care.addEventListener('mouseout', () => {
     clist.style.display = 'none';
 });
 
+
+
+function fetchUserInformation() {
+    $.ajax({
+        url: '/CartDisplay',
+        method: 'GET',
+        success: function (data) {
+            var navbarUsernameElement = document.getElementById('navbarCartCount');
+            navbarUsernameElement.textContent = data;
+        },
+        error: function () {
+            console.log('Failed to fetch user information.');
+        }
+    });
+}
+
+
+$(document).ready(function () {
+    fetchUserInformation();
+});
+
