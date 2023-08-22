@@ -72,7 +72,6 @@ namespace RestaurantFrontend.Controllers
                             
                             var claims = new List<Claim>
                             {
-                                //new Claim(ClaimTypes.Name, login.Email),
                                 new Claim(ClaimTypes.NameIdentifier, userId),
                                 new Claim(ClaimTypes.Name, fullName),
                                 new Claim(ClaimTypes.Email, email)
@@ -85,8 +84,6 @@ namespace RestaurantFrontend.Controllers
                                 ExpiresUtc = expirationTime 
                             };
 
-                            
-                            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                             await HttpContext.SignInAsync(
                                 CookieAuthenticationDefaults.AuthenticationScheme,
                                 new ClaimsPrincipal(claimsIdentity),
@@ -161,10 +158,7 @@ namespace RestaurantFrontend.Controllers
         [ValidateAntiForgeryToken] // Add this attribute for security against cross-site request forgery (CSRF) attacks.
         public async Task<IActionResult> Logout()
         {
-            // Sign out the current user
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            // Redirect to the home page or any other page after logout
             return RedirectToAction("Index", "Home");
         }
     }

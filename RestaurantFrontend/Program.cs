@@ -21,13 +21,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             options.Cookie.HttpOnly = true;
             options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             options.Cookie.SameSite = SameSiteMode.Strict;
-            options.LoginPath = "/Registration"; // Specify the login page URL
+            options.LoginPath = "/Registration";
             //options.AccessDeniedPath = "/Account/AccessDenied"; // Specify the access denied page URL
         });
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(45); // Set your desired session timeout
+    options.IdleTimeout = TimeSpan.FromMinutes(45);
 });
 
 
