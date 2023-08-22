@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using RestaurantFrontend.Models.CartItems;
 using RestaurantFrontend.Models.Products;
+using System.Text.Json;
 
 namespace RestaurantFrontend.Controllers
 {
@@ -83,13 +84,56 @@ namespace RestaurantFrontend.Controllers
         {
             if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
             {
-                return Ok(cartItems); 
+                return Ok(cartItems);
             }
 
             return NotFound();
         }
 
+        [Route("GetCartItems")]
+        public async Task<IActionResult> GetCartItems()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+                    {
+                        List<Guid> guids = cartItems.Select(item => item.Id).ToList();
+                        string guidsQueryString = string.Join("&", guids.Select(g => $"guids={g}"));
 
+                        HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetAllProductIDs?{guidsQueryString}");
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string content = await response.Content.ReadAsStringAsync();
+                            List<CartViewModel> cartdeserailized = JsonSerializer.Deserialize<List<CartViewModel>>(content);
+
+                            foreach (var cartIte in cartItems)
+                            {
+                                var matchedCartItem = cartdeserailized.FirstOrDefault(c => c.id == cartIte.Id);
+                                if (matchedCartItem != null)
+                                {
+                                    matchedCartItem.quantity = cartIte.Quantity.ToString();
+                                }
+                            }
+
+                            return Json(cartdeserailized); // Return JSON data with updated quantities
+                        }
+                        else
+                        {
+                            return BadRequest($"Request failed with status code: {response.StatusCode}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest();
+                }
+
+                return BadRequest();
+            }
+        }
 
 
 
