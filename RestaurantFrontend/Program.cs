@@ -12,15 +12,22 @@ builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
 builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();
 builder.Services.AddScoped<IGettingMyWishList, GettingMyWishListFromDB>();
 builder.Services.AddScoped<IJsonHelperMWL, JsonHelperMWL>();
+builder.Services.AddScoped<TokenExpirationFilter>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
         {
-            options.Cookie.Name = CookieAuthenticationDefaults.AuthenticationScheme;
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            options.Cookie.SameSite = SameSiteMode.Strict;
             options.LoginPath = "/Registration"; // Specify the login page URL
             //options.AccessDeniedPath = "/Account/AccessDenied"; // Specify the access denied page URL
         });
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(45); // Set your desired session timeout
+});
 
 
 
@@ -39,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -9,6 +9,19 @@ namespace RestaurantFrontend.Controllers
     {
         public IActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Generate the return URL with query parameters
+                var returnUrl = Url.Action("Index", "Order", null, Request.Scheme) + Request.QueryString;
+
+                return RedirectToAction("RegistrationPage", "Registration", new { returnUrl });
+            }
+
+            string errorMessage = TempData["SuccessMessage"] as string;
+
+            // Pass the value to the view or use it as needed
+            ViewBag.SuccessMessage = errorMessage;
+
             var orders = GetSampleOrders();
             return View(orders);
         }

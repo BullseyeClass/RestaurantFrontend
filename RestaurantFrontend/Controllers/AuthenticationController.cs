@@ -12,6 +12,7 @@ using System.Text;
 using System.Net.Http;
 using RestaurantFrontend.Models.ApiResponses;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Headers;
 
 namespace RestaurantFrontend.Controllers
 {
@@ -31,73 +32,95 @@ namespace RestaurantFrontend.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                var json = JsonConvert.SerializeObject(login);
-                var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync($"{_baseUrl}/api/Authentication/login", requestBody);
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    var responseData = await response.Content.ReadAsStringAsync();
-                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseData);
+                    var json = JsonConvert.SerializeObject(login);
+                    var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync($"{_baseUrl}/api/Authentication/login", requestBody);
 
-                    // Ensure the API response indicates success
-                    if (apiResponse.Success)
+                    if (response.IsSuccessStatusCode)
                     {
-                        string token = apiResponse.Data.Token;
-                        string fullName = apiResponse.Data.FullName.ToString();
-                        string userId = apiResponse.Data.Id;
-                        string email = apiResponse.Data.Email;
+                        var responseData = await response.Content.ReadAsStringAsync();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseData);
 
-                        // Decode the JWT token to access its claims, including expiration
-                        var tokenHandler = new JwtSecurityTokenHandler();
-                        var jwtToken = tokenHandler.ReadJwtToken(token);
-
-                        // Extract the expiration from the JWT token
-                        var expiration = jwtToken.ValidTo;
-
-                        var tokenLifetime = (int)(expiration - DateTime.UtcNow).TotalSeconds;
-
-                        // Save the token in an HttpOnly cookie
-                        Response.Cookies.Append("token", token, new CookieOptions
+                        if (apiResponse.Success)
                         {
-                            HttpOnly = true,
-                            Secure = true,
-                            SameSite = SameSiteMode.Strict,
-                            MaxAge = TimeSpan.FromSeconds(tokenLifetime)// Set the cookie expiration based on the JWT token's expiration
-                        });
+                            string token = apiResponse.Data.Token;
+                            string fullName = apiResponse.Data.FullName.ToString();
+                            string userId = apiResponse.Data.Id;
+                            string email = apiResponse.Data.Email;
 
-                        // Create claims for the user
-                        var claims = new List<Claim>
-                {
-                    //new Claim(ClaimTypes.Name, login.Email),
-                    new Claim(ClaimTypes.NameIdentifier, userId),
-                    new Claim(ClaimTypes.Name, fullName),
-                    new Claim(ClaimTypes.Email, email)
-                    // Add other claims as needed
-                };
+                            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-                        // Create an identity and principal
-                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var principal = new ClaimsPrincipal(identity);
+                            // Decode the JWT token to access its claims, including expiration
+                            var tokenHandler = new JwtSecurityTokenHandler();
+                            var jwtToken = tokenHandler.ReadJwtToken(token);
 
-                        // Sign in the user
-                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                            // Extract the expiration from the JWT token
+                            var expiration = jwtToken.ValidTo;
+                            var tokenLifetime = (int)(expiration - DateTime.UtcNow).TotalSeconds;
+                            var expirationTime = DateTimeOffset.UtcNow.AddSeconds(tokenLifetime);
 
-                        // Redirect to the dashboard or home page upon successful login
-                        return RedirectToAction("Index", "Home");
+                            // Save the token in an HttpOnly cookie
+                            Response.Cookies.Append("token", token, new CookieOptions
+                            {
+                                HttpOnly = true,
+                                Secure = true,
+                                SameSite = SameSiteMode.Strict,
+                            });
+
+                            
+                            var claims = new List<Claim>
+                            {
+                                //new Claim(ClaimTypes.Name, login.Email),
+                                new Claim(ClaimTypes.NameIdentifier, userId),
+                                new Claim(ClaimTypes.Name, fullName),
+                                new Claim(ClaimTypes.Email, email)
+                                // Add other claims as needed
+                            };
+
+                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var authProperties = new AuthenticationProperties
+                            {
+                                ExpiresUtc = expirationTime 
+                            };
+
+                            
+                            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                            await HttpContext.SignInAsync(
+                                CookieAuthenticationDefaults.AuthenticationScheme,
+                                new ClaimsPrincipal(claimsIdentity),
+                                authProperties);
+
+                            TempData["SuccessMessage"] = apiResponse.Message;
+
+                            string returnUrl = TempData["ReturnUrl"] as string;
+                            if (returnUrl != null)
+                            {
+                                return Redirect(string.IsNullOrEmpty(returnUrl) ? "/default" : returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", "Home");
+                            }
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = apiResponse.Message;
+                            return RedirectToAction("RegistrationPage", "Registration");
+                        }
                     }
                     else
                     {
-                        // Handle unsuccessful login (e.g., display an error message)
-                        ViewBag.ErrorMessage = apiResponse.Message;
+                        // Handle HTTP request error (e.g., display an error message)
+                        TempData["ErrorMessage"] = "Invalid Credentials";
                         return RedirectToAction("RegistrationPage", "Registration");
                     }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Handle HTTP request error (e.g., display an error message)
-                    ViewBag.ErrorMessage = "An error occurred while processing your request.";
-                    return RedirectToAction("RegistrationPage", "Registration");
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
             }
         }
