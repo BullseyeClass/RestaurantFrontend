@@ -2,13 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestaurantFrontend.Models.Address;
+using RestaurantFrontend.Models.ApiResponses;
 using RestaurantFrontend.Models.Products;
 using RestaurantFrontend.Models.RegistrationPage;
+using RestaurantFrontend.Service;
 using System.Security.Claims;
 
 namespace RestaurantFrontend.Controllers
 {
     [Authorize]
+    [ServiceFilter(typeof(TokenExpirationFilter))]
     public class AddressController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -23,6 +26,15 @@ namespace RestaurantFrontend.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Generate the return URL with query parameters
+                var returnUrl = Url.Action("Index", "Order", null, Request.Scheme) + Request.QueryString;
+
+                return RedirectToAction("RegistrationPage", "Registration", new { returnUrl });
+            }
+
+
             using (var httpClient = new HttpClient())
             {
 
@@ -32,6 +44,10 @@ namespace RestaurantFrontend.Controllers
                     string responseBody = await response.Content.ReadAsStringAsync();
                     List<Address> allAddress = JsonConvert.DeserializeObject<List<Address>>(responseBody);
 
+
+                    string errorMessage = TempData["SuccessMessage"] as string;
+
+                    ViewBag.SuccessMessage = errorMessage;
 
                     return View(allAddress);
 
@@ -56,8 +72,9 @@ namespace RestaurantFrontend.Controllers
                 var response = await httpClient.DeleteAsync($"{_baseUrl}/api/Address/DeleteAddress/{Id}");
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseBody = await response.Content.ReadAsStringAsync();
-                    ViewBag.ResponseMessage = responseBody;
+                    var responseData = await response.Content.ReadAsStringAsync();
+             
+                    TempData["SuccessMessage"] = responseData;
                     return RedirectToAction("Index", "Address");
 
                 }
@@ -83,29 +100,33 @@ namespace RestaurantFrontend.Controllers
 
             if (ModelState.IsValid)
             {
-                //Address address = new Address();
-                //address.CustomerId = userId;
 
                 using (var httpClient = new HttpClient())
                 {
-
-                    //address.CustomerId = Guid.Parse(userId);
-                    var json = JsonConvert.SerializeObject(address);
-                    var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-                    var response = await httpClient.PostAsync($"{_baseUrl}/api/Address/AddAddress", requestBody);
-                    if (response.IsSuccessStatusCode)
+                    if (HttpContext.Request.Cookies.TryGetValue("token", out string token))
                     {
-                        var responseBody = await response.Content.ReadAsStringAsync();
-                        // Process the response from the API
-                        return RedirectToAction("Index", "Address");
+                        // Use the "token" value as needed
+                        var json = JsonConvert.SerializeObject(address);
+                        var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-                    }
-                    else
-                    {
-                        // Handle error case
-                        return View();
+                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                        var response = await httpClient.PostAsync($"{_baseUrl}/api/Address/AddAddress", requestBody);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseData = await response.Content.ReadAsStringAsync();
+                            var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseData);
+                            //var responseBody = await response.Content.ReadAsStringAsync();
 
+                            TempData["SuccessMessage"] = apiResponse.Message;
+                            return RedirectToAction("Index", "Address");
+
+                        }
+                        else
+                        {
+                            // Handle error case
+                            return View();
+
+                        }
                     }
                 }
             }
@@ -158,8 +179,9 @@ namespace RestaurantFrontend.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var responseBody = await response.Content.ReadAsStringAsync();
-                        // Process the response from the API
+                        var responseData = await response.Content.ReadAsStringAsync();
+
+                        TempData["SuccessMessage"] = responseData;
                         return RedirectToAction("Index", "Address");
 
                     }
