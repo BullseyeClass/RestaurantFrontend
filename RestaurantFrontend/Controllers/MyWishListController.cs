@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantFrontend.Models.MyWishListPage;
 using RestaurantFrontend.Repository.Interface;
 using RestaurantFrontend.Service;
 
 namespace RestaurantFrontend.Controllers
 {
+    [Authorize]
     public class MyWishListController : Controller
     {
         private readonly IGettingMyWishList _gettingMyWishListFromDB;

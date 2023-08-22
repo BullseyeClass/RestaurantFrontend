@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RestaurantFrontend.Repository.Interface;
 using RestaurantFrontend.Repository.JsonHandler;
 using RestaurantFrontend.Service;
@@ -19,6 +20,15 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.Cookie.Name = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
+            options.LoginPath = "/Registration"; // Specify the login page URL
+            //options.AccessDeniedPath = "/Account/AccessDenied"; // Specify the access denied page URL
+        });
+
 
 
 var app = builder.Build();
@@ -35,7 +45,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseSession();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,7 +1,26 @@
 ﻿
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<div class="cart-main-container">
+
+@model IEnumerable<RestaurantFrontend.Models.Products.Products>
+ 
+    
+
+
+
+     <div id="cart-container"></div>
+
+
+
+
+
+
+
+
+
+
+@*<div class="cart-main-container">
     <div class="cart-cards">
         <div class="cart-main-content">
 
@@ -9,6 +28,7 @@
                 <img width="90" height="150" src="~/images/Hass_Avocados.png" />
             </div>
             <div>
+                <div id="cart-container"></div>
 
                 <p class="card-name-tag">Hass Avocados, Ready-to-Eat -1lb</p>
                 <div class="card-price-container">
@@ -43,15 +63,126 @@
 
     </div>
 </div>
+*@
 
 
 
+      
+
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "/GetCartItems",
+        type: "GET",
+        success: function(data) {
+            var cartContainer = $("#cart-container");
+            renderCartItems(data, cartContainer);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error fetching cart items:", error);
+            renderCartNull();
+        }
+    });
+});
+
+// Function to render cart items
+//function renderCartItems(cartData, container) {
+//    container.empty(); // Clear the container before rendering
+
+//    if (cartData.length === 0) {
+//        container.append('<p>Your cart is empty.</p>');
+//        return;
+//    }
+
+//    var cartHtml = '<ul>';
+//    cartData.forEach(function(item) {
+//        cartHtml += '<li>' + item.name + ' - $' + item.price + '</li>';
+//    });
+//    cartHtml += '</ul>';
+
+//    container.append(cartHtml);
+//}
+
+
+
+
+
+
+
+function renderCartNull() {
+    var cartContainer = $("#cart-container");
+    cartContainer.empty();
+
+    if (true) {
+        cartContainer.append('<p>Your cart is empty.</p>');
+        return;
+    }
+}
+
+
+function renderCartItems(cartData) {
+    var cartContainer = $("#cart-container");
+    cartContainer.empty(); // Clear the container before rendering
+
+    if (cartData.length === 0) {
+        cartContainer.append('<p>Your cart is empty.</p>');
+        return;
+    }
+
+    var cartHtml = '<div class="cart-main-container">';
+
+    cartData.forEach(function(item) {
+        cartHtml += '<div class="cart-cards">';
+        cartHtml += '<div class="cart-main-content">';
+        cartHtml += '<div class="cart-image-container">';
+        cartHtml += '<img width="90" height="150" src="' + item.image + '" />';
+        cartHtml += '</div>';
+        cartHtml += '<div>';
+        cartHtml += '<p class="card-name-tag">' + item.name + '</p>';
+        cartHtml += '<div class="card-price-container">';
+        cartHtml += '<span class="card-price-discount">N' + item.discountedPrice + '</span>';
+        cartHtml += '<span class="card-price-tag">N' + item.price + '</span>';
+        cartHtml += '</div>';
+        cartHtml += '<div class="cart-count-container">';
+        cartHtml += '<span>-</span>';
+        cartHtml += '<span>' + item.quantity + '</span>';
+        cartHtml += '<span>+</span>';
+        cartHtml += '</div>';
+        cartHtml += '</div>';
+        cartHtml += '</div>';
+        cartHtml += '</div>';
+    });
+
+    cartHtml += '<div class="cart-footer-container">';
+    cartHtml += '<div class="cart-subtotal-container">';
+    cartHtml += '<h1>Subtotal</h1>';
+    cartHtml += '<h1>' + calculateSubtotal(cartData) + '</h1>';
+    cartHtml += '</div>';
+    cartHtml += '<div class="cart-button-container">';
+    cartHtml += '<a class="cart-view-button show-cart-items-button">View Cart</a>';
+    cartHtml += '</div>';
+    cartHtml += '</div>';
+    cartHtml += '</div>';
+
+    cartContainer.append(cartHtml);
+}
+
+function calculateSubtotal(cartData) {
+    var subtotal = 0;
+    cartData.forEach(function(item) {
+        subtotal += item.price * item.quantity;
+    });
+    return 'N' + subtotal.toFixed(2); 
+}
+
+
+</script>
 <style>
 
 
     .cart-cards {
-        max-height: 10em;
-        overflow-y: auto;
+        max-height: 10em !important;
+        overflow-y: auto !important;
     }
 
     .cart-image-container {
@@ -68,7 +199,17 @@
         display: flex;
         justify-content: space-between;
     }
-
+    .card-price-discount{
+        text-decoration: 2px line-through;
+        font-size: smaller;
+        margin-top:0;
+        padding-bottom:1rem;
+        padding-right:0.5rem;
+        color:red;
+    }
+    .card-price-tag{
+        color: green;
+    }
     .cart-count-container {
         border: 1px solid black;
         width: fit-content;
@@ -89,6 +230,7 @@
 
     .cart-button-container {
         padding-top: 6rem;
+        padding-bottom: 1.5rem;
     }
 
 
@@ -103,8 +245,9 @@
 
 
     .cart-footer-container {
+        width:100%;
         position: absolute;
-        bottom: 1rem;
+        bottom: 0;
         background-color: white;
     }
 
