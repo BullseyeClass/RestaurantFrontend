@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IJsonHelper, JsonHelper>();
 builder.Services.AddScoped<IGettingProductsFromDB, GettingProductsFromDB>();
 builder.Services.AddScoped<IGettingMostPopularItem, GettingMostPopularItemFromDB>();

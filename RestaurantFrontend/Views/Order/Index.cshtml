@@ -62,8 +62,63 @@
                                 </div>
                                 <div class="col-md-8 d-flex align-items-start justify-content-between">
                                     <div class="card-body">
-                                        <div class="d-flex flex-column align-items-end mb-3">
+                                        @*<div class="d-flex flex-column align-items-end mb-3">
                                             <a href="#" class="text-danger text-decoration-none ">See details</a>
+                                        </div>*@
+                                        <div class="see-details">
+                                            <p>
+                                                <div class="d-flex flex-column align-items-end mb-3 text-danger" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                                    <a href="#" class="text-danger text-decoration-none ">See details</a>
+                                                </div>
+                                            </p>
+                                            <div style="min-height: 120px;">
+                                                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                                                    <div class="card card-body" style="width: 300px;">
+                                                        <div class="row g-4 sku-overlay">
+                                                           
+                                                            @*@foreach (var order in Model)
+                                                            {*@
+                                                                @*<div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">*@
+                                                                <div class="card">
+                                                                    
+                                                                    <img src="@item.Image" class="card-img-top " style="height: 25vh; width: 16vh; margin-left: 31%;" alt="" />
+                                                                    <div class="card-body">
+                                                                        <p class="card-text">@item.Name</p>
+                                                                        <div class="price-section d-flex">
+
+                                                                            <p class="card-text-dollar text-danger"> $@item.TotalAmount</p>
+                                                                        </div>
+
+                                                                    @if (item.ShippingInfo == "Delivered")
+                                                                    {
+                                                                        <p class="card-text">
+                                                                            <span class="bg-success text-light p-1">@item.ShippingInfo</span>
+                                                                        </p>
+                                                                        <h6 class="card-text"> @item.OrderDate</h6>
+                                                                    }
+                                                                    @if (item.ShippingInfo == "Shipped")
+                                                                    {
+                                                                        <p class="card-text">
+                                                                            <span class="bg-secondary text-light p-1">@item.ShippingInfo</span>
+                                                                        </p>
+                                                                        <h6 class="card-text"> @item.OrderDate</h6>
+                                                                    }
+                                                                    @if (item.ShippingInfo == "Pending")
+                                                                    {
+                                                                        <p class="card-text">
+                                                                            <span class="bg-warning text-light p-1">@item.ShippingInfo</span>
+                                                                        </p>
+                                                                        <h6 class="card-text"> @item.OrderDate</h6>
+                                                                    }
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                                
+                                                            @*}*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
