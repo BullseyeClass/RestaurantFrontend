@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestaurantFrontend.Models.Address;
 using RestaurantFrontend.Models.Products;
 using RestaurantFrontend.Models.RegistrationPage;
+using System.Security.Claims;
 
 namespace RestaurantFrontend.Controllers
 {
+    [Authorize]
     public class AddressController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -80,9 +83,13 @@ namespace RestaurantFrontend.Controllers
 
             if (ModelState.IsValid)
             {
+                //Address address = new Address();
+                //address.CustomerId = userId;
+
                 using (var httpClient = new HttpClient())
                 {
 
+                    //address.CustomerId = Guid.Parse(userId);
                     var json = JsonConvert.SerializeObject(address);
                     var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
