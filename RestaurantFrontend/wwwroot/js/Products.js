@@ -32,11 +32,24 @@ counterContainers.forEach(container => {
     });
 });
 
+//$(document).ready(function () {
+//    $('.category-details-btn').click(function () {
+//        var icon = $(this).find('.icon');
+//        $('#collapseWidthCategory').collapse('toggle');
+//        icon.text(icon.text() === '-' ? '+' : '-');
+//    });
+//});
+
 $(document).ready(function () {
     $('.category-details-btn').click(function () {
         var icon = $(this).find('.icon');
-        $('#collapseWidthCategory').collapse('toggle');
-        icon.text(icon.text() === '-' ? '+' : '-');
+        var collapse = $(this).next('.collapse');
+        $('.collapse.show').not(collapse).collapse('hide');
+        collapse.collapse('toggle');
+        $('.category-details-btn .icon').text('+');
+        if (collapse.hasClass('show')) {
+            icon.text('-');
+        }
     });
 });
 
