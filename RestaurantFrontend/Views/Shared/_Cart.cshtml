@@ -3,69 +3,10 @@
 
 
 
-@model IEnumerable<RestaurantFrontend.Models.Products.Products>
- 
-    
 
+     <div id="cart-container">
 
-
-     <div id="cart-container"></div>
-
-
-
-
-
-
-
-
-
-
-@*<div class="cart-main-container">
-    <div class="cart-cards">
-        <div class="cart-main-content">
-
-            <div class=" cart-image-container">
-                <img width="90" height="150" src="~/images/Hass_Avocados.png" />
-            </div>
-            <div>
-                <div id="cart-container"></div>
-
-                <p class="card-name-tag">Hass Avocados, Ready-to-Eat -1lb</p>
-                <div class="card-price-container">
-                    <span class="card-price-discount">N2.99</span>
-                    <span class="card-price-tag">N2.69</span>
-                </div>
-                <div class="cart-count-container">
-                    <span>-</span>
-                    <span>2</span>
-                    <span>+</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="cart-footer-container">
-
-        <div class="cart-subtotal-container">
-            <h1>Subtotal</h1>
-            <h1>N22.53</h1>
-
-        </div>
-
-
-        <div class="cart-button-container">
-
-            <a class="cart-view-button show-cart-items-button">View Cart</a>
-        </div>
-
-
-
-    </div>
-</div>
-*@
-
-
+     </div>
 
       
 
@@ -85,26 +26,6 @@ $(document).ready(function() {
     });
 });
 
-// Function to render cart items
-//function renderCartItems(cartData, container) {
-//    container.empty(); // Clear the container before rendering
-
-//    if (cartData.length === 0) {
-//        container.append('<p>Your cart is empty.</p>');
-//        return;
-//    }
-
-//    var cartHtml = '<ul>';
-//    cartData.forEach(function(item) {
-//        cartHtml += '<li>' + item.name + ' - $' + item.price + '</li>';
-//    });
-//    cartHtml += '</ul>';
-
-//    container.append(cartHtml);
-//}
-
-
-
 
 
 
@@ -122,7 +43,7 @@ function renderCartNull() {
 
 function renderCartItems(cartData) {
     var cartContainer = $("#cart-container");
-    cartContainer.empty(); // Clear the container before rendering
+    cartContainer.empty();
 
     if (cartData.length === 0) {
         cartContainer.append('<p>Your cart is empty.</p>');
@@ -140,8 +61,10 @@ function renderCartItems(cartData) {
         cartHtml += '<div>';
         cartHtml += '<p class="card-name-tag">' + item.name + '</p>';
         cartHtml += '<div class="card-price-container">';
-        cartHtml += '<span class="card-price-discount">N' + item.discountedPrice + '</span>';
-        cartHtml += '<span class="card-price-tag">N' + item.price + '</span>';
+        if(item.discountedPrice != 0){
+        cartHtml += '<span class="card-price-discount">₦' + item.discountedPrice + '</span>';
+        }
+        cartHtml += '<span class="card-price-tag">₦' + item.price + '</span>';
         cartHtml += '</div>';
         cartHtml += '<div class="cart-count-container">';
         cartHtml += '<span>-</span>';
@@ -179,6 +102,11 @@ function calculateSubtotal(cartData) {
 </script>
 <style>
 
+
+    .cart-main-container{
+        max-height: 10em !important;
+        overflow-y: auto !important;
+    }
 
     .cart-cards {
         max-height: 10em !important;
