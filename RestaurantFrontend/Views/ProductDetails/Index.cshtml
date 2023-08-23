@@ -17,28 +17,30 @@
    #img-content{
        margin-left:-20px;
    }
-</style>
+
+    .add-to-cart-btn:hover {
+        color: #EB1414 !important;
+        background-color: white !important;
+        border: 1.5px solid #EB1414 !important;
+    }
+    </style>
 <div class="container ">
     <div class="row">
-    @*container justify-content-center*@
+    
     @foreach (var item in Model)
     {
         <div class="col-md-12 mb-5">
             <div class="row g-0">
                  <div class="col-md-12" id="navbar">
                     <div class="breadcrumb">
-                        <a href="#">Home</a> /
-                        <a href="#"> @item.Tag</a> /
-                        <span>@item.Name</span>
-                    </div>
-                    <div class="pagination">
-                        <a href="#" class="prev">  <i class="bi bi-chevron-left"></i> Prev</a> |
-                        <a href="#" class="next">Next <i class="bi bi-chevron-right"></i></a>
+                        <a href="#" class="text-decoration-none text-dark me-1">Home</a> /
+                            <a href="#" class="text-decoration-none text-dark me-1 ms-1"> @item.Tag</a> /
+                        <span class="ms-1">@item.Name</span>
                     </div>
                  </div>
                  <div class="col-md-6" >
-                        <div class="card mb-2" id="img-content" style="width: 450px;">
-                        <img src="@item.Image" width="50%" alt="@item.Name">
+                    <div class="card mb-2" id="img-content" style="width: 450px; height: 110vh">
+                            <img src="@item.Image" style="width: 30vw; height: 100vh;" alt="@item.Name" class="position-absolute top-50 start-50 translate-middle">
                     </div>
                     <div class="card-content" style="max-width: 460px;">
                         <p>I'm a product description. This is a great place to "sell" your product and
@@ -52,31 +54,69 @@
                         <div class="card-body">
                         <p class="card-text"><b>@item.Name</b></p>
                             <p class="card-text">@item.SKU</p>
-                            <p class="card-text"><b>@item.Price </b></p>
+                            <p class="card-text fs-4 text-danger"><b>$@item.Price </b></p>
                             <p class="card-text">Quantity</p>
+                            <form>
+                                <input placeholder="1" type="number" min="1" style="width: 7vw; height: 6vh;border: solid 1px; border-color:dimgray; display:flex; text-align: center; justify-content:center; padding:4px">
+                            </form>
                         </div>
-                        <div>
-                            <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                        <div class="d-flex">
+                            <a class="btn text-white  add-to-cart-btn mt-5 mb-5 " style="width: 25vw; background-color: #EB1414;"> Add to Cart</a>
+                            <a href="#" class="mt-5 mb-5 ms-3 pt-2" style="width: 3vw; height: 6vh; border: 1.5px solid #EB1414; border-radius: 50%; display: flex; justify-content:center; align-content:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#EB1414" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg>
+                            </a>
                         </div>
-                         <div class="category-details">
+                        <div class="category-details">
 
-                            <button class="category-details-btn" type="button" style="width: 30vw;">
-                                Category
-                                <span class="icon">-</span>
+                            <button class="category-details-btn fs-4 fw-semibold" type="button" style="width: 30vw;">
+                                Product Info
+                                <span class="icon">+</span>
                             </button>
 
-                            <div class="collapse show" id="collapseWidthCategory">
+                            <div class="collapse" id="collapseWidthCategory">
                                 <div class="category-list" style="width: 400px;">
-                                    <div class="row g-2 sku-overlay">
+                                    <div class="row g-2 ms-1 sku-overlay fs-6">
                                         I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-               
-            @* </div> *@
+                        <hr style="width: 30vw">
+                        <div class="category-details">
+
+                            <button class="category-details-btn fs-4 fw-semibold" type="button" style="width: 30vw;">
+                                Return & Refund Policy
+                                <span class="icon">+</span>
+                            </button>
+
+                            <div class="collapse" id="collapseWidthCategory">
+                                <div class="category-list" style="width: 400px;">
+                                    <div class="row g-2 ms-1 sku-overlay fs-6">
+                                        I'm a return and refund policy. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="width: 30vw">
+                        <div class="category-details">
+
+                            <button class="category-details-btn fs-4 fw-semibold" type="button" style="width: 30vw;">
+                                Shipping Info
+                                <span class="icon">+</span>
+                            </button>
+
+                            <div class="collapse" id="collapseWidthCategory">
+                                <div class="category-list" style="width: 400px;">
+                                    <div class="row g-2 ms-1 sku-overlay fs-6">
+                                        I'm a Shipping info. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+            </div>
         </div>
     }
 </div>
