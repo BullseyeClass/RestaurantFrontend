@@ -164,7 +164,7 @@ namespace RestaurantFrontend.Controllers
                                 }
                             }
 
-                            return Json(cartdeserailized); // Return JSON data with updated quantities
+                            return Json(cartdeserailized); 
                         }
                         else
                         {
@@ -186,5 +186,6 @@ namespace RestaurantFrontend.Controllers
     }
 
 }
+
 
 
