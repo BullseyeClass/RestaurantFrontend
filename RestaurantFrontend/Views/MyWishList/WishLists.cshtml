@@ -1,0 +1,70 @@
+﻿@model RestaurantFrontend.Models.MyWishListPage.CombinedWishList
+
+<div>
+    <div class="d-flex justify-content-between mt-3 p-5">
+        <div style="width: 30%;">
+            @Html.Partial("_MyAccountLayout")
+        </div>
+
+        <div class="col-md-8">
+            <div class="card-header text-start p-3" style="background-color: #8c0303;">
+                <h1 class="h3 text-light">Saved Items</h1>
+            </div>
+            <div class="row row-cols-1 row-cols-md-1 g-4">
+                @if (Model.WishListItems?.Any() == true)
+                {
+
+                    @foreach (var wishListItem in Model.WishListItems)
+                    {
+                        var matchingProduct = Model.ProductItems.FirstOrDefault(item => item.Id == wishListItem.ProductId);
+                        if (matchingProduct != null)
+                        {
+                            <div class="col">
+                                <div class="card">
+                                    <div class="row g-0">
+                                        <div class="col-md-4 d-flex align-items-center">
+                                            <a href="#" class="text-decoration-none ">
+                                                <img src="@matchingProduct.Image" alt="@matchingProduct.Name" style="max-width: 110px;">
+                                            </a>
+                                            <div class="ms-4">
+                                                <h5 class="card-title">@matchingProduct.Name</h5>
+                                                <p class="card-text">₦ @matchingProduct.Price</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 d-flex align-items-center justify-content-between">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-column align-items-end mb-3">
+                                                    @if (matchingProduct.QuantityInStock == 0)
+                                                    {
+                                                        <a href="#" class="btn btn-warning disabled">Out of Stock</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                    }
+                                                    <a asp-action="DeleteWishList" asp-controller="MyWishList" asp-route-Id="@wishListItem.Id">
+                                                        <span class="badge text-bg-danger p-2">Remove</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @*else
+                {
+                <h3 class="text-bg-danger">Wish List is Empty, Kindly Add a Product to your wishlist</h3>
+                }*@
+                    }
+                }
+                else
+                {
+                    <div class="col">
+                        <h3 class="text-danger d-flex justify-content-center mt-5">Your wishlist is empty.</h3>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

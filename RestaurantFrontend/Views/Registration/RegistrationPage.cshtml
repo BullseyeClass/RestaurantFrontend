@@ -33,6 +33,7 @@
                 <span asp-validation-for="Registration.Password" class="text-danger span"></span>
             </div>
             <button type="submit">Sign Up</button>
+               
             <div class="social-container">
                 <a href="https://www.facebook.com" class="social">
                     <img src="/images/facebook1-f.svg" width="20px" height="20px" alt="Facebook" />
@@ -65,6 +66,13 @@
                         @ViewBag.ErrorMessage
                     </div>
                 }
+
+               @* @if (!string.IsNullOrEmpty(ViewBag.RegisterErrorMessage))
+                {
+                    <div class="alert alert-danger validationSpan mt-2 mb-2">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }*@
 
             <a class="a" href="#">Forgot your password?</a>
             <button type="submit">Sign In</button>

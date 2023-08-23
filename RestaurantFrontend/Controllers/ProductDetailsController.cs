@@ -1,14 +1,71 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RestaurantFrontend.Models.ProductDetails;
+using RestaurantFrontend.Models.Products;
 
 namespace RestaurantFrontend.Controllers
 {
     public class ProductDetailsController : Controller
     {
-        public IActionResult Index()
+        private readonly IConfiguration _configuration;
+        private readonly string _baseUrl;
+
+        public ProductDetailsController(IConfiguration configuration)
         {
-            var productDetails = GetSampleProductDetails();
-            return View(productDetails);
+            _configuration = configuration;
+            _baseUrl = _configuration["AppSettings:BaseUrl"];
+        }
+
+        public async Task<IActionResult> Index(Guid Id)
+        {
+
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+
+                    HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/ProductById/{Id}");
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        ProductDetails Products = JsonConvert.DeserializeObject<ProductDetails>(responseBody);
+
+                        if (Products != null)
+                        {
+                            return View(Products);
+                        }
+
+                        else
+                        {
+                            return RedirectToAction("EmptyProduct", "Products");
+                        }
+
+
+                    }
+
+                    else
+                    {
+                        //Handle error case
+                        return View();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return RedirectToAction("Index", "ErrorMessage");
+                }
+
+            }
+
+
+            //var productDetails = GetSampleProductDetails();
+            //return View(productDetails);
+        }
+
+        public IActionResult Details()
+        {
+            return View();
         }
 
         public static List<ProductDetails> GetSampleProductDetails()

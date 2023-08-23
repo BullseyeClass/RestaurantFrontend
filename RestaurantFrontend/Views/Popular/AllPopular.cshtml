@@ -9,6 +9,7 @@
 
 
 <link href="@Url.Content("~/css/MostPopular.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
 
 <div class="d-flex justify-content-center">
     <h1 id="popular">Most Popular</h1>
@@ -54,7 +55,7 @@
     </div>
 
 
-    <div class="row ps-5" style="margin-right: 0; padding-right:0;">
+   @* <div class="row ps-5" style="margin-right: 0; padding-right:0;">
 
         @foreach (var item in Model)
         {
@@ -88,6 +89,14 @@
                 </div>
             </div>
         }
+    </div>*@
+
+    <div class="row g-4 justify-content-start" style="width: 80%">
+
+
+        @Html.Partial("_AllProductsCard")
+
+
     </div>
 </div>
 
