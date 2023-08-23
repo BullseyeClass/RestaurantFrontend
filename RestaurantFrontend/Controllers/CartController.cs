@@ -90,6 +90,52 @@ namespace RestaurantFrontend.Controllers
             return NotFound();
         }
 
+
+        public async Task<IActionResult> RemoveFromCart(string productId, string quantity)
+        {
+            try
+            {
+                if (productId != null && int.TryParse(quantity, out int parsedQuantity) && parsedQuantity > 0)
+                {
+                    if (!_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+                    {
+                        cartItems = new List<CartItem>();
+                    }
+
+                    var cartItem = new CartItem
+                    {
+                        Id = new Guid(productId),
+                        Quantity = parsedQuantity
+                    };
+
+                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.Id == cartItem.Id);
+
+
+                    if (firstMatchingElement != null)
+                    {
+                        cartItems.Remove(firstMatchingElement);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+
+
+                    _memoryCache.Set("CartItems", cartItems);
+
+                    CalculateTotalCartQuantity();
+
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "ErrorMessage");
+            }
+        }
+
         [Route("GetCartItems")]
         public async Task<IActionResult> GetCartItems()
         {
@@ -142,57 +188,3 @@ namespace RestaurantFrontend.Controllers
 }
 
 
-
-
-
-//        public async Task<ActionResult> AddToCart(string productId, string quantity)
-//        {
-//            //using (var httpClient = new HttpClient())
-//            //{
-//            try
-//            {
-//                //HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/ProductById/{productId}");
-
-//                if (productId != null && Parse(quantity) > 0)
-//                {
-//                    var product = await response.Content.ReadFromJsonAsync<Products>(); // Deserialize the product data
-
-//                    var cartItems = new List<Products>(); // Create a list to store cart items
-
-//                    for (int i = 0; i < Parse(quantity); i++)
-//                    {
-//                        var cartItem = new Products
-//                        {
-//                            Id = product.Id,
-//                            Name = product.Name,
-//                            Price = product.Price,
-//                            QuantityInStock = product.QuantityInStock,
-//                            Image = product.Image,
-//                            DeliveryInfo = product.DeliveryInfo,
-//                            DiscountedPrice = product.DiscountedPrice,
-//                            SKU = product.SKU,
-//                            ShippingInfo = product.ShippingInfo,
-//                            ProductInfo = product.ProductInfo,
-//                        };
-
-//                        cartItems.Add(cartItem); // Add the cart item to the list
-//                    }
-
-//                    // Now you can do something with the cartItems list, like adding it to the user's cart
-
-//                    return Json(new { success = true });
-//                }
-
-//                return Json(new { success = false });
-//            }
-//                catch (Exception ex)
-//            {
-//                return RedirectToAction("Index", "ErrorMessage");
-//            }
-//            //}
-//        }
-
-//        private int Parse(string quantity)
-//        {
-//            throw new NotImplementedException();
-//        }
