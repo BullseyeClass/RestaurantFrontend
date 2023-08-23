@@ -9,7 +9,9 @@
 
 
 
-     <div id="cart-container"></div>
+     <div id="cart-container">
+
+     </div>
 
 
 
@@ -85,26 +87,6 @@ $(document).ready(function() {
     });
 });
 
-// Function to render cart items
-//function renderCartItems(cartData, container) {
-//    container.empty(); // Clear the container before rendering
-
-//    if (cartData.length === 0) {
-//        container.append('<p>Your cart is empty.</p>');
-//        return;
-//    }
-
-//    var cartHtml = '<ul>';
-//    cartData.forEach(function(item) {
-//        cartHtml += '<li>' + item.name + ' - $' + item.price + '</li>';
-//    });
-//    cartHtml += '</ul>';
-
-//    container.append(cartHtml);
-//}
-
-
-
 
 
 
@@ -179,6 +161,11 @@ function calculateSubtotal(cartData) {
 </script>
 <style>
 
+
+    .cart-main-container{
+        max-height: 10em !important;
+        overflow-y: auto !important;
+    }
 
     .cart-cards {
         max-height: 10em !important;
