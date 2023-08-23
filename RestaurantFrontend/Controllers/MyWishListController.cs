@@ -15,9 +15,18 @@ namespace RestaurantFrontend.Controllers
         {
             _gettingMyWishListFromDB = gettingMyWishListFromDB;
         }
+
         [Route("MyWishList")]
         public IActionResult MyWishList()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Generate the return URL with query parameters
+                var returnUrl = Url.Action("Index", "Order", null, Request.Scheme) + Request.QueryString;
+
+                return RedirectToAction("RegistrationPage", "Registration", new { returnUrl });
+            }
+
             var myWishList = _gettingMyWishListFromDB.GetMyWishListFromDataSource();
             return View(myWishList.ToList());
         }

@@ -18,8 +18,12 @@ namespace RestaurantFrontend.Controllers.RegistrationPage
 
 
         [Route("Registration")]
-        public ActionResult RegistrationPage()
+        public ActionResult RegistrationPage(string returnUrl = null)
         {
+            TempData["ReturnUrl"] = returnUrl;
+            // Access the TempData value and cast it to a string
+            string errorMessage = TempData["ErrorMessage"] as string;
+            ViewBag.ErrorMessage = errorMessage;
             return View();
         }
 
