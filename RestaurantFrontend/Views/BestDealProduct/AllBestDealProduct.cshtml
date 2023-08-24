@@ -9,6 +9,7 @@
 
 
 <link href="@Url.Content("~/css/BestDeal.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/css/Products.css")" rel="stylesheet" type="text/css" />
 
 <div class="d-flex justify-content-center">
 
@@ -55,42 +56,12 @@
 
     </div>
 
+    <div class="row g-4 justify-content-start" style="width: 80%">
 
-    <div class="row ps-5" style="margin-right: 0; padding-right:0;">
 
-        @foreach (var item in Model)
-        {
-            var testing = item.Tag;
+        @Html.Partial("_AllProductsCard")
 
-            <div id="card" class="card" style="width: 12rem; height:29rem; margin-right: 20px; margin-bottom: 20px;">
 
-                <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
-
-                <div class="image-display">
-                    <img src="@item.Image" width="170" margin-bottom="0" alt="" />
-                </div>
-
-                <div class="">
-                    <div class="">
-                        <p class="">
-
-                            <div class="card-body">
-                                <p class="card-text">@item.Name</p>
-                                <p class="card-text-dollar text-danger">₦@item.Price</p>
-                                <div class="counter-container">
-                                    <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                    <p class="count count-@item.Id">1</p>
-                                    <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                </div>
-
-                            </div>
-                            <a onclick="addToCart(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        }
     </div>
 </div>
 
