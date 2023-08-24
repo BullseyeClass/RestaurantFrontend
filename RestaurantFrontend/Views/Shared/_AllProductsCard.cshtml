@@ -9,7 +9,7 @@
         <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
             <div class="card">
                 <div>
-                    <img src="@item.Image" class="card-img-top" alt="" />
+                    <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
                     @{
 
                         if (item.BestDeal == true)
