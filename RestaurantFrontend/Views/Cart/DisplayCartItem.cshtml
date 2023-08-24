@@ -5,9 +5,9 @@
         <h5>My Cart</h5>
         <hr />
         <div class="main-card">
-            <div class="checkout-card-container">
+            <div id="checkoutContainer" class="checkout-card-container">
 
-                <div class="checkout-card-details">
+                <div  class="checkout-card-details">
                     <div class="checkout-content">
                         <div class="checkout-imagecontainer">
                             <img width="100" height="160" src="~/images/Boneless_Chicken_Breasts.png" />
@@ -110,6 +110,60 @@
 </div>
 
 <script>
+
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/GetCartItems",
+            type: "GET",
+            success: function (data) {
+                var checkoutContainer = $("#checkoutContainer");
+
+                data.forEach(function (item) {
+                    var template = checkoutContainer.find(".checkout-card-details").clone();
+
+                    template.find(".product-image").attr("src", item.image);
+                    template.find(".card-product-name").text(item.name);
+                    template.find(".card-product-price").text(item.price);
+                    template.find(".product-quantity").text(item.quantity);
+                    template.find(".total-price").text(item.totalPrice);
+
+                    checkoutContainer.append(template);
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error("Error fetching cart items:", error);
+                renderCartNull();
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const exampleModal = document.getElementById('exampleModal');
     if (exampleModal) {
         exampleModal.addEventListener('show.bs.modal', event => {
