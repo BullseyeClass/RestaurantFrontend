@@ -57,7 +57,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -103,7 +103,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -149,7 +149,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -194,7 +194,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
                 }
@@ -240,7 +240,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -286,7 +286,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -332,7 +332,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -379,7 +379,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
                 }
@@ -424,7 +424,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -470,7 +470,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -516,7 +516,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
                 }
@@ -563,7 +563,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
                 }
@@ -610,7 +610,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -655,7 +655,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
                 }
@@ -701,7 +701,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -748,7 +748,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -792,7 +792,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
@@ -838,7 +838,7 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         //Handle error case
-                        return View();
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
                 }
                 catch (Exception ex)
