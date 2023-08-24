@@ -7,6 +7,7 @@ namespace RestaurantFrontend.Controllers
     [Authorize]
     public class OrderController : Controller
     {
+        [Route("Order")]
         public IActionResult Index()
         {
             if (!User.Identity.IsAuthenticated)
