@@ -79,15 +79,15 @@ namespace RestaurantFrontend.Controllers
 
             return 0;
         }
-
+        [Route("Checkout")]
         public async Task<IActionResult> DisplayCartItem()
         {
-            if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
-            {
-                return Ok(cartItems);
-            }
+            //if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+            //{
+            //    return Ok(cartItems);
+            //}
 
-            return NotFound();
+            return View();
         }
 
 

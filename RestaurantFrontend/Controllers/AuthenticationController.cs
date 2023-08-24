@@ -146,7 +146,9 @@ namespace RestaurantFrontend.Controllers
                     else
                     {
                         // Handle error case
-                        return View();
+                        TempData["ErrorMessage"] = "Email Already Exist";
+                        //return View();
+                        return RedirectToAction("RegistrationPage", "Registration");
 
                     }
                 }
