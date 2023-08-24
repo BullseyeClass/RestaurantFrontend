@@ -7,33 +7,7 @@
         <div class="main-card">
             <div id="checkoutContainer" class="check-out-box">
 
-                @* <div class="checkout-card-container">
-
-                <div class="checkout-card-details">
-                <div class="checkout-content">
-                <div class="checkout-imagecontainer">
-                <img class="checkout-img" width="100" height="160" src="" />
-                </div>
-
-                <div>
-                <p class="card-product-name"></p>
-                <p class="card-product-price">N</p>
-                <div class="count-container">
-                <span>-</span>
-                <span class="card-product-quantity"></span>
-                <span>+</span>
-                </div>
-                </div>
-                </div>
-
-
-                </div>
-                <div class="card-total-price">
-                <p class="total-price">$2.69</p>
-                <a class="remove-card"> X</a>
-                </div>
-
-                </div>*@
+              
 
             </div>
             <div>
@@ -130,7 +104,7 @@
                     renderCartNull();
                 }
             });
-        }, 2000);
+        }, 1000);
     });
 
 
@@ -157,7 +131,7 @@
             cardHtml += '</div>';
             cardHtml += '<div>';
             cardHtml += '<p class="card-product-name">' + item.name + '</p>';
-            cardHtml += '<p class="card-product-price">' + item.price + '</p>';
+            cardHtml += '<p class="card-product-price">₦' + item.price + '</p>';
             cardHtml += '<div class="count-container">';
             cardHtml += '<span>-</span>';
             cardHtml += '<span class="card-product-quantity">' + item.quantity + '</span>';
@@ -167,7 +141,7 @@
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '<div class="card-total-price">';
-            cardHtml += '<span class="total-price" count-' + item.Id + '">$' + item.quantity * item.price + '</span>';
+            cardHtml += '<span class="total-price" count-' + item.Id + '">₦' + item.quantity * item.price + '</span>';
             cardHtml += '<span class="remove-card"> X</span>';
             cardHtml += '</div>';
             cardHtml += '<hr/>';

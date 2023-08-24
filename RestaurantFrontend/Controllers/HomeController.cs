@@ -15,14 +15,12 @@ namespace RestaurantFrontend.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
-        //private readonly IGettingProductsFromDB _gettingProductsFromDB;
         private readonly string _baseUrl;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
-            //_gettingProductsFromDB = gettingProductsFromDB;
             _baseUrl = _configuration["AppSettings:BaseUrl"];
         }
 
@@ -32,7 +30,6 @@ namespace RestaurantFrontend.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //var products = _gettingProductsFromDB.GetProductsFromDataSource();
             using (var httpClient = new HttpClient())
             {
                 try
@@ -50,16 +47,15 @@ namespace RestaurantFrontend.Controllers
                     }
                     else
                     {
-                       
-                        return View();
+
+                        return RedirectToAction("Index", "ErrorMessage");
                     }
 
 
                 }
                 catch (Exception ex)
                 {
-                    return View();
-                    //return RedirectToAction("Index", "ErrorMessage");
+                    return RedirectToAction("Index", "ErrorMessage");
                 }
             }
         }
