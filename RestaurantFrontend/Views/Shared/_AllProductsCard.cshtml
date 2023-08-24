@@ -6,43 +6,45 @@
 @foreach (var item in Model)
 {
     <div class="col-md-3 col-sm-6 border-primary" style="max-width: 180px;">
-        <div class="card">
-            <div>
-                <img src="@item.Image" class="card-img-top" alt="" />
-                @{
+        <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
+            <div class="card">
+                <div>
+                    <img src="@item.Image" class="card-img-top" alt="" />
+                    @{
 
-                    if (item.BestDeal == true)
-                    {
-                        <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
-                    }
-                    else
-                    {
-                        <span></span>
+                        if (item.BestDeal == true)
+                        {
+                            <span class="badge rounded-pill text-bg-danger bool-label mt-2">Best Deal</span>
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
+
+                        if (item.MostPopular == true)
+                        {
+                            <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
                     }
 
-                    if (item.MostPopular == true)
-                    {
-                        <span class="badge rounded-pill text-bg-danger bool-label mt-2">Most Popular</span>
-                    }
-                    else
-                    {
-                        <span></span>
-                    }
-                }
-
-            </div>
-            <div class="card-body">
-                <p class="card-text">@item.Name</p>
-                <p class="card-text-dollar text-danger">₦@item.Price</p>
-                <div class="counter-container">
-                    <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                    <p class="count count-@item.Id">1</p>
-                    <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                 </div>
+                <div class="card-body">
+                    <p class="card-text">@item.Name</p>
+                    <p class="card-text-dollar text-danger">₦@item.Price</p>
+                    <div class="counter-container">
+                        <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                        <p class="count count-@item.Id">1</p>
+                        <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                    </div>
 
+                </div>
+                <a onclick="addToCart(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
             </div>
-            <a onclick="addToCart(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-        </div>
+        </a>
     </div>
 }
 
@@ -52,4 +54,3 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/site.js"></script>
-   

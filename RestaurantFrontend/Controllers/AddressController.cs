@@ -73,7 +73,7 @@ namespace RestaurantFrontend.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var responseData = await response.Content.ReadAsStringAsync();
-             
+
                     TempData["SuccessMessage"] = responseData;
                     return RedirectToAction("Index", "Address");
 
@@ -165,32 +165,38 @@ namespace RestaurantFrontend.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAddress(Address address)
         {
-            
+
             if (ModelState.IsValid)
             {
+                
                 using (var httpClient = new HttpClient())
                 {
-
-                    var json = JsonConvert.SerializeObject(address);
-                    var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-                    var response = await httpClient.PutAsync($"{_baseUrl}/api/Address/UpdateAddress/{address.Id}", requestBody);
-
-
-                    if (response.IsSuccessStatusCode)
+                    if (HttpContext.Request.Cookies.TryGetValue("token", out string token))
                     {
-                        var responseData = await response.Content.ReadAsStringAsync();
+                        var json = JsonConvert.SerializeObject(address);
+                        var requestBody = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-                        TempData["SuccessMessage"] = responseData;
-                        return RedirectToAction("Index", "Address");
+                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                        var response = await httpClient.PutAsync($"{_baseUrl}/api/Address/UpdateAddress/{address.Id}", requestBody);
 
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseData = await response.Content.ReadAsStringAsync();
+
+                            TempData["SuccessMessage"] = responseData;
+                            return RedirectToAction("Index", "Address");
+
+                        }
+                        else
+                        {
+                            // Handle error case
+                            return View();
+
+                        }
                     }
-                    else
-                    {
-                        // Handle error case
-                        return View();
 
-                    }
+                    
                 }
             }
             return View(address);

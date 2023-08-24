@@ -1,4 +1,7 @@
-﻿
+﻿#card-anchor {
+    text-decoration: none;
+    color: black;
+}
 .main-section{
     margin-top:3rem;
 }
