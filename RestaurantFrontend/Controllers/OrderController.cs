@@ -18,8 +18,6 @@ namespace RestaurantFrontend.Controllers
             }
 
             string errorMessage = TempData["SuccessMessage"] as string;
-
-            // Pass the value to the view or use it as needed
             ViewBag.SuccessMessage = errorMessage;
 
             var orders = GetSampleOrders();
