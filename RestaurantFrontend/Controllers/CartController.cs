@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using RestaurantFrontend.Models.CartItems;
 using RestaurantFrontend.Models.Products;
+using System.Text.Json;
 
 namespace RestaurantFrontend.Controllers
 {
@@ -78,18 +79,107 @@ namespace RestaurantFrontend.Controllers
 
             return 0;
         }
-
+        [Route("Checkout")]
         public async Task<IActionResult> DisplayCartItem()
         {
-            if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
-            {
-                return Ok(cartItems); 
-            }
+            //if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+            //{
+            //    return Ok(cartItems);
+            //}
 
-            return NotFound();
+            return View();
         }
 
 
+        public async Task<IActionResult> RemoveFromCart(string productId, string quantity)
+        {
+            try
+            {
+                if (productId != null && int.TryParse(quantity, out int parsedQuantity) && parsedQuantity > 0)
+                {
+                    if (!_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+                    {
+                        cartItems = new List<CartItem>();
+                    }
+
+                    var cartItem = new CartItem
+                    {
+                        Id = new Guid(productId),
+                        Quantity = parsedQuantity
+                    };
+
+                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.Id == cartItem.Id);
+
+
+                    if (firstMatchingElement != null)
+                    {
+                        cartItems.Remove(firstMatchingElement);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+
+
+                    _memoryCache.Set("CartItems", cartItems);
+
+                    CalculateTotalCartQuantity();
+
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "ErrorMessage");
+            }
+        }
+
+        [Route("GetCartItems")]
+        public async Task<IActionResult> GetCartItems()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+                    {
+                        List<Guid> guids = cartItems.Select(item => item.Id).ToList();
+                        string guidsQueryString = string.Join("&", guids.Select(g => $"guids={g}"));
+
+                        HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetAllProductIDs?{guidsQueryString}");
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string content = await response.Content.ReadAsStringAsync();
+                            List<CartViewModel> cartdeserailized = JsonSerializer.Deserialize<List<CartViewModel>>(content);
+
+                            foreach (var cartIte in cartItems)
+                            {
+                                var matchedCartItem = cartdeserailized.FirstOrDefault(c => c.id == cartIte.Id);
+                                if (matchedCartItem != null)
+                                {
+                                    matchedCartItem.quantity = cartIte.Quantity.ToString();
+                                }
+                            }
+
+                            return Json(cartdeserailized); 
+                        }
+                        else
+                        {
+                            return BadRequest($"Request failed with status code: {response.StatusCode}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest();
+                }
+
+                return BadRequest();
+            }
+        }
 
 
 
@@ -99,56 +189,3 @@ namespace RestaurantFrontend.Controllers
 
 
 
-
-
-//        public async Task<ActionResult> AddToCart(string productId, string quantity)
-//        {
-//            //using (var httpClient = new HttpClient())
-//            //{
-//            try
-//            {
-//                //HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/ProductFilter/ProductById/{productId}");
-
-//                if (productId != null && Parse(quantity) > 0)
-//                {
-//                    var product = await response.Content.ReadFromJsonAsync<Products>(); // Deserialize the product data
-
-//                    var cartItems = new List<Products>(); // Create a list to store cart items
-
-//                    for (int i = 0; i < Parse(quantity); i++)
-//                    {
-//                        var cartItem = new Products
-//                        {
-//                            Id = product.Id,
-//                            Name = product.Name,
-//                            Price = product.Price,
-//                            QuantityInStock = product.QuantityInStock,
-//                            Image = product.Image,
-//                            DeliveryInfo = product.DeliveryInfo,
-//                            DiscountedPrice = product.DiscountedPrice,
-//                            SKU = product.SKU,
-//                            ShippingInfo = product.ShippingInfo,
-//                            ProductInfo = product.ProductInfo,
-//                        };
-
-//                        cartItems.Add(cartItem); // Add the cart item to the list
-//                    }
-
-//                    // Now you can do something with the cartItems list, like adding it to the user's cart
-
-//                    return Json(new { success = true });
-//                }
-
-//                return Json(new { success = false });
-//            }
-//                catch (Exception ex)
-//            {
-//                return RedirectToAction("Index", "ErrorMessage");
-//            }
-//            //}
-//        }
-
-//        private int Parse(string quantity)
-//        {
-//            throw new NotImplementedException();
-//        }

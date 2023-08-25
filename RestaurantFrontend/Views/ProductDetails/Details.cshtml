@@ -33,13 +33,13 @@
                     <div class="col-md-12" id="navbar">
                         <div class="breadcrumb">
                             <a href="#" class="text-decoration-none text-dark me-1">Home</a> /
-                            <a href="#" class="text-decoration-none text-dark me-1 ms-1"> @Model.Tag</a> /
-                            <span class="ms-1">@Model.Name</span>
+                            <a href="#" class="text-decoration-none text-dark me-1 ms-1">@* @Model.Tag*@</a> /
+                            <span class="ms-1">@*@Model.Name*@</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-2" id="img-content" style="width: 450px; height: 110vh">
-                            <img src="@Model.Image" style="width: 30vw; height: 100vh;" alt="@Model.Name" class="position-absolute top-50 start-50 translate-middle">
+                            <img src="@*@Model.Image*@" style="width: 30vw; height: 100vh;" alt="@*@Model.Name*@" class="position-absolute top-50 start-50 translate-middle">
                         </div>
                         <div class="card-content" style="max-width: 460px;">
                             <p>
@@ -52,9 +52,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                            <p class="card-text"><b>@Model.Name</b></p>
-                            <p class="card-text">@Model.SKU</p>
-                            <p class="card-text fs-4 text-danger"><b>$@Model.Price </b></p>
+                            <p class="card-text"><b>@*@Model.Name*@</b></p>
+                            <p class="card-text">@*@Model.SKU*@</p>
+                            <p class="card-text fs-4 text-danger"><b>$@*@Model.Pric*@e </b></p>
                             <p class="card-text">Quantity</p>
                             <form>
                                 <input placeholder="1" type="number" min="1" style="width: 7vw; height: 6vh;border: solid 1px; border-color:dimgray; display:flex; text-align: center; justify-content:center; padding:4px">

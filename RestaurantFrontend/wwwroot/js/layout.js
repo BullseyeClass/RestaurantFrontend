@@ -101,7 +101,12 @@ function fetchUserInformation() {
 }
 
 
+
 $(document).ready(function () {
     fetchUserInformation();
 });
+
+
+
+
 
