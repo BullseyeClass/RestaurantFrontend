@@ -34,16 +34,36 @@ function addToCart1(buttonElement) {
 
 
 function removeFromCart(buttonElement) {
-    const productId = $(buttonElement).data("product-id");
-    const quantityText = $(".counter-container .count-" + productId).text();
-    const firstDigit = parseInt(quantityText.match(/\d/)[0]); 
+    try {
+        const productId = $(buttonElement).data("product-id");
+        const quantityText = $(".count").text();
+        const firstDigit = parseInt(quantityText.match(/\d/)[0]);
 
-    $.post("/Cart/RemoveFromCart", { productId: productId, quantity: firstDigit }, function (response) {
-        if (response.success) {
-            location.reload();
-         
-        } else {
-            alert("Failed to remove product from cart.");
-        }
-    });
+        $.post("/Cart/RemoveFromCart", { productId: productId, quantity: firstDigit }, function (response) {
+            if (response.success) {
+                location.reload();
+            } else {
+                alert("Failed to remove product from cart.");
+            }
+        });
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
 }
+
+//function removeFromCart(buttonElement) {
+//    try {
+//        const productId = $(buttonElement).data("product-id");
+//        const quantityText = $(".counter-container .count-" + productId).text();
+
+//        $.post("/Cart/RemoveFromCart", { productId: productId, quantity: quantityText }, function (response) {
+//            if (response.success) {
+//                location.reload();
+//            } else {
+//                alert("Failed to remove product from cart.");
+//            }
+//        });
+//    } catch (error) {
+//        console.error("An error occurred:", error);
+//    }
+//}
