@@ -6,9 +6,6 @@
         <hr />
         <div class="main-card">
             <div id="checkoutContainer" class="check-out-box">
-
-              
-
             </div>
             <div>
                 <p>Enter a promo code</p>
@@ -174,6 +171,7 @@
         dataCart.forEach(function (item) {
             subtotals += item.price * item.quantity;
         });
+
         return '₦' + subtotals.toFixed(2);
     }
 
@@ -199,12 +197,19 @@
                         selectedMethod = radio.id;
                     }
                 });
+                
+                const element = document.getElementById("subtotal2");
+
+                const elementContent = element.innerHTML;
+
+                const valueWithoutSymbol = elementContent.replace("₦", "");
 
                 if (selectedMethod === 'flexRadioDefault1') {
 
                     const payOnDeliveryData = {
-
+                        price: valueWithoutSymbol
                     };
+
 
 
                     fetch('/Order', {
