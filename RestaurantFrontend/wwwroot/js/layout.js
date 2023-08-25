@@ -110,3 +110,47 @@ $(document).ready(function () {
 
 
 
+
+
+const navbar = document.querySelector('.nav-bar');
+const navbarScrollClass = 'nav-bar-scroll';
+let isNavbarVisible = false;
+
+
+function debounce(func, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        timer = setTimeout(func, delay);
+    };
+}
+
+function toggleNavbarScroll() {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    );
+
+    const scrollThresholdTop = 500;
+    const scrollThresholdBottom = 700; 
+
+    if (scrollTop > scrollThresholdTop && scrollTop + windowHeight < documentHeight - windowHeight - scrollThresholdBottom) {
+        if (!isNavbarVisible) {
+            navbar.classList.add(navbarScrollClass);
+            isNavbarVisible = true;
+        }
+    } else {
+        if (isNavbarVisible) {
+            navbar.classList.remove(navbarScrollClass);
+            isNavbarVisible = false;
+        }
+    }
+}
+
+const debouncedToggleNavbarScroll = debounce(toggleNavbarScroll, 40);
+window.addEventListener('scroll', debouncedToggleNavbarScroll);

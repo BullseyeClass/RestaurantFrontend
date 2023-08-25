@@ -7,33 +7,7 @@
         <div class="main-card">
             <div id="checkoutContainer" class="check-out-box">
 
-                @* <div class="checkout-card-container">
-
-                <div class="checkout-card-details">
-                <div class="checkout-content">
-                <div class="checkout-imagecontainer">
-                <img class="checkout-img" width="100" height="160" src="" />
-                </div>
-
-                <div>
-                <p class="card-product-name"></p>
-                <p class="card-product-price">N</p>
-                <div class="count-container">
-                <span>-</span>
-                <span class="card-product-quantity"></span>
-                <span>+</span>
-                </div>
-                </div>
-                </div>
-
-
-                </div>
-                <div class="card-total-price">
-                <p class="total-price">$2.69</p>
-                <a class="remove-card"> X</a>
-                </div>
-
-                </div>*@
+              
 
             </div>
             <div>
@@ -113,7 +87,13 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
 <script>
+
+
+
+
+
 
 
     $(document).ready(function () {
@@ -130,7 +110,7 @@
                     renderCartNull();
                 }
             });
-        }, 2000);
+        }, 1000);
     });
 
 
@@ -157,18 +137,18 @@
             cardHtml += '</div>';
             cardHtml += '<div>';
             cardHtml += '<p class="card-product-name">' + item.name + '</p>';
-            cardHtml += '<p class="card-product-price">' + item.price + '</p>';
+            cardHtml += '<p class="card-product-price">₦' + item.price + '</p>';
             cardHtml += '<div class="count-container">';
-            cardHtml += '<span>-</span>';
-            cardHtml += '<span class="card-product-quantity">' + item.quantity + '</span>';
-            cardHtml += '<span>+</span>';
+            cardHtml += '<span class"decrementBtn faded">-</span>';
+            cardHtml += '<span class="count .counter-container count-' + item.Id + '">' + item.quantity + '</span>';
+            cardHtml += '<span class="incrementBtn">+</span>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '<div class="card-total-price">';
-            cardHtml += '<span class="total-price" count-' + item.Id + '">$' + item.quantity * item.price + '</span>';
-            cardHtml += '<span class="remove-card"> X</span>';
+            cardHtml += '<span class="total-price count-' + item.Id + '">₦' + item.quantity * item.price + '</span>';
+            cardHtml += '<span onclick="removeFromCart(this)" data-product-id="' + item.id + '" class="remove-card"> X</span>';
             cardHtml += '</div>';
             cardHtml += '<hr/>';
             cardHtml += '</div>';
@@ -355,6 +335,12 @@
         cursor: pointer;
     }
 
+
+    .faded {
+        opacity: 0.5;
+    }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+<script src="~/js/Products.js" asp-append-version="true"></script>
+<script src="~/js/site.js"></script>
