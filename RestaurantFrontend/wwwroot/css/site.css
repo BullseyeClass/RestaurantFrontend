@@ -17,12 +17,13 @@ html {
 
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
+
 .dropdown-menu a:hover {
     color: red;
 }
@@ -32,7 +33,40 @@ body {
     color: white !important;
     text-decoration: none;
     cursor: pointer;
+    transition: top 0.4s ease-out;
 }
+
+.nav-bar-scroll {
+    color: white !important;
+    text-decoration: none;
+    cursor: pointer;
+    position: fixed;
+    top: -4rem;
+    width: 100%;
+    z-index: 1000;
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+
+
+@keyframes slideUp {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -4rem;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 #main-header {
     position: fixed;
@@ -40,6 +74,7 @@ body {
     transition: top 0.3s ease-in-out;
     z-index: 400;
 }
+
 
 
 
@@ -111,8 +146,9 @@ body {
     transition: transform 0.5s ease, opacity 0.5s ease;
     text-decoration: none;
 }
-.filler-div{
-    margin-right:2px;
+
+.filler-div {
+    margin-right: 2px;
 }
 
 .slide-up-element {
@@ -128,36 +164,37 @@ body {
     margin-top: 1em;
     overflow: hidden;
 }
+
     .trending img {
         margin: 0%;
         padding: 0%;
     }
 
-.trending ul{
-     list-style:none;  
-}
-  
+    .trending ul {
+        list-style: none;
+    }
+
 .trending-details {
     display: inline-block;
- 
     overflow: hidden;
-    
 }
 
 .small {
-    line-height: 0% !important ;
-    
+    line-height: 0% !important;
     margin: 0%;
     padding: 0%;
 }
+
 .trending-title {
     line-height: 0% !important;
 }
+
 .first-nav-content3 svg {
     margin-right: 0.54rem;
 }
-.first-nav-content3 span:hover{
-    color:#ccc;
+
+.first-nav-content3 span:hover {
+    color: #ccc;
 }
 
 .second-nav {
@@ -170,24 +207,23 @@ body {
     border-bottom: 2px solid #8c0303;
 }
 
-.web-logo{
-    
-    text-align:center;
-    margin-right:3em;
+.web-logo {
+    text-align: center;
+    margin-right: 3em;
 }
 
-.web-logo h5 {
-    font-size: 1.93rem;
-    font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
-    font-weight: 700;
-    margin:0%;
-    color:#8c0303;
-}
+    .web-logo h5 {
+        font-size: 1.93rem;
+        font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
+        font-weight: 700;
+        margin: 0%;
+        color: #8c0303;
+    }
 
 .search-input-container {
     display: flex;
     align-items: center;
-    position:relative
+    position: relative
 }
 
 
@@ -207,6 +243,7 @@ body {
         color: #8c0303;
         font-size: 0.9rem;
     }
+
 .search-icon {
     background-color: #8c0303;
     padding: 0.6em 1em;
@@ -216,6 +253,7 @@ body {
     margin-left: 1.5em;
     text-decoration: none;
 }
+
 .trending-container {
     border: solid 1px #8c0303;
     border-radius: 1.5625rem;
@@ -226,14 +264,13 @@ body {
     text-decoration: none;
 }
 
-.trending-container:hover {
-    border: solid 2px #8c0303;
-}
+    .trending-container:hover {
+        border: solid 2px #8c0303;
+    }
 
 .addborder {
     border: solid 2px;
-    background-color:white;
-
+    background-color: white;
 }
 
 .trending-content {
@@ -247,14 +284,14 @@ body {
     background: linear-gradient(to bottom, #8c0303, white);
 }
 
-.trending-content a{
-    text-decoration:none;
-    color: white !important;
-}
+    .trending-content a {
+        text-decoration: none;
+        color: white !important;
+    }
 
 
-.fill-in-div{
-    margin-left:18rem;
+.fill-in-div {
+    margin-left: 18rem;
 }
 
 
@@ -262,9 +299,11 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.6rem 12rem 0.2rem 9.5rem;
-    margin-bottom: ;
+    margin-bottom:;
     text-decoration: none;
     min-height: 3rem;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
 }
 
     .third-nav a {
@@ -287,20 +326,20 @@ body {
     position: absolute;
     background-color: white;
     padding: 1rem;
-    padding-right:1rem;
-    margin-top:2.2rem;
-    margin-left:5.7rem;
-    z-index:4;
+    padding-right: 1rem;
+    margin-top: 2.2rem;
+    margin-left: 5.7rem;
+    z-index: 4;
     list-style-type: none;
-    color:#808080;
+    color: #808080;
 }
 
 .food-hover-link:hover + .food-hover-list {
     display: block;
 }
 
-li{
-    line-height:2rem;
+li {
+    line-height: 2rem;
 }
 
 .food-hover-list:hover {
@@ -323,6 +362,7 @@ li{
 .bevs-hover-link:hover + .bevs-hover-list {
     display: block;
 }
+
 .bevs-hover-list:hover {
     display: block;
 }
@@ -420,23 +460,23 @@ li{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #fff;
-    padding-bottom:4.9rem;
-   
+    padding-bottom: 4.9rem;
 }
+
 .footer-clovers h5 {
     font-size: 1.93rem;
     font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif;
     font-weight: 700;
     margin: 0%;
-    margin-top:0.9rem;
-
+    margin-top: 0.9rem;
 }
 
 .footer-first-section h6 {
     font-size: 1.2rem;
     font-weight: 600;
-    line-height: 3.9rem ;
+    line-height: 3.9rem;
 }
+
 .footer-first-section h4 {
     font-size: 1.2rem;
     font-weight: 600;
@@ -449,9 +489,10 @@ li{
     cursor: pointer;
     line-height: 2.3rem;
 }
-.social-logos img{
-    margin-top:2.9rem;
-    margin-right:0.2rem;
+
+.social-logos img {
+    margin-top: 2.9rem;
+    margin-right: 0.2rem;
 }
 
 .footer-second-section {
@@ -464,25 +505,27 @@ li{
     display: flex;
     justify-content: space-between;
     padding: 4rem 6.1rem 3.8rem 5rem;
-    
 }
+
     .footer-second-links a {
         font-size: 13px;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
     }
-    .footer-second-links a:hover{
-        color:inherit;
-    }
+
+        .footer-second-links a:hover {
+            color: inherit;
+        }
 
 .footer-second-img-container {
     display: flex;
     justify-content: space-between;
 }
-.footer-second-img-container a{
-     cursor: pointer;
-}
+
+    .footer-second-img-container a {
+        cursor: pointer;
+    }
 
 .footer-second-logos h6 {
     text-align: center;
@@ -491,15 +534,15 @@ li{
     line-height: 3.9rem;
 }
 
-.footer-copywrite{
+.footer-copywrite {
     text-align: center;
-    padding:1rem;
+    padding: 1rem;
 }
+
     .footer-copywrite p {
         margin: 0;
         font-size: 14px;
         color: #3c3b3b !important;
-        
     }
 
 
@@ -524,6 +567,7 @@ li{
     display: block;
     background-color: #0000005b;
 }
+
 #footer-food-hover-list:hover {
     display: block;
 }
@@ -622,24 +666,3 @@ li {
 .Rest-Background-Color {
     background-color: #8c0303;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

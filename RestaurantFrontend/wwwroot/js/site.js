@@ -31,6 +31,24 @@ function addToCart1(buttonElement) {
         }
     });
 }
+function addToCart2(buttonElement) {
+    const productId = $(buttonElement).data("product-id");
+    const quantityText = $("#cardDetails").val(); // Use .val() to get input element value
+    const quantity = parseInt(quantityText);
+
+    if (!isNaN(quantity)) { // Check if quantity is a valid number
+        $.post("/Cart/AddToCart", { productId: productId, quantity: quantity }, function (response) {
+            if (response.success) {
+                location.reload();
+                updateCartSection(response.cartInfo);
+            } else {
+                alert("Failed to add product to cart.");
+            }
+        });
+    } else {
+        alert("Invalid quantity entered.");
+    }
+}
 
 
 function removeFromCart(buttonElement) {
@@ -51,19 +69,3 @@ function removeFromCart(buttonElement) {
     }
 }
 
-//function removeFromCart(buttonElement) {
-//    try {
-//        const productId = $(buttonElement).data("product-id");
-//        const quantityText = $(".counter-container .count-" + productId).text();
-
-//        $.post("/Cart/RemoveFromCart", { productId: productId, quantity: quantityText }, function (response) {
-//            if (response.success) {
-//                location.reload();
-//            } else {
-//                alert("Failed to remove product from cart.");
-//            }
-//        });
-//    } catch (error) {
-//        console.error("An error occurred:", error);
-//    }
-//}
