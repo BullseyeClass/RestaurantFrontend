@@ -27,32 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let hideTimeout;
 
     searchInput.addEventListener("focus", function () {
-        clearTimeout(hideTimeout); // Clear any existing timeout
+        clearTimeout(hideTimeout);
         searchExtension.style.display = "block";
     });
 
     searchInput.addEventListener("blur", function () {
-        // Delay the hiding of the element by 500 milliseconds (adjust the duration as needed)
+      
         hideTimeout = setTimeout(function () {
             searchExtension.style.display = "none";
         }, 500);
     });
 });
-
-
-
-//document.addEventListener("DOMContentLoaded", function () {
-//    const searchInput = document.getElementById("search");
-//    const searchExtension = document.getElementById("trending-content");
-
-//    searchInput.addEventListener("focus", function () {
-//        searchExtension.style.display = "block";
-//    });
-
-//    searchInput.addEventListener("blur", function () {
-//        searchExtension.style.display = "none";
-//    });
-//});
 
 
 function navigateToFAQSection(event) {

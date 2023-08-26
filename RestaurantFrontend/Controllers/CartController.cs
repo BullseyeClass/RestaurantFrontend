@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using RestaurantFrontend.Models.CartItems;
 using RestaurantFrontend.Models.Products;
+using System.Net;
 using System.Text.Json;
 
 namespace RestaurantFrontend.Controllers
@@ -37,11 +38,11 @@ namespace RestaurantFrontend.Controllers
 
                     var cartItem = new CartItem
                     {
-                        Id = new Guid(productId),
+                        ProductId = new Guid(productId),
                         Quantity = parsedQuantity
                     };
 
-                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.Id == cartItem.Id);
+                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.ProductId == cartItem.ProductId);
 
 
                     if (firstMatchingElement != null)
@@ -104,11 +105,11 @@ namespace RestaurantFrontend.Controllers
 
                     var cartItem = new CartItem
                     {
-                        Id = new Guid(productId),
+                        ProductId = new Guid(productId),
                         Quantity = parsedQuantity
                     };
 
-                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.Id == cartItem.Id);
+                    CartItem firstMatchingElement = cartItems.FirstOrDefault(item => item.ProductId == cartItem.ProductId);
 
 
                     if (firstMatchingElement != null)
@@ -137,7 +138,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("GetCartItems")]
-        public async Task<IActionResult> GetCartItems()
+        public async Task<IActionResult> GetCartItems(string? TotalAmount )
         {
             using (var httpClient = new HttpClient())
             {
@@ -145,7 +146,7 @@ namespace RestaurantFrontend.Controllers
                 {
                     if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
                     {
-                        List<Guid> guids = cartItems.Select(item => item.Id).ToList();
+                        List<Guid> guids = cartItems.Select(item => item.ProductId).ToList();
                         string guidsQueryString = string.Join("&", guids.Select(g => $"guids={g}"));
 
                         HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/GetAllProductIDs?{guidsQueryString}");
@@ -157,14 +158,29 @@ namespace RestaurantFrontend.Controllers
 
                             foreach (var cartIte in cartItems)
                             {
-                                var matchedCartItem = cartdeserailized.FirstOrDefault(c => c.id == cartIte.Id);
+                                var matchedCartItem = cartdeserailized.FirstOrDefault(c => c.id == cartIte.ProductId);
                                 if (matchedCartItem != null)
                                 {
                                     matchedCartItem.quantity = cartIte.Quantity.ToString();
                                 }
                             }
 
-                            return Json(cartdeserailized); 
+                            if (TotalAmount != null)
+                            {
+                                
+
+                                string serializedCart = JsonSerializer.Serialize(cartdeserailized);
+                                string encodedCart = WebUtility.UrlEncode(serializedCart);
+
+
+                                return RedirectToAction("NewOrder", "Order", new { cartSerialized = encodedCart, TotalAmounts = TotalAmount });
+                            }
+                            else
+                            {
+                                return Json(cartdeserailized);
+                            }
+
+                            
                         }
                         else
                         {

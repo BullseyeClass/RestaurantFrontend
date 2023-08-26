@@ -202,15 +202,13 @@
 
                 const elementContent = element.innerHTML;
 
-                const valueWithoutSymbol = elementContent.replace("₦", "");
+                const TotalAmount = elementContent.replace("₦", "");
 
                 if (selectedMethod === 'flexRadioDefault1') {
 
                     const payOnDeliveryData = {
-                        price: valueWithoutSymbol
+                        TotalAmounti: TotalAmount
                     };
-
-
 
                     fetch('/Order', {
                         method: 'POST',
@@ -219,32 +217,32 @@
                         },
                         body: JSON.stringify(payOnDeliveryData),
                     })
-                        .then(response => {
-                            if (response.ok) {
-
-                                window.location.href = response.url;
+                        .then(response => response.json()) 
+                        .then(data => {
+                            if (data.redirect) {
+                                window.location.href = data.redirect; 
                             } else {
-
                                 alert('Payment on delivery failed.');
                             }
                         })
                         .catch(error => {
-
                             console.error('Pay on delivery AJAX error:', error);
                         });
+
                 } else if (selectedMethod === 'flexRadioDefault2') {
 
                     const payByCardData = {
+                        TotalAmounti: TotalAmount
+                    }
 
-                    };
 
-
-                    fetch('/payByCardEndpoint', {
+                    const url = `/GetCartItems?totalAmount=${TotalAmount}`;
+                    fetch(url, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(payByCardData),
+                        body: JSON.stringify(TotalAmount),
                     })
                         .then(response => {
                             if (response.ok) {
@@ -292,8 +290,6 @@
     .checkout-card-container {
         display: flex;
         justify-content: space-between;
-        /* display: grid;*/
-        /* grid-template-columns: 4fr 1fr;*/
         border-bottom: 1px solid #3339;
         padding-bottom: 1rem;
         margin-bottom: 1rem;

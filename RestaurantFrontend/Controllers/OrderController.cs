@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestaurantFrontend.Models.CartItems;
 using RestaurantFrontend.Models.Order;
+using System.Net;
+using System.Text.Json;
 
 namespace RestaurantFrontend.Controllers
 {
@@ -24,6 +27,32 @@ namespace RestaurantFrontend.Controllers
             var orders = GetSampleOrders();
             return View(orders);
         }
+
+
+
+        [Route("NewOrder")]
+        public IActionResult NewOrder(string cartSerialized, string TotalAmounts)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+
+
+
+            }
+            string decodedCart = WebUtility.UrlDecode(cartSerialized);
+            List<CartViewModel> cartdeserailized = JsonSerializer.Deserialize<List<CartViewModel>>(decodedCart);
+
+            string errormessage = TempData["successmessage"] as string;
+            ViewBag.successmessage = errormessage;
+
+            var orders = GetSampleOrders();
+            //return View(orders);
+            return RedirectToAction("Index", "ErrorMessage");
+
+        }
+
+
+
 
         public static List<Order> GetSampleOrders()
         {
