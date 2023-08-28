@@ -6,9 +6,6 @@
         <hr />
         <div class="main-card">
             <div id="checkoutContainer" class="check-out-box">
-
-              
-
             </div>
             <div>
                 <p>Enter a promo code</p>
@@ -87,7 +84,13 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
 <script>
+
+
+
+
+
 
 
     $(document).ready(function () {
@@ -133,16 +136,16 @@
             cardHtml += '<p class="card-product-name">' + item.name + '</p>';
             cardHtml += '<p class="card-product-price">₦' + item.price + '</p>';
             cardHtml += '<div class="count-container">';
-            cardHtml += '<span>-</span>';
-            cardHtml += '<span class="card-product-quantity">' + item.quantity + '</span>';
-            cardHtml += '<span>+</span>';
+            cardHtml += '<span class"decrementBtn faded">-</span>';
+            cardHtml += '<span class="count .counter-container count-' + item.Id + '">' + item.quantity + '</span>';
+            cardHtml += '<span class="incrementBtn">+</span>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '</div>';
             cardHtml += '<div class="card-total-price">';
-            cardHtml += '<span class="total-price" count-' + item.Id + '">₦' + item.quantity * item.price + '</span>';
-            cardHtml += '<span class="remove-card"> X</span>';
+            cardHtml += '<span class="total-price count-' + item.Id + '">₦' + item.quantity * item.price + '</span>';
+            cardHtml += '<span onclick="removeFromCart(this)" data-product-id="' + item.id + '" class="remove-card"> X</span>';
             cardHtml += '</div>';
             cardHtml += '<hr/>';
             cardHtml += '</div>';
@@ -168,6 +171,7 @@
         dataCart.forEach(function (item) {
             subtotals += item.price * item.quantity;
         });
+
         return '₦' + subtotals.toFixed(2);
     }
 
@@ -193,20 +197,38 @@
                         selectedMethod = radio.id;
                     }
                 });
+                
+                const element = document.getElementById("subtotal2");
+
+                const elementContent = element.innerHTML;
+
+                const TotalAmount = elementContent.replace("₦", "");
+
+                let IsPayOnDelivery = true;
+
+                const deliveryUrl = `/NewOrder?totalAmount=${TotalAmount}&isPayOnDelivery=${IsPayOnDelivery}`;
+                const url = `/NewOrder?totalAmount=${TotalAmount}`;
 
                 if (selectedMethod === 'flexRadioDefault1') {
 
                     const payOnDeliveryData = {
-
+                        TotalAmounti: TotalAmount,
+                        IsPayOnDelivery: true
                     };
 
-
-                    fetch('/Order', {
+                    //fetch('/Order', {
+                    //    method: 'POST',
+                    //    headers: {
+                    //        'Content-Type': 'application/json',
+                    //    },
+                    //    body: JSON.stringify(payOnDeliveryData),
+                    //})
+                    fetch(deliveryUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(payOnDeliveryData),
+                        body: JSON.stringify(TotalAmount),
                     })
                         .then(response => {
                             if (response.ok) {
@@ -217,37 +239,73 @@
                                 alert('Payment on delivery failed.');
                             }
                         })
+                        //.then(response => response.json()) 
+                        //.then(data => {
+                        //    if (response.ok) {
+                        //    //if (data.redirect) {
+                        //        //window.location.href = data.redirect; 
+                        //        window.location.href = response.url;
+                        //    } else {
+                        //        alert('Payment on delivery failed.');
+                        //    }
+                        //})
                         .catch(error => {
-
                             console.error('Pay on delivery AJAX error:', error);
                         });
+
                 } else if (selectedMethod === 'flexRadioDefault2') {
 
                     const payByCardData = {
+                        TotalAmounti: TotalAmount
+                    }
 
-                    };
 
+                   
+                    //fetch(url, {
+                    //    method: 'POST',
+                    //    headers: {
+                    //        'Content-Type': 'application/json',
+                    //    },
+                    //    body: JSON.stringify(TotalAmount),
+                    //})
+                    //    .then(response => {
+                    //        if (response.ok) {
 
-                    fetch('/payByCardEndpoint', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(payByCardData),
-                    })
-                        .then(response => {
+                    //            window.location.href = response.url;
+                    //        } else {
+
+                    //            alert('Payment by card or transfer failed.');
+                    //        }
+                    //    })
+                    //    .catch(error => {
+
+                    //        console.error('Pay by card AJAX error:', error);
+                    //    });
+                    async function makePayment(url, TotalAmount) {
+                        try {
+                            const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(TotalAmount),
+                            });
+
                             if (response.ok) {
-
                                 window.location.href = response.url;
                             } else {
-
                                 alert('Payment by card or transfer failed.');
                             }
-                        })
-                        .catch(error => {
-
+                        } catch (error) {
                             console.error('Pay by card AJAX error:', error);
-                        });
+                        }
+                    }
+
+                    // Usage example
+                    //const paymentUrl = 'your_payment_url';
+                    //const totalAmount = { amount: 100 }; // Replace with your data
+                    makePayment(url, TotalAmount);
+
                 }
             });
         });
@@ -281,8 +339,6 @@
     .checkout-card-container {
         display: flex;
         justify-content: space-between;
-        /* display: grid;*/
-        /* grid-template-columns: 4fr 1fr;*/
         border-bottom: 1px solid #3339;
         padding-bottom: 1rem;
         margin-bottom: 1rem;
@@ -329,6 +385,12 @@
         cursor: pointer;
     }
 
+
+    .faded {
+        opacity: 0.5;
+    }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+<script src="~/js/Products.js" asp-append-version="true"></script>
+<script src="~/js/site.js"></script>
