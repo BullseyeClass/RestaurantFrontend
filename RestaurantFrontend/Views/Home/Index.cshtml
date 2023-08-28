@@ -1,5 +1,3 @@
-
-    
 @using RestaurantFrontend.Models;
 @model IEnumerable<RestaurantFrontend.Models.Products.Products>
 
@@ -203,49 +201,54 @@
                     <div class="row g-4 sku-overlay">
                         @{
                             var bestDeals = Model.Where(item => item.BestDeal == true).Take(5).ToList();
-                            
+
                         }
                         @foreach (var item in bestDeals)
                         {
                             <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
-                                <div class="card">
-                                    @if (item.BestDeal == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p> Best Deal </p>
-                                        </div>
-                                    }
-                                    else if (item.MostPopular == true)
-                                    {
-                                        <div class="selling-tag">
-                                          <p>  Most Popular </p>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="empty-tag"> </div>
-                                    }
-                                    <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
-                                    <div class="card-body">
-                                        <p class="card-text">@item.Name</p>
-                                        <div class="price-section d-flex">
-                                           @if (item.DiscountedPrice != 0)
-                                           {
-                                            <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
-                                           }
-                                            <p class="card-text-dollar text-danger"> $@item.Price</p>
-                                        </div>
-                                        <div class="counter-container">
-                                            <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count count-@item.Id">1</p>
-                                            <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                        </div>
 
+
+                                <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
+                                    <div class="card">
+                                        @if (item.BestDeal == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p> Best Deal </p>
+                                            </div>
+                                        }
+                                        else if (item.MostPopular == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p>  Most Popular </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="empty-tag"> </div>
+                                        }
+                                        <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
+                                        <div class="card-body">
+                                            <p class="card-text">@item.Name</p>
+                                            <div class="price-section d-flex">
+                                                @if (item.DiscountedPrice != 0)
+                                                {
+                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                }
+                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                            </div>
+                                            <div class="counter-container">
+                                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                                <p class="count count-@item.Id">1</p>
+                                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                            </div>
+
+                                        </div>
+                                        <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                     </div>
-                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-                                </div>
+                                </a>
+
                             </div>
-                           
+
                         }
                     </div>
                 </div>
@@ -254,7 +257,7 @@
         </div>
 
         <div class="shop-best-section deals-picture-section">
-            
+
             <a asp-controller="BestDealProduct" asp-action="AllBestDealProduct" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Shop Best Deals
@@ -264,24 +267,24 @@
                 <div class="wine-section">
                     <div class="position-relative">
                         <img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061508/Bullseye/wine-deals_pic_zlre8d.jpg" alt="Your Image" class="img-fluid wine-pic">
-                        <div class="position-absolute"  write-container p-3">
-                             <div class="wine-writeup">
-                                    <div class="d-flex">
-                                        <div class="Left-side">
-                                            <div class="wine-clock">
-                                                It's Wine O'Clock!
-                                            </div>
-                                            <div class="Great-deals">
-                                                Great Deals on
-                                            </div>
+                        <div class="position-absolute" write-container p-3">
+                            <div class="wine-writeup">
+                                <div class="d-flex">
+                                    <div class="Left-side">
+                                        <div class="wine-clock">
+                                            It's Wine O'Clock!
                                         </div>
-                                        <div class="right-side">
-                                            <div class="stamp Limited-supply">
-                                                <div>Limited</div> 
-                                                <div>Supply</div>
-                                            </div>
+                                        <div class="Great-deals">
+                                            Great Deals on
                                         </div>
                                     </div>
+                                    <div class="right-side">
+                                        <div class="stamp Limited-supply">
+                                            <div>Limited</div>
+                                            <div>Supply</div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="big-selected">
                                     Selected Wines
                                 </div>
@@ -375,7 +378,7 @@
 
                 </div>
 
-            
+
                 <div class="col-md-3 all-sku">
                     <div class="position-relative">
                         <div class="sku-background"></div>
@@ -391,10 +394,10 @@
 
             </div>
 
-        
-           
 
-            
+
+
+
             <div class="row">
                 <div class="col-md-3 all-sku">
                     <div class="position-relative">
@@ -429,7 +432,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="col-md-3 all-sku">
                     <div class="position-relative">
                         <div class="sku-background"></div>
@@ -442,7 +445,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
 
 
@@ -461,42 +464,47 @@
                         @foreach (var item in startCart)
                         {
                             <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
-                                <div class="card">
-                                    @if (item.BestDeal == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p> Best Deal </p>
-                                        </div>
-                                    }
-                                    else if (item.MostPopular == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p>Most Popular </p>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="empty-tag"> </div>
-                                    }
-                                    <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
-                                    <div class="card-body">
-                                        <p class="card-text">@item.Name</p>
-                                        <div class="price-section d-flex">
-                                            @if (item.DiscountedPrice != 0)
-                                            {
-                                                <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
-                                            }
-                                            <p class="card-text-dollar text-danger"> $@item.Price</p>
-                                        </div>
-                                        <div class="counter-container">
-                                            <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count count-@item.Id">1</p>
-                                            <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                        </div>
 
+
+                                <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
+                                    <div class="card">
+                                        @if (item.BestDeal == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p> Best Deal </p>
+                                            </div>
+                                        }
+                                        else if (item.MostPopular == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p>Most Popular </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="empty-tag"> </div>
+                                        }
+                                        <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
+                                        <div class="card-body">
+                                            <p class="card-text">@item.Name</p>
+                                            <div class="price-section d-flex">
+                                                @if (item.DiscountedPrice != 0)
+                                                {
+                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                }
+                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                            </div>
+                                            <div class="counter-container">
+                                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                                <p class="count count-@item.Id">1</p>
+                                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                            </div>
+
+                                        </div>
+                                        <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                     </div>
-                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-                                </div>
+                                </a>
+
                             </div>
                             indexcount1++;
                         }
@@ -507,7 +515,7 @@
         </div>
 
         <div class="shop-more-section">
-            
+
             <a asp-action="index" asp-controller="StartYourCart" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Shop More Products
@@ -555,6 +563,7 @@
             </div>
             <div class="overlay-shopping d-flex flex-column align-items-center">
 
+
                 <div class="slider-container">
                     <div class="row g-4 sku-overlay">
                         @{
@@ -563,42 +572,46 @@
                         @foreach (var item in mostPopular)
                         {
                             <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
-                                <div class="card">
-                                    @if (item.BestDeal == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p> Best Deal </p>
-                                        </div>
-                                    }
-                                    else if (item.MostPopular == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p>Most Popular </p>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="empty-tag"> </div>
-                                    }
-                                    <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
-                                    <div class="card-body">
-                                        <p class="card-text">@item.Name</p>
-                                        <div class="price-section d-flex">
-                                            @if (item.DiscountedPrice != 0)
-                                            {
-                                                <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
-                                            }
-                                            <p class="card-text-dollar text-danger"> $@item.Price</p>
-                                        </div>
-                                        <div class="counter-container">
-                                            <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count count-@item.Id">1</p>
-                                            <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                        </div>
 
+                                <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
+                                    <div class="card">
+                                        @if (item.BestDeal == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p> Best Deal </p>
+                                            </div>
+                                        }
+                                        else if (item.MostPopular == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p>Most Popular </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="empty-tag"> </div>
+                                        }
+                                        <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
+                                        <div class="card-body">
+                                            <p class="card-text">@item.Name</p>
+                                            <div class="price-section d-flex">
+                                                @if (item.DiscountedPrice != 0)
+                                                {
+                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                }
+                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                            </div>
+                                            <div class="counter-container">
+                                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                                <p class="count count-@item.Id">1</p>
+                                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                            </div>
+
+                                        </div>
+                                        <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                     </div>
-                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-                                </div>
+                                </a>
+
                             </div>
                         }
                     </div>
@@ -608,7 +621,7 @@
         </div>
 
         <div class="shop-best-section deals-picture-section">
-            
+
             <a asp-controller="Popular" asp-action="AllPopular" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Shop Most Popular
@@ -619,28 +632,28 @@
                     <div class="position-relative">
                         <img src="https://res.cloudinary.com/dcntmhgwf/image/upload/v1692061505/Bullseye/pastas_kqipfd.jpg" alt="Your Image" class="img-fluid wine-pic">
                         <div class="position-absolute write-container p-3">
-                            
-                                <div class="pasta-writeup">
-                                    <div class="italian">
-                                        Taste of Italy
-                                    </div>
-                                    <div class="Great-deals-2">
-                                        Great Deals on Your
-                                    </div>
-                                    <div class="fav big-pasta">
-                                        Favorite
-                                    </div>
-                                     <div class="fav-pasta big-pasta">
-                                        Pastas
-                                    </div>
-                           
-                           
-                                    <a asp-controller="Products" asp-action="Pastas_Grains" class="anchor-btn">
-                                        <div class="wine-btn all-btn">
-                                            Shop Now
-                                        </div>
-                                    </a>
+
+                            <div class="pasta-writeup">
+                                <div class="italian">
+                                    Taste of Italy
                                 </div>
+                                <div class="Great-deals-2">
+                                    Great Deals on Your
+                                </div>
+                                <div class="fav big-pasta">
+                                    Favorite
+                                </div>
+                                <div class="fav-pasta big-pasta">
+                                    Pastas
+                                </div>
+
+
+                                <a asp-controller="Products" asp-action="Pastas_Grains" class="anchor-btn">
+                                    <div class="wine-btn all-btn">
+                                        Shop Now
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -664,12 +677,12 @@
                                         </div>
                                     </div>
                                     <div class="right-side">
-                                   
+
                                         <div class="stamp super-deal">
                                             <div>Limited</div>
                                             <div>Supply</div>
                                         </div>
-                                   
+
                                     </div>
                                 </div>
                                 <div class="cereals-bold">
@@ -702,42 +715,47 @@
                         @foreach (var item in shopFresh)
                         {
                             <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
-                                <div class="card">
-                                    @if (item.BestDeal == true)
-                                    {
-                                        <div class="selling-tag">
-                                             <p> Best Deal </p>
-                                        </div>
-                                    }
-                                    else if (item.MostPopular == true)
-                                    {
-                                        <div class="selling-tag">
-                                            <p>Most Popular </p>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="empty-tag"> </div>
-                                    }
-                                    <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
-                                    <div class="card-body">
-                                        <p class="card-text">@item.Name</p>
-                                        <div class="price-section d-flex">
-                                            @if (item.DiscountedPrice != 0)
-                                            {
-                                                <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
-                                            }
-                                            <p class="card-text-dollar text-danger"> $@item.Price</p>
-                                        </div>
-                                        <div class="counter-container">
-                                            <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                            <p class="count count-@item.Id">1</p>
-                                            <button class="incrementBtn"><i class="bi bi-plus"></i></button>
-                                        </div>
 
+
+                                <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
+                                    <div class="card">
+                                        @if (item.BestDeal == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p> Best Deal </p>
+                                            </div>
+                                        }
+                                        else if (item.MostPopular == true)
+                                        {
+                                            <div class="selling-tag">
+                                                <p>Most Popular </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="empty-tag"> </div>
+                                        }
+                                        <img src="@item.Image" class="card-img-top" style="height: 16rem;" alt="" />
+                                        <div class="card-body">
+                                            <p class="card-text">@item.Name</p>
+                                            <div class="price-section d-flex">
+                                                @if (item.DiscountedPrice != 0)
+                                                {
+                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                }
+                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                            </div>
+                                            <div class="counter-container">
+                                                <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
+                                                <p class="count count-@item.Id">1</p>
+                                                <button class="incrementBtn"><i class="bi bi-plus"></i></button>
+                                            </div>
+
+                                        </div>
+                                        <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                                     </div>
-                                    <a onclick="addToCart1(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
-                                </div>
+                                </a>
+
                             </div>
                         }
                     </div>
@@ -747,7 +765,7 @@
         </div>
 
         <div class="shop-more-section">
-          
+
             <a asp-action="index" asp-controller="StartYourCart" class="shop-more-btn header-btn">
                 <div class="continue-shopping-btn">
                     Continue Shopping
@@ -755,21 +773,21 @@
             </a>
             <div class="shop-more-layout">
                 <div class="ending-text-side">
-                        <div class="Subscribe">
-                            Subscribe & Save
+                    <div class="Subscribe">
+                        Subscribe & Save
+                    </div>
+                    <div class="percentage d-flex">
+                        <div class="figure">
+                            20%
                         </div>
-                        <div class="percentage d-flex">
-                            <div class="figure">
-                                20%
-                            </div>
-                            <div class="off-2">
-                                off
-                            </div>
+                        <div class="off-2">
+                            off
                         </div>
-                        <div class="next-order big-bold-2">
-                            Your Next Order
-                        </div>
-                    
+                    </div>
+                    <div class="next-order big-bold-2">
+                        Your Next Order
+                    </div>
+
                     <div class="form-group">
                         <label for="inputEmail">Enter your email here*</label>
                         <div class="input-group">
@@ -778,9 +796,9 @@
                         </div>
                     </div>
 
-                        
+
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -805,5 +823,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/Script.js"></script>
-   @* @await RenderSectionAsync("Scripts", required: true)*@
+    @* @await RenderSectionAsync("Scripts", required: true)*@
 }
