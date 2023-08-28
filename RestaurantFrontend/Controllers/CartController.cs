@@ -138,7 +138,7 @@ namespace RestaurantFrontend.Controllers
         }
 
         [Route("GetCartItems")]
-        public async Task<IActionResult> GetCartItems(string? TotalAmount )
+        public async Task<IActionResult> GetCartItems()
         {
             using (var httpClient = new HttpClient())
             {
@@ -164,21 +164,12 @@ namespace RestaurantFrontend.Controllers
                                     matchedCartItem.quantity = cartIte.Quantity.ToString();
                                 }
                             }
-
-                            if (TotalAmount != null)
+                            if(cartdeserailized != null)
                             {
-                                
 
-                                string serializedCart = JsonSerializer.Serialize(cartdeserailized);
-                                string encodedCart = WebUtility.UrlEncode(serializedCart);
-
-
-                                return RedirectToAction("NewOrder", "Order", new { cartSerialized = encodedCart, TotalAmounts = TotalAmount });
-                            }
-                            else
-                            {
                                 return Json(cartdeserailized);
                             }
+                        
 
                             
                         }

@@ -1,15 +1,30 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using RestaurantFrontend.Models.CartItems;
 using RestaurantFrontend.Models.Order;
 using System.Net;
 using System.Text.Json;
+using System.Web;
 
 namespace RestaurantFrontend.Controllers
 {
     [Authorize]
     public class OrderController : Controller
     {
+
+        private readonly IConfiguration _configuration;
+        private readonly IMemoryCache _memoryCache;
+        private readonly string _baseUrl;
+
+        public OrderController(IConfiguration configuration, IMemoryCache memoryCache)
+        {
+            _configuration = configuration;
+            _memoryCache = memoryCache;
+            _baseUrl = _configuration["AppSettings:BaseUrl"];
+        }
+
         [Route("Order")]
         public IActionResult Index()
         {
@@ -31,23 +46,65 @@ namespace RestaurantFrontend.Controllers
 
 
         [Route("NewOrder")]
-        public IActionResult NewOrder(string cartSerialized, string TotalAmounts)
+        public async Task<IActionResult> NewOrder(string? totalAmount)
         {
             if (!User.Identity.IsAuthenticated)
             {
+                
+                var returnUrl = Url.Action("Index", "Order", null, Request.Scheme) + Request.QueryString;
 
-
-
+                return RedirectToAction("RegistrationPage", "Registration", new { returnUrl });
             }
-            string decodedCart = WebUtility.UrlDecode(cartSerialized);
-            List<CartViewModel> cartdeserailized = JsonSerializer.Deserialize<List<CartViewModel>>(decodedCart);
+            try
+            {
+                if (_memoryCache.TryGetValue("CartItems", out List<CartItem> cartItems))
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        var jsonData = new
+                        {
+                            TotalAmount = totalAmount,
+                            Items = cartItems
+                        };
 
-            string errormessage = TempData["successmessage"] as string;
-            ViewBag.successmessage = errormessage;
+                        var queryString = string.Join("&", JsonConvert.SerializeObject(jsonData)
+                            .Split(',')
+                            .Select(kv => HttpUtility.UrlEncode(kv.Trim()))
+                        );
 
-            var orders = GetSampleOrders();
-            //return View(orders);
-            return RedirectToAction("Index", "ErrorMessage");
+                        HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/PostToOrder?{queryString}");
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string content = await response.Content.ReadAsStringAsync();
+
+                            if (Guid.TryParse(content, out Guid resultGuid))
+                            {
+                                _memoryCache.Remove("CartItems");
+                                return Ok("Order created successfully.");
+                            }
+                            else
+                            {
+                                return BadRequest("Failed to parse response as Guid.");
+                            }
+                        }
+                        else
+                        {
+                            return BadRequest("Failed to retrieve product IDs.");
+                        }
+                    }
+                }
+                else
+                {
+                    return BadRequest("Cart items not found in cache.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+                return RedirectToAction("Index", "ErrorMessage");
+            }
 
         }
 
