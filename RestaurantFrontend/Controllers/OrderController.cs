@@ -46,7 +46,7 @@ namespace RestaurantFrontend.Controllers
 
 
         [Route("NewOrder")]
-        public async Task<IActionResult> NewOrder(string? totalAmount)
+        public async Task<IActionResult> NewOrder(string? totalAmount, bool IsPayOnDelivery = false)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -54,6 +54,7 @@ namespace RestaurantFrontend.Controllers
                 var returnUrl = Url.Action("Index", "Order", null, Request.Scheme) + Request.QueryString;
 
                 return RedirectToAction("RegistrationPage", "Registration", new { returnUrl });
+
             }
             try
             {
@@ -71,17 +72,43 @@ namespace RestaurantFrontend.Controllers
                             .Split(',')
                             .Select(kv => HttpUtility.UrlEncode(kv.Trim()))
                         );
-
-                        HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/PostToOrder?{queryString}");
+                        //generic post to order API
+                        HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/PostToOrder?{queryString}");
 
                         if (response.IsSuccessStatusCode)
                         {
+
+                            
                             string content = await response.Content.ReadAsStringAsync();
 
                             if (Guid.TryParse(content, out Guid resultGuid))
                             {
-                                _memoryCache.Remove("CartItems");
-                                return Ok("Order created successfully.");
+                                if (IsPayOnDelivery == true)
+                                {
+                                    //to be implemented
+                                    _memoryCache.Remove("CartItems");
+                                    return Ok("Order created successfully.");
+                                }
+                                else if (IsPayOnDelivery == false)
+                                {
+                                    //generic paystack API
+                                    HttpResponseMessage paystack = await httpClient.GetAsync($"{_baseUrl}/api/Paystack?{queryString}");
+                                    if (paystack.IsSuccessStatusCode)
+                                    {
+                                       //to be implemented
+                                             _memoryCache.Remove("CartItems");
+                                        return Ok("Order created successfully.");
+                                    }
+                                    else
+                                    {
+                                        return BadRequest("Payment failed.");
+                                    }
+                                }
+                                else
+                                {
+                                    return BadRequest("An error occured");
+                                }
+                          
                             }
                             else
                             {
@@ -90,6 +117,7 @@ namespace RestaurantFrontend.Controllers
                         }
                         else
                         {
+                            
                             return BadRequest("Failed to retrieve product IDs.");
                         }
                     }

@@ -204,40 +204,26 @@
 
                 const TotalAmount = elementContent.replace("₦", "");
 
+                let IsPayOnDelivery = true;
+
+                const deliveryUrl = `/NewOrder?totalAmount=${TotalAmount}&isPayOnDelivery=${IsPayOnDelivery}`;
+                const url = `/NewOrder?totalAmount=${TotalAmount}`;
+
                 if (selectedMethod === 'flexRadioDefault1') {
 
                     const payOnDeliveryData = {
-                        TotalAmounti: TotalAmount
+                        TotalAmounti: TotalAmount,
+                        IsPayOnDelivery: true
                     };
 
-                    fetch('/Order', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(payOnDeliveryData),
-                    })
-                        .then(response => response.json()) 
-                        .then(data => {
-                            if (data.redirect) {
-                                window.location.href = data.redirect; 
-                            } else {
-                                alert('Payment on delivery failed.');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Pay on delivery AJAX error:', error);
-                        });
-
-                } else if (selectedMethod === 'flexRadioDefault2') {
-
-                    const payByCardData = {
-                        TotalAmounti: TotalAmount
-                    }
-
-
-                    const url = `/NewOrder?totalAmount=${TotalAmount}`;
-                    fetch(url, {
+                    //fetch('/Order', {
+                    //    method: 'POST',
+                    //    headers: {
+                    //        'Content-Type': 'application/json',
+                    //    },
+                    //    body: JSON.stringify(payOnDeliveryData),
+                    //})
+                    fetch(deliveryUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -250,13 +236,76 @@
                                 window.location.href = response.url;
                             } else {
 
-                                alert('Payment by card or transfer failed.');
+                                alert('Payment on delivery failed.');
                             }
                         })
+                        //.then(response => response.json()) 
+                        //.then(data => {
+                        //    if (response.ok) {
+                        //    //if (data.redirect) {
+                        //        //window.location.href = data.redirect; 
+                        //        window.location.href = response.url;
+                        //    } else {
+                        //        alert('Payment on delivery failed.');
+                        //    }
+                        //})
                         .catch(error => {
-
-                            console.error('Pay by card AJAX error:', error);
+                            console.error('Pay on delivery AJAX error:', error);
                         });
+
+                } else if (selectedMethod === 'flexRadioDefault2') {
+
+                    const payByCardData = {
+                        TotalAmounti: TotalAmount
+                    }
+
+
+                   
+                    //fetch(url, {
+                    //    method: 'POST',
+                    //    headers: {
+                    //        'Content-Type': 'application/json',
+                    //    },
+                    //    body: JSON.stringify(TotalAmount),
+                    //})
+                    //    .then(response => {
+                    //        if (response.ok) {
+
+                    //            window.location.href = response.url;
+                    //        } else {
+
+                    //            alert('Payment by card or transfer failed.');
+                    //        }
+                    //    })
+                    //    .catch(error => {
+
+                    //        console.error('Pay by card AJAX error:', error);
+                    //    });
+                    async function makePayment(url, TotalAmount) {
+                        try {
+                            const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(TotalAmount),
+                            });
+
+                            if (response.ok) {
+                                window.location.href = response.url;
+                            } else {
+                                alert('Payment by card or transfer failed.');
+                            }
+                        } catch (error) {
+                            console.error('Pay by card AJAX error:', error);
+                        }
+                    }
+
+                    // Usage example
+                    //const paymentUrl = 'your_payment_url';
+                    //const totalAmount = { amount: 100 }; // Replace with your data
+                    makePayment(url, TotalAmount);
+
                 }
             });
         });
