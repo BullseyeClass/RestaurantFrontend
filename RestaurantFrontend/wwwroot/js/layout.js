@@ -19,16 +19,23 @@ setInterval(() => {
 
 
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search");
     const searchExtension = document.getElementById("trending-content");
+    let hideTimeout;
 
     searchInput.addEventListener("focus", function () {
+        clearTimeout(hideTimeout);
         searchExtension.style.display = "block";
     });
 
     searchInput.addEventListener("blur", function () {
-        searchExtension.style.display = "none";
+      
+        hideTimeout = setTimeout(function () {
+            searchExtension.style.display = "none";
+        }, 500);
     });
 });
 
@@ -154,3 +161,96 @@ function toggleNavbarScroll() {
 
 const debouncedToggleNavbarScroll = debounce(toggleNavbarScroll, 40);
 window.addEventListener('scroll', debouncedToggleNavbarScroll);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let allProducts = [
+    "Fresh Green Beans",
+    "Crisp Carrot Sticks",
+    "Vibrant Bell Peppers",
+    "Organic Spinach",
+    "Golden Corn Kernels",
+    "Flaky Croissants",
+    "Artisan Baguette",
+    "Creamy Cheesecake",
+    "Cinnamon Swirl Danish",
+    "Chocolate Chip Muffins",
+    "Merlot Reserve",
+    "Chardonnay Elegance",
+    "Cabernet Sauvignon",
+    "Zinfandel Bliss",
+    "Pinot Noir Delight",
+    "Farm Fresh Eggs",
+    "Creamy Greek Yogurt",
+    "Cheddar Cheese Block",
+    "Smooth Almond Milk",
+    "Whipped Cream",
+    "Tenderloin Steak",
+    "Roasted Chicken Breast",
+    "Savory Ground Beef",
+    "Grilled Turkey Burgers",
+    "Juicy Pork Chops",
+    "Sparkling Lemonade",
+    "Cola Classic",
+    "Ginger Ale Fizz",
+    "Orange Cream Soda",
+    "Berry Burst Cooler",
+    "All-Purpose Cleaner",
+    "Microfiber Cleaning Cloths",
+    "Scented Dish Soap",
+    "Stainless Steel Polish",
+    "Dust and Lint Brushes",
+    "Cereal & Snacks",
+    "Honey Nut Crunch Cereal",
+    "Sea Salt Popcorn",
+    "Trail Mix Medley",
+    "Granola Bar Variety Pack",
+    "Cheddar Snack Crackers"
+];
+
+var sortedProducts = allProducts.slice().sort();  
+
+var searchBox = document.getElementById("search");
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+   
+    const listOfTrends = document.querySelector(".listOfTrends");
+  
+
+    searchBox.addEventListener("keyup", (e) => {
+        listOfTrends.innerHTML = ""; 
+        for (let i of sortedProducts) {
+            if (i.toLowerCase().startsWith(searchBox.value.toLowerCase()) && searchBox.value != "") {
+                let listItem = document.createElement("li");
+                listItem.classList.add("list-items");
+                listItem.style.cursor = "pointer";
+                listItem.setAttribute("onclick", `displayNames('${i}')`);
+
+                let word = "<b>" + i.substr(0, searchBox.value.length) + "</b>";
+                word += i.substr(searchBox.value.length);
+
+                listItem.innerHTML = word;
+                listOfTrends.appendChild(listItem);
+                
+            }
+        }
+    });
+
+   
+});
+function displayNames(value) {
+    searchBox.value = value;
+}
