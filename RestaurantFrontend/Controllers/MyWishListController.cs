@@ -79,7 +79,7 @@ namespace RestaurantFrontend.Controllers
 
 
         [HttpGet]
-        [Route("WishList")]
+        [Route("WishLists")]
         public async Task<IActionResult> WishLists()
         {
             if (!User.Identity.IsAuthenticated)

@@ -96,11 +96,11 @@
                                     <p class="card-text-dollar text-danger"> $@item.Price</p>
                                     <div class="counter-container">
                                         <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
-                                        <p class="count">1</p>
+                                        <p class="count count-@item.Id">1</p>
                                         <button class="incrementBtn"><i class="bi bi-plus"></i></button>
                                     </div>
                                 </div>
-                                <a class="btn btn-dark text-white add-to-cart-btn m-3"> Add to Cart</a>
+                                <a onclick="addToCart(this)" class="btn btn-dark text-white add-to-cart-btn m-3" data-product-id="@item.Id"> Add to Cart</a>
                             </p>
                         </div>
                     </div>
