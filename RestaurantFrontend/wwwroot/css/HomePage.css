@@ -1,4 +1,7 @@
-﻿
+﻿#card-anchor {
+    text-decoration: none;
+    color: black;
+}
 .carousel-caption {
     position: absolute;
     

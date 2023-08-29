@@ -304,6 +304,7 @@ body {
     min-height: 3rem;
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(10px);
+    z-index:100;
 }
 
     .third-nav a {
@@ -329,7 +330,7 @@ body {
     padding-right: 1rem;
     margin-top: 2.2rem;
     margin-left: 5.7rem;
-    z-index: 4;
+    z-index: 1000;
     list-style-type: none;
     color: #808080;
 }
@@ -354,7 +355,7 @@ li {
     padding-right: 1rem;
     margin-top: 2.2em;
     margin-left: 12.2rem;
-    z-index: 4;
+    z-index: 1000;
     list-style-type: none;
     color: #808080;
 }
@@ -380,7 +381,7 @@ li {
     padding-right: 1rem;
     margin-top: 2.2rem;
     margin-left: 21.1rem;
-    z-index: 4;
+    z-index: 1000;
     list-style-type: none;
     color: #808080;
 }
@@ -406,7 +407,7 @@ li {
     padding-right: 1rem;
     margin-top: 2.2rem;
     margin-left: 37.9vw;
-    z-index: 4;
+    z-index: 1000;
     list-style-type: none;
     color: #808080;
 }

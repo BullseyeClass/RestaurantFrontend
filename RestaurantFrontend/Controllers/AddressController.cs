@@ -38,7 +38,6 @@ namespace RestaurantFrontend.Controllers
 
             using (var httpClient = new HttpClient())
             {
-
                 try
                 {
                     HttpResponseMessage response = await httpClient.GetAsync($"{_baseUrl}/api/Address/GetAllAddress");

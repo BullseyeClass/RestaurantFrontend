@@ -1,5 +1,7 @@
-﻿
+﻿@model IEnumerable<RestaurantFrontend.Models.ApiResponses.UserDetails>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 
 <div>
@@ -19,16 +21,103 @@
                 <div class="card-group">
                     <div class="card" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
                         <div class="card-header" style="background-color: #8c0303a1; color: #fff; padding-bottom: 25px; border-top-right-radius: 5px;">
-                            ACCOUNT DETAILS
+                            ACCOUNT INFORMATIONS
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text"></p>
+                            @foreach (var person in Model)
+                            {
+                                <label>First Name</label>
+                                <input asp-for="@person.FirstName" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                <label>Last Name</label>
+                                <input asp-for="@person.LastName" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+
+                                @* <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text"></p>*@
+                                @foreach (var address in person.Addresses)
+                                {
+                                    @if (address.IsShippingAddress == true)
+                                    {
+                                        <div class="card mt-5" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                            <div class="card-header" style="background-color: #8c0303a1; color: #fff; padding-bottom: 25px; border-top-right-radius: 5px;">
+                                                Shipping Address
+                                            </div>
+                                            <div class="card-body">
+
+
+                                                <div class="address-container">
+                                                    <label>Street</label>
+                                                    <input asp-for="@address.Street" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                                    <label>City</label>
+                                                    <input asp-for="@address.City" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                                     <label>State</label>
+                                                    <input asp-for="@address.State" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                                    <label>Postal Code</label>
+                                                    <input asp-for="@address.PostalCode" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                                     <label>Country</label>
+                                                    <input asp-for="@address.Country" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                                    @*<input asp-for="@address.CustomerId" class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>*@
+                                                    @*<input asp-for="@address.IsShippingAddress" class="form-control mb-3" id="disabledInput" type="text" placeholder="" disabled>*@
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            }
+
+
                         </div>
                     </div>
 
 
-                    <div class="card ms-4" style="border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                    @foreach (var person in Model)
+                    {
+                        
+                        @foreach (var address in person.Addresses)
+                        {
+                            @if (address.IsShippingAddress == false)
+                            {
+                                <div class="card ms-4" style="border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                    <div class="card-header d-flex " style="background-color: #8c0303a1; color: #fff; margin-bottom: 2rem; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                        <p class="me-auto">OTHER ADDRESS</p>
+                                        <span>
+                                            <a asp-area="" asp-controller="SubscribeTo" asp-action="Index" style="display:none; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-top-left-radius: 5px;" id="hideDiv1">
+                                               @* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                                </svg>*@
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                                </svg>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="card-body">
+
+
+                                        <div class="address-container">
+                                            <label>Street</label>
+                                            <input asp-for="@address.Street" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                            <label>City</label>
+                                            <input asp-for="@address.City" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                            <label>State</label>
+                                            <input asp-for="@address.State" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                            <label>Postal Code</label>
+                                            <input asp-for="@address.PostalCode" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                            <label>Country</label>
+                                            <input asp-for="@address.Country" class="form-control mt-2 mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+                                            @*<input asp-for="@address.CustomerId" class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>*@
+                                            @*<input asp-for="@address.IsShippingAddress" class="form-control mb-3" id="disabledInput" type="text" placeholder="" disabled>*@
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    }
+
+                   @* <div class="card ms-4" style="border-top-right-radius: 5px; border-top-left-radius: 5px;">
                         <div class="card-header d-flex " style="background-color: #8c0303a1; color: #fff; margin-bottom: 2rem; border-top-right-radius: 5px; border-top-left-radius: 5px;">
                             <p class="me-auto"> ADDRESS BOOK</p>
                             <span>
@@ -42,8 +131,26 @@
                         <div class="card-body">
                             <h5 class="card-title ">Special title treatment</h5>
                             <p id="checkParagraph1" class="card-text">gggyyuuujkieiddejdej</p>
+                            <div class="card" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <div class="card-header" style="background-color: #8c0303a1; color: #fff; padding-bottom: 25px; border-top-right-radius: 5px;">
+                            ACCOUNT DETAILS
+                            </div>
+                            <div class="card-body">
+
+
+                            </div>
+                            </div>
+                            <div>
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                                <input class="form-control mb-3" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+                            </div>
+
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
 
@@ -82,7 +189,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"></h5>
-                            <p id="checkParagraph2" class="card-text">fffggkhiuh,iuhuuhuikggu</p>
+                            <p id="checkParagraph2" class="card-text"></p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +202,7 @@
 
 
 <script>
-    
+
 
     function hideDivIfEmpty(paragraphId, divId) {
         var paragraph = document.getElementById(paragraphId);
@@ -128,6 +235,6 @@
 
 </script>
 <script src="~/js/site.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>*@
