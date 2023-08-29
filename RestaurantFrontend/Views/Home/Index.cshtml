@@ -1,4 +1,4 @@
-@using RestaurantFrontend.Models;
+﻿@using RestaurantFrontend.Models;
 @model IEnumerable<RestaurantFrontend.Models.Products.Products>
 
 @*@{
@@ -232,9 +232,9 @@
                                             <div class="price-section d-flex">
                                                 @if (item.DiscountedPrice != 0)
                                                 {
-                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                    <p class="card-text-dollar text-danger old-price"> ₦@item.DiscountedPrice</p>
                                                 }
-                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                                <p class="card-text-dollar text-danger"> ₦@item.Price</p>
                                             </div>
                                             <div class="counter-container">
                                                 <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
@@ -463,7 +463,7 @@
                         }
                         @foreach (var item in startCart)
                         {
-                            <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
+                           <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
 
 
                                 <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
@@ -490,9 +490,9 @@
                                             <div class="price-section d-flex">
                                                 @if (item.DiscountedPrice != 0)
                                                 {
-                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                    <p class="card-text-dollar text-danger old-price"> ₦@item.DiscountedPrice</p>
                                                 }
-                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                                <p class="card-text-dollar text-danger"> ₦@item.Price</p>
                                             </div>
                                             <div class="counter-container">
                                                 <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
@@ -597,9 +597,9 @@
                                             <div class="price-section d-flex">
                                                 @if (item.DiscountedPrice != 0)
                                                 {
-                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                    <p class="card-text-dollar text-danger old-price"> ₦@item.DiscountedPrice</p>
                                                 }
-                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                                <p class="card-text-dollar text-danger"> ₦@item.Price</p>
                                             </div>
                                             <div class="counter-container">
                                                 <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
@@ -714,7 +714,7 @@
                         }
                         @foreach (var item in shopFresh)
                         {
-                            <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
+                           <div class="col-md-3 col-sm-6 border-primary" style="max-width: 208px; height: 86vh">
 
 
                                 <a asp-action="Index" asp-controller="ProductDetails" asp-route-Id="@item.Id" id="card-anchor">
@@ -741,9 +741,9 @@
                                             <div class="price-section d-flex">
                                                 @if (item.DiscountedPrice != 0)
                                                 {
-                                                    <p class="card-text-dollar text-danger old-price"> $@item.DiscountedPrice</p>
+                                                    <p class="card-text-dollar text-danger old-price"> ₦@item.DiscountedPrice</p>
                                                 }
-                                                <p class="card-text-dollar text-danger"> $@item.Price</p>
+                                                <p class="card-text-dollar text-danger"> ₦@item.Price</p>
                                             </div>
                                             <div class="counter-container">
                                                 <button class="decrementBtn faded"><i class="bi bi-dash"></i></button>
