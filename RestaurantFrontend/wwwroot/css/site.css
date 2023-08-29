@@ -308,7 +308,7 @@ body {
 }
 
     .third-nav a {
-        color: #5b5b5b ;
+        color: #5b5b5b !important ;
         font-size: 17px;
         text-decoration: none;
     
